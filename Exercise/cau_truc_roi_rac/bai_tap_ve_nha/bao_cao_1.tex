@@ -1,0 +1,663 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{vntex}
+\usepackage{amsthm}
+\usepackage[]{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+
+\title{Homework 1}
+\author{Nguyễn Văn Đức - L05 - 2310790}
+\date\today
+
+\makeatletter
+\newcommand*\makealpha[1]{\symbol{\numexpr96+#1}}
+\makeatother
+
+\newenvironment{solution}{\renewcommand\qedsymbol{}\begin{proof}[Solution]}{\end{proof}}
+\graphicspath{{./anhbaocao/}}
+
+\begin{document}
+
+\maketitle
+\renewcommand{\labelenumi}{\textbf{\makealpha{\arabic{enumi}})}}
+
+\def\colspace{88pt}
+\setlength{\tabcolsep}{0pt}
+
+\section*{Section 1.1}
+\subsection*{Problem 8}
+Let $p$ and $q$ be the propositions\\
+\indent$p$ : I bought a lottery ticket this week.\\
+\indent$q$ : I won the million dollar jackpot.\\
+Express each of these propositions as an English sentence.\\
+\begin{tabular}{l@{\hspace{\colspace}}l@{\hspace{\colspace}}l}
+\textbf{a)} $\neg p$ & \textbf{b)} $p \lor q$ & \textbf{c)} $p \rightarrow q$ \\
+\textbf{d)} $p \land q$ & \textbf{e)} $p \leftrightarrow q$ & \textbf{f)} $\neg p \rightarrow \neg q$ \\
+\textbf{g)} $\neg p \land \neg q$ & \textbf{h)} $\neg p \lor (p \land q)$ \\
+\end{tabular}
+
+\begin{solution}
+\hspace{1pt}
+
+\begin{enumerate}
+\item I did not buy a lottery ticket this week.
+\item Either I bought a lottery ticket this week or I won the million dollar jackpot.
+\item If I bought a lottery ticket this week, then I won the million dollar jackpot.
+\item I bought a lottery ticket this week and I won the million dollar jackpot.
+\item I bought a lottery ticket this week if and only if I won the million dollar jackpot.
+\item If I did not buy a lottery ticket this week, then I did not win the million dollar jackpot.
+\item I did not buy a lottery ticket this week, and I did not win the million dollar jackpot.
+\item Either I did not buy a lottery ticket this week, or else I did buy one and won the million dollar jackpot.
+\end{enumerate}
+\end{solution}
+
+\clearpage
+\subsection*{Problem 9}
+Let $p$ and $q$ be the propositions “Swimming at the New
+Jersey shore is allowed” and “Sharks have been spotted
+near the shore,” respectively. Express each of these compound propositions as an English sentence.\\
+\begin{tabular}{l@{\hspace{\colspace}}l@{\hspace{\colspace}}l}
+\textbf{a)} $\neg q$ & \textbf{b)} $p \land q$ & \textbf{c)} $\neg p \lor q$ \\
+\textbf{d)} $p \rightarrow \neg q$ & \textbf{e)} $\neg q \rightarrow p$ & \textbf{f)} $\neg p \rightarrow \neg q$ \\
+\textbf{g)} $p \leftrightarrow \neg q$ & \textbf{h)} $\neg p \land (p \lor \neg q)$ \\
+\end{tabular}
+
+\begin{solution}
+\hspace{1pt}
+
+\begin{enumerate}
+\item Sharks have not been spotted near the shore.
+\item Swimming at the New Jersey shore is allowed, and sharks have been spotted near the shore.
+\item Swimming at the New Jersey shore is not allowed, or sharks have been spotted near the shore.
+\item If swimming at the New Jersey shore is allowed, then sharks have not been spotted near the shore.
+\item If sharks have not been spotted near the shore, then swimming at the New Jersey shore is allowed.
+\item If swimming at the New Jersey shore is not allowed, then sharks have not been spotted near the shore.
+\item Swimming at the New Jersey shore is allowed if and only if sharks have not been spotted near the shore.
+\item Swimming at the New Jersey shore is not allowed, and either swimming at the New Jersey shore is allowed or sharks have not been spotted near the shore.
+\end{enumerate}
+\end{solution}
+
+\clearpage
+\subsection*{Problem 11}
+Let $p$ and $q$ be the propositions\\
+\indent$p$ : It is below freezing.\\
+\indent$q$ : It is snowing.\\
+Write these propositions using p and q and logical connectives (including negations).
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item It is below freezing and snowing.
+\item It is below freezing but not snowing.
+\item It is not below freezing and it is not snowing.
+\item It is either snowing or below freezing (or both).
+\item If it is below freezing, it is also snowing.
+\item Either it is below freezing or it is snowing, but it is not snowing if it is below freezing.
+\item That it is below freezing is necessary and sufficient for it to be snowing.
+\end{enumerate}
+
+\begin{solution}
+\hspace{1pt}
+
+\noindent
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{l@{\hspace{\colspace}}l@{\hspace{\colspace}}l}
+\textbf{a)} $p \land q$ & \textbf{b)} $p \land \neg q$ & \textbf{c)} $\neg p \land \neg q$ \\
+\textbf{d)} $p \lor q$ & \textbf{e)} $p \rightarrow q$ & \textbf{f)} $(p \lor q) \land (p \rightarrow \neg q)$ \\
+\textbf{g)} $p \leftrightarrow q$ \\
+\end{tabular}
+\end{solution}
+
+\clearpage
+\subsection*{Problem 12}
+Let $p$ and $q$, and $r$ be the propositions\\
+\indent$p$ : You have the flu.\\
+\indent$q$ : You miss the final examination.\\
+\indent$r$ : You pass the course.\\
+Express each of these propositions as an English sentence.\\
+\begin{tabular}{l@{\hspace{52pt}}l@{\hspace{52pt}}l}
+\textbf{a)} $p \rightarrow q$ & \textbf{b)} $\neg q \leftrightarrow r$ & \textbf{c)} $q \rightarrow \neg r$ \\
+\textbf{d)} $p \lor q \lor r$ & \textbf{e)} $(p \rightarrow \neg r) \lor (q \rightarrow \neg r)$ & \textbf{f)} $(p \land q) \lor (\neg q \land r)$ \\
+\end{tabular}
+
+\begin{solution}
+\hspace{1pt}
+
+\begin{enumerate}
+\item If you have the flu, then you miss the final exam.
+\item You do not miss the final exam if and only if you pass the course.
+\item If you miss the final exam, then you do not pass the course.
+\item You have the flu, or miss the final exam, or pass the course.
+\item It is either the case that if you have the flu then you do not pass the course or the case that if you miss the final exam then you do not pass the course (or both).
+\item Either you have the flu and miss the final exam, or you do not miss the final exam and do pass the course.
+\end{enumerate}
+\end{solution}
+
+\clearpage
+\subsection*{Problem 15}
+Let $p$ and $q$, and $r$ be the propositions\\
+\indent$p$ : Grizzly bears have been seen in the area.\\
+\indent$q$ : Hiking is safe on the trail.\\
+\indent$r$ : Berries are ripe along the trail.\\
+Write these propositions using p, q, and r and logical connectives (including negations).
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item Berries are ripe along the trail, but grizzly bears have not been seen in the area.
+\item Grizzly bears have not been seen in the area and hiking on the trail is safe, but berries are ripe along the trail.
+\item If berries are ripe along the trail, hiking is safe if and only if grizzly bears have not been seen in the area.
+\item It is not safe to hike on the trail, but grizzly bears have not been seen in the area and the berries along the trail are ripe.
+\item For hiking on the trail to be safe, it is necessary but not sufficient that berries not be ripe along the trail and for grizzly bears not to have been seen in the area.
+\item Hiking is not safe on the trail whenever grizzly bears have been seen in the area and berries are ripe along the trail.
+\end{enumerate}
+
+\begin{solution}
+\hspace{1pt}
+
+\noindent
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{l@{\hspace{20pt}}l@{\hspace{20pt}}l}
+\textbf{a)} $r \land \neg p$ & \textbf{b)} $\neg p \land q \land r$ & \textbf{c)} $r \rightarrow (q \leftrightarrow \neg p)$ \\
+\textbf{d)} $\neg q \land \neg p \land r$ & \textbf{e)} $(q \rightarrow (\neg r \land \neg p)) \land \neg((\neg r \land \neg p) \rightarrow q)$ & \textbf{f)} $(p \land r) \rightarrow \neg q$ \\
+\end{tabular}
+\end{solution}
+
+\clearpage
+\subsection*{Problem 16}
+Determine whether these biconditionals are true or false.
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item 2 + 2 = 4 if and only if 1 + 1 = 2.
+\item 1 + 1 = 2 if and only if 2 + 3 = 4.
+\item 1 + 1 = 3 if and only if monkeys can fly.
+\item 0 > 1 if and only if 2 > 1.
+\end{enumerate}
+
+\begin{solution}
+\hspace{1pt}
+
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item This is \textbf{T} $\leftrightarrow$ \textbf{T}, which is true.
+\item This is \textbf{T} $\leftrightarrow$ \textbf{F}, which is false.
+\item This is \textbf{F} $\leftrightarrow$ \textbf{F}, which is true.
+\item This is \textbf{F} $\leftrightarrow$ \textbf{T}, which is false.
+\end{enumerate}
+\end{solution}
+\subsection*{Problem 17}
+Determine whether each of these conditional statements is true or false.
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item If 1 + 1 = 2, then 2 + 2 = 5.
+\item If 1 + 1 = 3, then 2 + 2 = 4.
+\item If 1 + 1 = 3, then 2 + 2 = 5.
+\item If monkeys can fly, then 1 + 1 = 3.
+\end{enumerate}
+
+\begin{solution}
+\hspace{1pt}
+
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item This is \textbf{T} $\rightarrow$ \textbf{F}, which is false.
+\item This is \textbf{F} $\rightarrow$ \textbf{T}, which is true.
+\item This is \textbf{F} $\rightarrow$ \textbf{F}, which is true.
+\item This is \textbf{F} $\rightarrow$ \textbf{F}, which is true.
+\end{enumerate}
+\end{solution}
+
+\clearpage
+\subsection*{Problem 36}
+Construct a truth table for each of these compound propositions.\\
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{l@{\hspace{\colspace}}l@{\hspace{\colspace}}l}
+\textbf{a)} $(p \lor q) \lor r$ & \textbf{b)} $(p \lor q) \land r$ & \textbf{c)} $(p \land q) \lor r$ \\
+\textbf{d)} $(p \land q) \land r$ & \textbf{e)} $(p \lor q) \land \neg r$ & \textbf{f)} $(p \land q) \lor \neg r$ \\
+\end{tabular}
+
+\begin{solution}
+\hspace{1pt}
+
+\hspace{1pt}
+
+\noindent
+\renewcommand{\arraystretch}{1.5}
+\def\scp{5pt}
+\begin{tabular}{c@{\hspace{\scp}}|@{\hspace{\scp}}c@{\hspace{\scp}}|@{\hspace{\scp}}c@{\hspace{\scp}}|@{\hspace{\scp}}c@{\hspace{\scp}}|@{\hspace{\scp}}c@{\hspace{\scp}}|@{\hspace{\scp}}c@{\hspace{\scp}}|@{\hspace{\scp}}c}
+& \textbf{a)} & \textbf{b)} & \textbf{c)} & \textbf{d)} & \textbf{e)} & \textbf{f)}\\
+\hline
+$p$\hspace{6pt}$q$\hspace{6pt}$r$ & $(p \lor q) \lor r$ & $(p \lor q) \land r$ & $(p \land q) \lor r$ & $(p \land q) \land r$ & $(p \lor q) \land \neg r$ & $(p \land q) \lor \neg r$ \\
+\hline
+T T T & T & T & T & T & F & T \\
+T T F & T & F & T & F & T & T \\
+T F T & T & T & T & F & F & F \\
+T F F & T & F & F & F & T & T \\
+F T T & T & T & T & F & F & F \\
+F T F & T & F & F & F & T & T \\
+F F T & T & F & T & F & F & F \\
+F F F & F & F & F & F & F & T \\
+\end{tabular}
+\end{solution}
+
+\clearpage
+\subsection*{Problem 37}
+Construct a truth table for each of these compound propositions.\\
+\renewcommand{\arraystretch}{1.5}
+\def\msp{32pt}
+\begin{tabular}{l@{\hspace{\msp}}l@{\hspace{\msp}}l}
+\textbf{a)} $p \rightarrow (\neg q \lor r)$ & \textbf{b)} $\neg p \rightarrow (q \rightarrow r)$ & \textbf{c)} $(p \rightarrow q) \lor (\neg p \rightarrow r)$ \\
+\textbf{d)} $(p \rightarrow q) \land (\neg p \rightarrow r)$ & \textbf{e)} $(p \leftrightarrow q) \lor (\neg q \leftrightarrow r)$ & \textbf{f)} $(\neg p \leftrightarrow \neg q) \leftrightarrow (q \leftrightarrow r)$ \\
+\end{tabular}
+
+\begin{solution}
+\hspace{1pt}
+
+\hspace{1pt}
+
+\hspace{10pt}
+\renewcommand{\arraystretch}{1.5}
+\def\scp{10pt}
+\begin{tabular}{c@{\hspace{\scp}}|@{\hspace{\scp}}c@{\hspace{\scp}}|@{\hspace{\scp}}c@{\hspace{\scp}}|@{\hspace{\scp}}c}
+& \textbf{a)} & \textbf{b)} & \textbf{c)}\\
+\hline
+$p$\hspace{6pt}$q$\hspace{6pt}$r$ & $p \rightarrow (\neg q \lor r)$ & $\neg p \rightarrow (q \rightarrow r)$ & $(p \rightarrow q) \lor (\neg p \rightarrow r)$ \\
+\hline
+T T T & T & T & T \\
+T T F & F & T & T \\
+T F T & T & T & T \\
+T F F & T & T & T \\
+F T T & T & T & T \\
+F T F & T & F & T \\
+F F T & T & T & T \\
+F F F & T & T & T \\
+\end{tabular}
+
+\vspace{10pt}
+\begin{tabular}{c@{\hspace{\scp}}|@{\hspace{\scp}}c@{\hspace{\scp}}|@{\hspace{\scp}}c@{\hspace{\scp}}|@{\hspace{\scp}}c}
+& \textbf{d)} & \textbf{e)} & \textbf{f)}\\
+\hline
+$p$\hspace{6pt}$q$\hspace{6pt}$r$ & $(p \rightarrow q) \land (\neg p \rightarrow r)$ & $(p \leftrightarrow q) \lor (\neg q \leftrightarrow r)$ & $(\neg p \leftrightarrow \neg q) \leftrightarrow (q \leftrightarrow r)$ \\
+\hline
+T T T & T & T & T \\
+T T F & T & T & F \\
+T F T & F & T & T \\
+T F F & F & F & F \\
+F T T & T & F & F \\
+F T F & F & T & T \\
+F F T & T & T & F \\
+F F F & F & T & T \\
+\end{tabular}
+\end{solution}
+
+\clearpage
+\subsection*{Problem 44}
+Evaluate each of these expressions.
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item 1 1000 $\land$ (0 1011 $\lor$ 1 1011)
+\item (0 1111 $\land$ 1 0101) $\lor$ 0 1000
+\item (0 1010 $\oplus$ 1 1011) $\oplus$ 0 1000
+\item (1 1011 $\lor$ 0 1010) $\land$ (1 0001 $\lor$ 1 1011)
+\end{enumerate}
+
+\begin{solution}
+\hspace{1pt}
+
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item 1 1000 $\land$ (0 1011 $\lor$ 1 1011) = 1 1000 $\land$ 1 1011 = 1 1000
+\item (0 1111 $\land$ 1 0101) $\lor$ 0 1000 = 0 0101 $\lor$ 0 1000 = 0 1101
+\item (0 1010 $\oplus$ 1 1011) $\oplus$ 0 1000 = 1 0001 $\oplus$ 0 1000 = 1 1001
+\item (1 1011 $\lor$ 0 1010) $\land$ (1 0001 $\lor$ 1 1011) = 1 1011 $\land$ 1 1011 = 1 1011
+\end{enumerate}
+\end{solution}
+\subsection*{Problem 45}
+\textbf{Fuzzy logic} is used in artificial intelligence. In fuzzy logic, a proposition has a truth value that is a number between 0 and 1, inclusive.A proposition with a truth value of 0 is false and one with a truth value of 1 is true. Truth values that are between 0 and 1 indicate varying degrees of truth. For instance, the truth value 0.8 can be assigned to the statement “Fred is happy”, because Fred is happy most of the time, and the truth value 0.4 can be assigned to the statement “John is happy,” because John is happy slightly less than half the time.
+
+\noindent
+The truth value of the negation of a proposition in fuzzy logic is 1 minus the truth value of the proposition. What are the truth values of the statements “Fred is not happy” and “John is not happy?”
+
+\begin{solution}
+\hspace{1pt}
+
+\begin{itemize}[leftmargin=16pt, topsep = 8pt]
+\item For "Fred is not happy," the truth value is 1 - 0.8 = 0.2.
+\item For "John is not happy,'' the truth value is 1 - 0.4 = 0.6.
+\end{itemize}
+\end{solution}
+
+\clearpage
+\section*{Section 1.2}
+\subsection*{Problem 6}
+You can upgrade your operating system only if you have a 32-bit processor running at 1 GHz or faster, at least 1 GB RAM, and 16 GB free hard disk space, or a 64-bit processor running at 2 GHz or faster, at least 2 GB RAM, and at least 32 GB free hard disk space. Express your answer in terms of $u$: “You can upgrade your operating system,” $b_{32}$: “You have a 32-bit processor,” $b_{64}$: “You have a 64-bit processor,” $g_1$: “Your processor runs at 1 GHz or faster,” $g_2$: “Your processor runs at 2 GHz or
+faster,” $r_1$: “Your processor has at least 1 GB RAM,” $r_2$: “Your processor has at least 2 GB RAM,” $h_{16}$: “You have at least 16 GB free hard disk space,” and $h_{32}$: “You have at least 32 GB free hard disk space.”
+
+\begin{solution}
+$u \rightarrow (b_{32} \land g_1 \land r_1 \land h_{16}) \lor (b_{64} \land g_2 \land r_2 \land h_{32})$
+\end{solution}
+\subsection*{Problem 7}
+Express these system specifications using the propositions $p$ “The message is scanned for viruses” and $q$ “The message was sent from an unknown system” together with logical connectives (including negations).
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item “The message is scanned for viruses whenever the message was sent from an unknown system.”
+\item “The message was sent from an unknown system but it was not scanned for viruses.”
+\item “It is necessary to scan the message for viruses whenever it was sent from an unknown system.”
+\item “When a message is not sent from an unknown system it is not scanned for viruses.”
+\end{enumerate}
+
+\begin{solution}
+\hspace{1pt}
+
+\noindent
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{l@{\hspace{55pt}}l@{\hspace{55pt}}l@{\hspace{55pt}}l}
+\textbf{a)} $q \rightarrow p$ & \textbf{b)} $q \land \neg p$ & \textbf{c)} $q \rightarrow p$ & \textbf{d)} $\neg q \rightarrow \neg p$ \\
+\end{tabular}
+\end{solution}
+
+\clearpage
+\subsection*{Problem 19}
+This exercise relate to inhabitants of the island of knights and knaves created by Smullyan, where knights always tell the truth and knaves always lie. You encounter two people, A and B. Determine, if possible, what A and B are if they address you in the ways described. If you cannot determine what these two people are, can you draw any conclusions?
+
+\noindent
+A says “At least one of us is a knave” and B says nothing.
+
+\begin{solution}
+If A is a knight, then he is telling the truth, in which case B must be a knave. Since B said nothing, that 
+is certainly possible. If A is a knave, then he is lying, which means that his statement that at least one of 
+them is a knave is false; hence they are both knights. That is a contradiction. So we can conclude that A is 
+a knight and B is a knave. 
+\end{solution}
+\subsection*{Problem 36}
+Four friends have been identified as suspects for an unauthorized access into a computer system. They have made statements to the investigating authorities. Alice said “Carlos did it.” John said “I did not do it.” Carlos said “Diana did it.” Diana said “Carlos lied when he said that I did it.”
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item If the authorities also know that exactly one of the four suspects is telling the truth, who did it? Explain your reasoning.
+\item If the authorities also know that exactly one is lying, who did it? Explain your reasoning.
+\end{enumerate}
+
+\begin{solution}
+Note that Diana’s statement is merely that she didn’t do it.
+
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item Since Carlos and Diana are making contradictory statements, the sole truth-teller must be one of them. Therefore John is lying, so John did it.
+\item Again, since Carlos and Diana are making contradictory statements, the liar must be one of them. Therefore Alice is telling the truth, so Carlos did it.
+\end{enumerate}
+\end{solution}
+
+\clearpage
+\subsection*{Problem 37}
+Suppose there are signs on the doors to two rooms. The sign on the first door reads “In this room there is a lady, and in the other one there is a tiger”; and the sign on the second door reads “In one of these rooms, there is a lady, and in one of them there is a tiger.” Suppose that you know that one of these signs is true and the other is false. Behind which door is the lady?
+
+\begin{solution}
+If the first sign were true, then the second sign would also be true. In that case, we could not have one true sign and one false sign. Rather, the second sign is true and the first is false; there is a lady in the second room and a tiger in the first room.
+\end{solution}
+\subsection*{Problem 38}
+Solve this famous logic puzzle, attributed to Albert Einstein, and known as the zebra puzzle. Five men with different nationalities and with different jobs live in consecutive houses on a street. These houses are painted different colors. The men have different pets and have different favorite drinks. Determine who owns a zebra and whose favorite drink is mineral water (which is one of the favorite drinks) given these clues: The Englishman lives in the red house. The Spaniard owns a dog. The Japanese man is a painter. The Italian drinks tea. The Norwegian lives in the first house on the left. The green house is immediately to the right of the white one. The photographer breeds snails. The diplomat lives in the yellow house. Milk is drunk in the middle house. The owner of the green house drinks coffee. The Norwegian’s house is next to the blue one. The violinist drinks orange juice. The fox is in a house next to that of the physician. The horse is in a house next to that of the diplomat. [Hint: Make a table where the rows represent the men and columns represent the color of their houses, their jobs, their pets, and their favorite drinks and use logical reasoning to determine the correct entries in the table.]
+
+\begin{solution}
+The following table shows a solution consistent with all the clues, with the houses listed from left to right. Reportedly the
+solution is unique.
+
+\vspace{10pt}
+\noindent
+\def\colspace38{10pt}
+\begin{tabular}{l@{\hspace{\colspace38}}l@{\hspace{\colspace38}}l@{\hspace{\colspace38}}l@{\hspace{\colspace38}}l@{\hspace{\colspace38}}l}
+\hline
+NATIONALITY & Norwegian & Italian & Englishman & Spaniard & Japanese \\
+COLOR & Yellow & Blue & Red & White & Green \\
+PET & Fox & Horse & Snail & Dog & Zebra \\
+JOB & Diplomat & Physician & Photographer & Violinist & Painter \\
+DRINK & Water & Tea & Milk & Juice & Coffee \\
+\hline
+\end{tabular}
+
+\vspace{10pt}
+\noindent
+According to this solution, the Japanese man owns the zebra, and the Norwegian drinks water.
+\end{solution}
+
+\clearpage
+\subsection*{Problem 39}
+Freedonia has fifty senators. Each senator is either honest or corrupt. Suppose you know that at least one of the Freedonian senators is honest and that, given any two Freedonian senators, at least one is corrupt. Based on these facts, can you determine how many Freedonian senators are honest and how many are corrupt? If so, what is the answer?
+
+\begin{solution}
+The given conditions imply that there cannot be two honest senators. Therefore, since we are told that there is at least one honest senator, there must be exactly 49 corrupt senators. 
+\end{solution}
+\subsection*{Problem 40}
+Find the output of each of these combinatorial circuits.
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item
+\begin{adjustbox}{raise = -60pt}
+\includegraphics[scale=0.7]{anhbaocao1}
+\end{adjustbox}
+\item
+\begin{adjustbox}{raise = -48pt}
+\includegraphics[scale=0.7]{anhbaocao2}
+\end{adjustbox}
+
+\end{enumerate}
+
+\begin{solution}
+\hspace{1pt}
+
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item $(\neg p) \lor (\neg q)$
+\item $\neg (p \lor ((\neg p) \land q)))$
+\end{enumerate}
+\end{solution}
+
+\clearpage
+\subsection*{Problem 41}
+Find the output of each of these combinatorial circuits.
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item
+\begin{adjustbox}{raise = -45pt}
+\includegraphics[scale=0.7]{anhbaocao3}
+\end{adjustbox}
+\item
+\begin{adjustbox}{raise = -78pt}
+\includegraphics[scale=0.7]{anhbaocao4}
+\end{adjustbox}
+
+\end{enumerate}
+
+\begin{solution}
+\hspace{1pt}
+
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item $\neg (p \land (q \lor \neg r))$
+\item $((\neg p) \land (\neg q)) \lor (p \land r)$
+\end{enumerate}
+\end{solution}
+\subsection*{Problem 42}
+Construct a combinatorial circuit using inverters, OR gates, and AND gates that produces the output $(p \land \neg r) \lor (\neg q \land r)$ from input bits $p$, $q$, and $r$.
+
+\begin{solution}
+We have the inputs come in from the left, in some cases passing through an inverter to form their negations. Certain pairs of them enter AND gates, and the outputs of these enter the final OR gate.
+
+\begin{center}
+\includegraphics{anhbaocao5}
+\end{center}
+\end{solution}
+
+\clearpage
+\section*{Section 1.3}
+\subsection*{Problem 43}
+A collection of logical operators is called \textbf{functionally complete} if every compound proposition is logically equivalent to a compound proposition involving only these logical operators.
+
+\noindent
+Show that $\neg$, $\land$, and $\lor$ form a functionally complete collection of logical operators.
+
+\begin{proof}
+Given a compound proposition $p$, we can construct its truth table and then, write down a proposition $q$ in disjunctive normal form that is logically equivalent to $p$. Since $q$ involves only $\neg$, $\land$, and $\lor$, this shows that $\neg$, $\land$, and $\lor$ form a functionally complete collection of logical operators. 
+\end{proof}
+\subsection*{Problem 47}
+Show that $p \mid q$ is logically equivalent to $\neg (p \land q)$.
+
+\begin{proof}
+The proposition $\neg (p \land q)$ is true when either $p$ or $q$, or both, are false, and is false when both $p$ and $q$ are true; since this was the definition of $p \mid q$, the two are logically equivalent.
+\end{proof}
+\subsection*{Problem 49}
+Show that $p \downarrow q$ is logically equivalent to $\neg (p \lor q)$.
+
+\begin{proof}
+The proposition $\neg (p \lor q)$ is true when both $p$ and $q$ are false, and is false otherwise; since this was the definition of $p \downarrow q$, the two are logically equivalent.
+\end{proof}
+\subsection*{Problem 54}
+Show that $p \mid (q \mid r)$ and $(p \mid q) \mid r$ are not equivalent, so that the logical operator $\mid$ is not associative.
+
+\begin{proof}
+To show that these are not logically equivalent, we need only find one assignment of truth values to $p$, $q$ , and $r$ for which the truth values of $p \mid (q \mid r)$ and $(p \mid q) \mid r$ differ. One such assignment is T for $p$ and F for $q$ and $r$ . Then computing from the truth tables (or definitions), we see that $p \mid (q \mid r)$ is false and $(p \mid q) \mid r$ is true.
+\end{proof}
+
+\clearpage
+\subsection*{Problem 59}
+How many of the disjunctions $p \lor \neg q \lor s$, $\neg p \lor \neg r \lor s$, $\neg p \lor \neg r \lor \neg s$, $\neg p \lor q \lor \neg s$, $q \lor r \lor \neg s$, $q \lor \neg r \lor \neg s$, $\neg p \lor \neg q \lor \neg s$, $p \lor r \lor s$, and $p \lor r \lor\neg s$ can be made simultaneously true by an assignment of truth values to $p$, $q$, $r$, and $s$?
+
+\begin{solution}
+Disjunctions are easy to make true, since we just have to make sure that at least one of the things being "or-ed" is true. In this problem, we notice that $\neg p$ occurs in four of the disjunctions, so we can satisfy all of them by making $p$ false. Three of the remaining disjunctions contain $r$, so if we let $r$ be true, those will be taken care of. That leaves only $p \lor \neg q \lor s$ and $q \lor \neg r \lor \neg s$ , and we can satisfy both of those by making $q$ and $s$ both true. This assignment, then, makes all nine of the disjunctions true.
+\end{solution}
+\subsection*{Problem 61}
+Determine whether each of these compound propositions is satisfiable.
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item $(p \lor \neg q) \land (\neg p \lor q) \land (\neg p \lor \neg q)$
+\item $(p \rightarrow q) \land (p \rightarrow \neg q) \land (\neg p \rightarrow q) \land (\neg p \rightarrow \neg q)$
+\item $(p \leftrightarrow q) \land (\neg p \leftrightarrow q)$
+\end{enumerate}
+
+\begin{solution}
+\hspace{1pt}
+
+\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
+\item With a little trial and error we discover that setting $p$ = F and $q$ = F produces (F $\lor$ T) $\land$ (T $\lor$ F) $\land$ (T $\lor$ T), which has the value T. So this compound proposition is satisfiable.
+\item We claim that there is no satisfying truth assignment here. No matter what the truth values of $p$ and $q$ might be, the four implications become T $\rightarrow$ T, T $\rightarrow$ F, F $\rightarrow$ T, and F $\rightarrow$ F, in some order. Exactly one of these is false, so their conjunction is false.
+\item This compound proposition is not satisfiable. In order for the first clause, $p \leftrightarrow q$, to be true, $p$ and $q$ must have the same truth value. In order for the second clause, $(\neg p) \leftrightarrow q$, to be true, $p$ and $q$ must have opposite truth values. These two conditions are incompatible, so there is no satisfying truth assignment.
+\end{enumerate}
+\end{solution}
+
+\clearpage
+\section*{Terminology Explaination}
+\subsection*{1. True, Truth, Valid, Correct}
+\subsubsection*{1.1. True}
+\begin{itemize}
+\item In general, "true" refers to something that is in accordance with reality, facts, or actuality. It represents a statement or belief that is accurate and corresponds to the real world.
+\item For example, the statement "The sky is blue" is considered true if, indeed, the sky is blue.
+\end{itemize}
+\subsubsection*{1.2. Truth}
+\begin{itemize}
+\item Truth is the quality or state of being true. It pertains to the conformity of a statement, belief, or proposition with reality or facts. Truth is often regarded as objective and independent of personal opinions or biases.
+\item For instance, scientific theories aim to uncover truths about the natural world through empirical evidence and rigorous testing.
+\end{itemize}
+\subsubsection*{1.3. Valid}
+\begin{itemize}
+\item Validity is a concept frequently used in logic and reasoning. It refers to the property of an argument where the conclusion logically follows from the premises. An argument is valid if the truth of the premises guarantees the truth of the conclusion. It doesn't necessarily mean that the conclusion is true, only that it follows logically from the given premises.
+\item For example, consider the argument:
+Premise 1: All humans are mortal.
+Premise 2: Socrates is a human.
+Conclusion: Therefore, Socrates is mortal.
+This argument is valid because the conclusion logically follows from the premises, even if the premises may not be true.
+\end{itemize}
+\subsubsection*{1.4. Correct}
+\begin{itemize}
+\item Correctness refers to the state of being accurate, without mistakes, errors, or flaws. It implies adhering to a standard or a set of rules. The concept of correctness can be applied to various contexts, such as mathematics, grammar, or problem-solving.
+\item For example, in a mathematical calculation, arriving at the correct answer involves using the appropriate operations and following mathematical principles accurately.
+\end{itemize}
+\subsection*{2. Fallacy, Contradiction, Paradox, Counterexample}
+\subsubsection*{2.1. Fallacy}
+\begin{itemize}
+\item A fallacy is an error in reasoning or a flawed argument that leads to an incorrect or invalid conclusion. It often involves deceptive or misleading reasoning.
+\item For example, the "appeal to authority" fallacy assumes that something is true simply because an authority figure says so.
+\end{itemize}
+\subsubsection*{2.2. Contradiction}
+\begin{itemize}
+\item A contradiction occurs when two statements or ideas conflict with each other and cannot both be true at the same time.
+\item For instance, the statements "The pen is red" and "The pen is not red" are contradictory because they cannot both be true simultaneously.
+\end{itemize}
+\subsubsection*{2.3. Paradox}
+\begin{itemize}
+\item A paradox is a statement or situation that appears to be contradictory or goes against common sense but may contain some truth or deeper meaning.
+\item One famous example is the "liar paradox": "This statement is false." If the statement is true, then it must be false, but if it is false, then it must be true.
+\end{itemize}
+\subsubsection*{2.4. Counterexample}
+\begin{itemize}
+\item A counterexample is an example or instance that disproves a general claim or hypothesis. It demonstrates that a statement or theory is not universally true.
+\item For instance, to disprove the claim that "All swans are white," one can provide a counterexample of a black swan.
+\end{itemize}
+\clearpage
+\subsection*{3. Premise, Assumption, Presumption, Axiom, Hypothesis, Conjecture}
+\subsubsection*{3.1. Premise}
+\begin{itemize}
+\item A premise is a statement or proposition that serves as the basis or starting point for an argument or reasoning. It is used to support or justify a conclusion.
+\item For example, in the argument "All mammals have fur. Dogs are mammals. Therefore, dogs have fur," the statements "All mammals have fur" and "Dogs are mammals" are the premises.
+\end{itemize}
+\subsubsection*{3.2. Assumption}
+\begin{itemize}
+\item An assumption is a belief or statement that is taken for granted or accepted without proof. It is often used as a basis for further reasoning or argumentation.
+\item For instance, when solving a math problem, we may make assumptions about the properties of numbers or operations.
+\end{itemize}
+\subsubsection*{3.3. Presumption}
+\begin{itemize}
+\item A presumption is a belief or assumption that is held to be true unless proven otherwise. It is often based on past experiences or commonly accepted notions.
+\item For example, in a court of law, a defendant is presumed innocent until proven guilty.
+\end{itemize}
+\subsubsection*{3.4. Axiom}
+\begin{itemize}
+\item An axiom is a self-evident or universally accepted statement or principle that serves as a starting point for reasoning or a system of knowledge. In mathematics, axioms are fundamental truths that are accepted without proof.
+\item For instance, in Euclidean geometry, "Two parallel lines never intersect" is an axiom.
+\end{itemize}
+\subsubsection*{3.5. Hypothesis}
+\begin{itemize}
+\item A hypothesis is a proposed explanation or prediction based on limited evidence or preliminary observations. It is a tentative proposition that is subject to further investigation and testing.
+\item In scientific research, hypotheses are formulated to explain phenomena or make predictions.
+\end{itemize}
+\subsubsection*{3.6. Conjecture}
+\begin{itemize}
+\item A conjecture is a statement or proposition that is believed to be true but has not been proven or verified. It is based on intuition, reasoning, or partial evidence.
+\item For example, in mathematics, the Goldbach Conjecture states that every even integer greater than 2 can be expressed as the sum of two prime numbers.
+\end{itemize}
+\subsection*{4. Tautology, Contradiction, Satisfiable, Contingency}
+\subsubsection*{4.1. Tautology}
+\begin{itemize}
+\item In logic, a tautology is a statement or formula that is always true, regardless of the truth values of its individual components.
+\item For example, the statement "Either it will rain tomorrow, or it will not rain tomorrow" is a tautology because it is true regardless of whether it actually rains.
+\end{itemize}
+\subsubsection*{4.2. Contradiction}
+\begin{itemize}
+\item A contradiction is a statement or proposition that is inherently false or logically inconsistent. It occurs when two statements or ideas conflict and cannot both be true at the same time. A contradiction can be expressed in the form of a logical inconsistency or through a truth table where no combination of truth values satisfies the statement.
+\item For example, the statement "The sun is shining and the sun is not shining" is a contradiction because it asserts two mutually exclusive states. Another example is the equation "1 = 0," which leads to a contradiction because it is mathematically impossible.
+\end{itemize}
+\subsubsection*{4.3. Satisfiable}
+\begin{itemize}
+\item In logic and mathematics, a formula or proposition is said to be satisfiable if there is at least one assignment of truth values to its variables that makes the formula true. In other words, it is possible to find a combination of truth values that satisfies the formula. A satisfiable formula does not have to be true in all cases; it only needs to have at least one interpretation that makes it true.
+\item For example, the formula $(p \land q) \lor (\neg r)$ is satisfiable because there are truth value assignments for $p$, $q$, and $r$ that make the formula true. If $p$ is true, $q$ is true, and $r$ is false, the formula is satisfied.
+\end{itemize}
+\subsubsection*{4.4. Contingency}
+\begin{itemize}
+\item Contingency refers to a proposition or statement that is neither necessarily true nor necessarily false. Its truth value depends on specific conditions or circumstances. A contingency is a statement that can be either true or false based on the particular situation or context.
+\item For example, the statement "It will rain tomorrow" is contingent because its truth or falsity depends on the actual weather conditions tomorrow. It may be true if rain is forecasted or false if the weather remains sunny. Contingent statements are contrasted with tautologies and contradictions, which are always true or false, respectively, regardless of the circumstances.
+\end{itemize}
+\subsection*{5. Inference, Argument, Reasoning}
+\subsubsection*{5.1. Inference}
+\begin{itemize}
+\item Inference is the process of deriving logical conclusions or making reasoned judgments based on available information, evidence, or premises. It involves drawing logical connections and reaching new conclusions.
+\item For example, if we know that "All dogs are mammals" and "Max is a dog," we can infer that "Max is a mammal."
+\end{itemize}
+\subsubsection*{5.2. Argument}
+\begin{itemize}
+\item In logic, an argument is a set of statements or premises presented to support or justify a conclusion. It consists of a logical structure where the premises lead to the conclusion.
+\item For instance, in the argument "All birds have feathers. Penguins are birds. Therefore, penguins have feathers," the premises are the first two statements, and the conclusion is the last statement.
+\end{itemize}
+\subsubsection*{5.3. Reasoning}
+\begin{itemize}
+\item Reasoning is the mental process of thinking, analyzing, and drawing conclusions based on logic, evidence, or principles. It involves applying rules of logic or critical thinking to solve problems or make decisions.
+\item For example, deductive reasoning uses general principles to draw specific conclusions, while inductive reasoning involves drawing general conclusions based on specific observations.
+\end{itemize}
+\clearpage
+\subsection*{6. Variable, Argument, Arity}
+\subsubsection*{6.1. Variable}
+\begin{itemize}
+\item In mathematics and computer science, a variable is a symbol or placeholder that represents an unknown quantity or value. It can take on different values depending on the context or the problem being solved.
+\item For example, in the equation "2x + 3 = 7," the variable "x" represents an unknown value that we need to solve for.
+\end{itemize}
+\subsubsection*{6.2. Argument}
+\begin{itemize}
+\item In the context of mathematics and logic, an argument refers to the input values or expressions that are passed to a function or operation. It is the value or expression on which the function or operation operates.
+\item For example, in the function "f(x) = 2x + 3," the argument is "x."
+\end{itemize}
+\subsubsection*{6.3. Arity}
+\begin{itemize}
+\item Arity is a term used to describe the number of arguments or operands that a function or operation takes. It indicates the number of inputs required for the function to perform its operation.
+\item For instance, a binary operation has an arity of 2 because it takes two arguments, while a unary operation has an arity of 1 because it takes only one argument.
+\end{itemize}
+\end{document}
