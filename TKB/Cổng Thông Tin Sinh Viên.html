@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://mybk.hcmut.edu.vn/stinfo/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="LYg8GHp7Kbmxlnq0YfxlnebTSuctQvDCRr6CxVMz">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Cổng Thông Tin Sinh Viên</title>
+
+    <!-- Bootstrap -->
+    <link href="https://mybk.hcmut.edu.vn/stinfo/public/images/icon/logo.png" rel="icon">
+    <link href="./Cổng Thông Tin Sinh Viên_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Cổng Thông Tin Sinh Viên_files/font-awesome.min.css" rel="stylesheet">
+    <link href="./Cổng Thông Tin Sinh Viên_files/fonts.css" rel="stylesheet">
+    <link href="./Cổng Thông Tin Sinh Viên_files/styles.css" rel="stylesheet">
+    <link href="./Cổng Thông Tin Sinh Viên_files/mystyle.css" rel="stylesheet">
+    <link href="./Cổng Thông Tin Sinh Viên_files/mobile.css" rel="stylesheet">
+    <link href="./Cổng Thông Tin Sinh Viên_files/lightbox.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Cổng Thông Tin Sinh Viên_files/jqx.base.css" type="text/css">
+    <link rel="stylesheet" href="./Cổng Thông Tin Sinh Viên_files/jqx.arctic.css" type="text/css">
+    <link rel="stylesheet" href="./Cổng Thông Tin Sinh Viên_files/jqx.energyblue.css" type="text/css">
+    <link rel="stylesheet" href="./Cổng Thông Tin Sinh Viên_files/jqx.bootstrap.css" type="text/css">
+    <!-- notification-->
+    <link rel="stylesheet" type="text/css" href="./Cổng Thông Tin Sinh Viên_files/toastr.css">
+    <script src="./Cổng Thông Tin Sinh Viên_files/toastr.jquery.js.download"></script>
+    <script src="./Cổng Thông Tin Sinh Viên_files/toastr.js.download"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]-->
+    <script src="./Cổng Thông Tin Sinh Viên_files/html5shiv.min.js.download"></script>
+    <script src="./Cổng Thông Tin Sinh Viên_files/respond.min.js.download"></script>
+    <!--
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <!--[endif]-->
+</head>
+<body>
+<div id="jqxLoader" style="width: 100px; height: 60px; display: none; left: -50.1111px; top: -30.1111px;" class="jqx-widget jqx-loader jqx-rc-all jqx-fill-state-normal jqx-rc-t jqx-rc-b jqx-popup">
+<div class="jqx-loader-icon" style="background-position-y: 0%;"></div><div class="jqx-loader-text jqx-loader-text-bottom">Đang tải...</div></div>
+
+<div class="wrapper">
+    <!-- left menu -->
+    <div id="adminmenumain">
+        <div class="sidebar">
+            <div class="left-menu-scroll">
+                <div class="menu-hidden-dk menu-hidden-wp">
+                    <a class="button"><i class="fa fa-bars"></i></a>
+                </div>
+                <div id="cssmenu">
+    <ul id="mainmenu">
+        <li id="li-menu-home" class="">
+
+            <a data-link="#" class="menutab" id="menu-home" data-module="home" data-name="Trang chủ">
+                <span style="border-color: rgb(255, 255, 255);">
+                    <i class="icon-menu-left">T</i> <span class="hide-menu-left">Trang chủ</span>
+                </span>
+            </a>
+    </li>
+     <li id="li-menu-101" class="has-sub">
+        <a data-link="#" class="menutab" id="menu-101" data-module="61" data-name="Thông tin sinh viên">
+            <span style="border-color: rgb(255, 255, 255);"><i class="icon-menu-left">T</i> <span class="hide-menu-left">Thông tin sinh viên</span>
+            </span>
+        <span class="holder" style="border-color: rgb(255, 255, 255);"></span></a>
+    <ul class="sub-menu">
+                    <li id="li-menu-102"><a data-link="profile" class="menutab" id="menu-102" data-module="61" data-name="Lý lịch "><span>Lý lịch&nbsp;</span> </a></li>
+                            <li id="li-menu-161"><a data-link="profileedit" class="menutab" id="menu-161" data-module="61" data-name="Cập nhật địa chỉ"><span>Cập nhật địa chỉ</span> </a></li>
+                            <li id="li-menu-202"><a data-link="qd" class="menutab" id="menu-202" data-module="121" data-name="Tình trạng sinh viên"><span>Tình trạng sinh viên</span> </a></li>
+                    </ul>
+    </li>
+<li id="li-menu-383" class="has-sub">
+        <a data-link="#" class="menutab" id="menu-383" data-module="61" data-name="Tuyển sinh">
+            <span style="border-color: rgb(255, 255, 255);"><i class="icon-menu-left">T</i> <span class="hide-menu-left">Tuyển sinh</span>
+            </span>
+        <span class="holder" style="border-color: rgb(255, 255, 255);"></span></a>
+    <ul class="sub-menu">
+                    <li id="li-menu-302"><a data-link="ketqua_tuyensinh" class="menutab" id="menu-302" data-module="61" data-name="Kết quả tuyển sinh"><span>Kết quả tuyển sinh</span> </a></li>
+                    </ul>
+    </li>
+<li id="li-menu-187" class="has-sub active">
+        <a data-link="#" class="menutab" id="menu-187" data-module="61" data-name="Học tập">
+            <span style="border-color: rgb(255, 255, 255);"><i class="icon-menu-left">H</i> <span class="hide-menu-left">Học tập</span>
+            </span>
+        <span class="holder" style="border-color: rgb(255, 255, 255);"></span></a>
+    <ul class="sub-menu">
+                    <li id="li-menu-188" class="active"><a data-link="lichhoc" class="menutab" id="menu-188" data-module="61" data-name="Thời khóa biểu "><span>Thời khóa biểu </span> </a></li>
+                            <li id="li-menu-223"><a data-link="lichthi" class="menutab" id="menu-223" data-module="61" data-name="Lịch thi"><span>Lịch thi</span> </a></li>
+                            <li id="li-menu-189"><a data-link="grade" class="menutab" id="menu-189" data-module="101" data-name="Bảng điểm"><span>Bảng điểm</span> </a></li>
+                            <li id="li-menu-142"><a data-link="message" class="menutab" id="menu-142" data-module="61" data-name="Thông báo"><span>Thông báo</span> </a></li>
+                            <li id="li-menu-421"><a data-link="grade_diemchuyen" class="menutab" id="menu-421" data-module="61" data-name="Điểm chuyển"><span>Điểm chuyển</span> </a></li>
+                            <li id="li-menu-441"><a data-link="contact" class="menutab" id="menu-441" data-module="61" data-name="Góp ý"><span>Góp ý</span> </a></li>
+                            <li id="li-menu-761"><a data-link="hoc-phi" class="menutab" id="menu-761" data-module="381" data-name="Học phí"><span>Học phí</span> </a></li>
+                    </ul>
+    </li>
+<li id="li-menu-581" class="has-sub">
+        <a data-link="#" class="menutab" id="menu-581" data-module="61" data-name="Thống kê học tập">
+            <span style="border-color: rgb(255, 255, 255);"><i class="icon-menu-left">T</i> <span class="hide-menu-left">Thống kê học tập</span>
+            </span>
+        <span class="holder" style="border-color: rgb(255, 255, 255);"></span></a>
+    <ul class="sub-menu">
+                    <li id="li-menu-582"><a data-link="student_charts" class="menutab" id="menu-582" data-module="301" data-name="Điểm trung bình "><span>Điểm trung bình&nbsp;</span> </a></li>
+                            <li id="li-menu-583"><a data-link="student_chartstinchi" class="menutab" id="menu-583" data-module="321" data-name="Số tín chỉ "><span>Số tín chỉ&nbsp;</span> </a></li>
+                    </ul>
+    </li>
+<li id="li-menu-203" class="has-sub">
+        <a data-link="#" class="menutab" id="menu-203" data-module="61" data-name="Tốt nghiệp">
+            <span style="border-color: rgb(255, 255, 255);"><i class="icon-menu-left">T</i> <span class="hide-menu-left">Tốt nghiệp</span>
+            </span>
+        <span class="holder" style="border-color: rgb(255, 255, 255);"></span></a>
+    <ul class="sub-menu">
+                    <li id="li-menu-301"><a data-link="ketqua_totnghiep" class="menutab" id="menu-301" data-module="61" data-name="Bằng tốt nghiệp "><span>Bằng tốt nghiệp&nbsp;</span> </a></li>
+                    </ul>
+    </li>
+<li id="li-menu-721" class="has-sub">
+        <a data-link="#" class="menutab" id="menu-721" data-module="61" data-name="Đăng ký thông tin">
+            <span style="border-color: rgb(255, 255, 255);"><i class="icon-menu-left">Đ</i> <span class="hide-menu-left">Đăng ký thông tin</span>
+            </span>
+        <span class="holder" style="border-color: rgb(255, 255, 255);"></span></a>
+    <ul class="sub-menu">
+                    <li id="li-menu-722"><a data-link="student-register-relative" class="menutab" id="menu-722" data-module="361" data-name="Người thân"><span>Người thân</span> </a></li>
+                    </ul>
+    </li>
+<li id="li-menu-182" class="has-sub">
+        <a data-link="#" class="menutab" id="menu-182" data-module="61" data-name="Hỗ trợ ">
+            <span style="border-color: rgb(255, 255, 255);"><i class="icon-menu-left">H</i> <span class="hide-menu-left">Hỗ trợ </span>
+            </span>
+        <span class="holder" style="border-color: rgb(255, 255, 255);"></span></a>
+    <ul class="sub-menu">
+                    <li id="li-menu-201"><a data-link="http://mybk.hcmut.edu.vn/" class="menutab" id="menu-201" data-module="61" data-name="myBK"><span>myBK</span> </a></li>
+                            <li id="li-menu-381"><a data-link="http://www.aao.hcmut.edu.vn/index.php?route=catalog/chitietsv&amp;path=90&amp;tid=114" class="menutab" id="menu-381" data-module="61" data-name="Quy chế"><span>Quy chế</span> </a></li>
+                            <li id="li-menu-382"><a data-link="http://www.aao.hcmut.edu.vn/index.php?route=catalog/chitietsv&amp;path=192&amp;tid=869" class="menutab" id="menu-382" data-module="61" data-name="Hướng dẫn"><span>Hướng dẫn</span> </a></li>
+                            <li id="li-menu-185"><a data-link="http://wiki.hcmut.edu.vn//index.php/Trang_Ch%C3%ADnh" class="menutab" id="menu-185" data-module="61" data-name="Bách Khoa Wiki"><span>Bách Khoa Wiki</span> </a></li>
+                            <li id="li-menu-384"><a data-link="http://www.aao.hcmut.edu.vn/index.php?route=catalog/chitiettb&amp;thongbao_id=1693" class="menutab" id="menu-384" data-module="61" data-name="Địa điểm học"><span>Địa điểm học</span> </a></li>
+                            <li id="li-menu-241"><a data-link="giohoc" class="menutab" id="menu-241" data-module="61" data-name="Giờ học"><span>Giờ học</span> </a></li>
+                    </ul>
+    </li>
+ 
+</ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end left menu -->
+    <!-- content -->
+    <div class="content-wp">
+        <!-- header -->
+        <section class="header-wrapper">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                    <div class="logo-wp">
+                        <a href="https://mybk.hcmut.edu.vn/stinfo/#"><img src="./Cổng Thông Tin Sinh Viên_files/logo.png"></a>
+                    </div>
+                    <div class="logo-wp-mobile">
+                        <a href="https://mybk.hcmut.edu.vn/stinfo/#"><img src="./Cổng Thông Tin Sinh Viên_files/logo_bk_mobile.png"></a>
+                    </div>
+
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-6 col-xs-6">
+                    <!--   <div class="top-slogan-wp">
+                       <p>Cổng Thông Tin Sinh Viên</p>
+                    </div>-->
+                </div>
+                <div class="col-lg-9 col-md-6 col-sm-6 col-xs-6">
+                    <div class="top-user-setting">
+                        <ul class="top-user-setting-wp">
+        <li>
+
+                                    <div class="top-avatar1">
+                                            <img src="./Cổng Thông Tin Sinh Viên_files/icon-avatar.png">
+                    </div>
+                <div class="top-avatar2">
+                    <div class="dropdown">
+                            NGUYỄN VĂN  ĐỨC
+                    </div>
+                    <p>Khoa Khoa học và Kỹ thuật Máy tính</p>
+                </div>
+                                
+            <div class="top-avatar2"><a href="https://mybk.hcmut.edu.vn/stinfo/logout"><img src="./Cổng Thông Tin Sinh Viên_files/logout_xam.png" width="36px" height="36x"></a></div>
+        </li>
+    </ul>
+                        <ul class="top-user-aler-wp">
+    <li>
+        <a data-link="message" class="menutab " id="menu-message" data-module="none" data-name="Thông báo, cảnh báo" data-toggle="tooltip" title=" ">
+            <div class="top-alert-wp ">
+                
+                <div class="top-alert-icon">
+                    <i class="fa fa-bell"></i>
+                </div>
+            </div>
+
+        </a>
+
+
+    </li>
+</ul>                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="hide-menu-mobile col-lg-4 col-md-11 col-sm-11 col-xs-11">
+                    <div class="menu-hidden-wp">
+                        <a class="button"><i class="fa fa-bars"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- end header -->
+        <div class="content">
+
+            <div class="content-wpp">
+
+                <!-- head tab and breacum -->
+                <div class="breadcrumb-wp">
+                    <ol class="breadcrumb">
+                        <li><a id="breadcrumb_home"><i class="fa fa-home"></i></a></li>
+                        <li id="page_active">Thời khóa biểu </li>
+                        <span class="date-week-home" id="date_week-home">Tuần: <span class="date-week-home-organe">7</span>, Thứ Năm, Ngày 15/02/2024.</span>
+                    </ol>
+                </div>
+                <div class="header-tab-wp">
+                    <div class="header-tab-bg">
+<div id="jqxTabs" aria-disabled="false" class="jqx-tabs jqx-widget jqx-widget-content jqx-rc-all" role="tablist" style="width: 100%;" hidefocus="true" aria-activedescendant="" tabindex="0"><div class="jqx-tabs-headerWrapper jqx-tabs-header jqx-widget-header jqx-rc-t" style="outline: none; height: 30px; position: relative; left: 0px; top: 0px;"><ul id="hometabs" class="jqx-tabs-title-container" style="outline: none; white-space: nowrap; margin-top: 0px; margin-bottom: 0px; padding: 0px; background: transparent; border: none; text-indent: 0px; height: 30px; width: 1635.22px; left: 0px; position: relative; top: 0px;">
+        <li id="tab-menu-home" hasclosebutton="false" role="tab" class="jqx-reset jqx-disableselect jqx-tabs-title jqx-item jqx-rc-t" style="float: left; position: static; height: 20px;"><div class="jqx-tabs-titleWrapper" style="outline: none; position: relative; z-index: 15; height: 100%;"><div class="jqx-tabs-titleContentWrapper jqx-disableselect" style="float: left; margin-top: 2px;">Trang chủ</div><div class="jqx-tabs-close-button" style="height: 16px; width: 16px; float: left; font-size: 1px; display: none; margin-top: 3px;"></div></div></li><li class="jqx-reset jqx-disableselect jqx-tabs-title jqx-item jqx-rc-t jqx-tabs-title-selected-top jqx-fill-state-pressed" style="float: left; position: static; height: 20px;" id="tab-menu-188"><div class="jqx-tabs-titleContentWrapper jqx-disableselect" style="float: left; height: 100%; margin-top: 0px;">Thời khóa biểu </div><div class="jqx-tabs-close-button" style="height: 100%; width: 16px; float: left; font-size: 1px; display: block; margin-top: 1px;"></div></li>
+
+    </ul><div class="jqx-tabs-arrow-background jqx-widget-header" style="width: 16px; height: 100%; z-index: 30; display: none; position: absolute; top: 0px; left: 0px;"><span style="display: block; width: 16px; height: 16px; margin-top: 9.5px;" class="jqx-tabs-arrow-left"></span></div><div class="jqx-tabs-arrow-background jqx-widget-header" style="width: 16px; height: 100%; z-index: 30; display: none; position: absolute; top: 0px; right: 0px;"><span style="display: block; width: 16px; height: 16px; margin-top: 9.5px;" class="jqx-tabs-arrow-right"></span></div></div>
+    
+    <div class="jqx-tabs-content jqx-widget-content jqx-rc-b" style="float: none; width: 100%; height: auto;"><div role="tabpanel" class="jqx-tabs-content-element jqx-rc-b" style="display: none;">
+        <div class="row home-content-padding bg-white grid" style="position: relative; height: 626.001px;">
+            <div class="grid-sizer"></div>
+            <div class="grid-item  col-lg-3 col-md-4 col-sm-6 col-xs-12" style="position: absolute; left: 0px; top: 0px;">
+    <div class="box-content-home-bg">
+        <div class="box-content-home-wp">
+            <div class="box-content-home">
+                <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="profile" class="menutab" id="menu-102" data-module="home" data-name="Lý lịch&lt;br&gt; ">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477389364-196960.png" data-link="profile" class="menutab" id="menu-102" data-module="home" data-name="Lý lịch&lt;br&gt; ">
+                                                        <h4>Lý lịch<br>&nbsp;</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="profileedit" class="menutab" id="menu-161" data-module="home" data-name="Cập nhật&lt;br&gt; địa chỉ">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477974698-update.png" data-link="profileedit" class="menutab" id="menu-161" data-module="home" data-name="Cập nhật&lt;br&gt; địa chỉ">
+                                                        <h4>Cập nhật<br> địa chỉ</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="qd" class="menutab" id="menu-202" data-module="home" data-name="Tình trạng&lt;br&gt; sinh viên">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477983494-scales.png" data-link="qd" class="menutab" id="menu-202" data-module="home" data-name="Tình trạng&lt;br&gt; sinh viên">
+                                                        <h4>Tình trạng<br> sinh viên</h4>
+                        </div>
+                        </a>
+                    </div>
+                                                        </div>
+            </div>
+            <div class="box-content-home-ft">
+                <h4>Thông tin sinh viên</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid-item  col-lg-3 col-md-4 col-sm-6 col-xs-12" style="position: absolute; left: 538px; top: 0px;">
+    <div class="box-content-home-bg">
+        <div class="box-content-home-wp">
+            <div class="box-content-home">
+                <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="ketqua_tuyensinh" class="menutab" id="menu-302" data-module="home" data-name="Kết quả &lt;br&gt;tuyển sinh">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477388892-handshake.png" data-link="ketqua_tuyensinh" class="menutab" id="menu-302" data-module="home" data-name="Kết quả &lt;br&gt;tuyển sinh">
+                                                        <h4>Kết quả <br>tuyển sinh</h4>
+                        </div>
+                        </a>
+                    </div>
+                                                        </div>
+            </div>
+            <div class="box-content-home-ft">
+                <h4>Tuyển sinh</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid-item  col-lg-3 col-md-4 col-sm-6 col-xs-12" style="position: absolute; left: 1077px; top: 0px;">
+    <div class="box-content-home-bg">
+        <div class="box-content-home-wp">
+            <div class="box-content-home">
+                <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="lichhoc" class="menutab" id="menu-188" data-module="home" data-name="Thời khóa biểu ">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477389315-calendar-1.png" data-link="lichhoc" class="menutab" id="menu-188" data-module="home" data-name="Thời khóa biểu ">
+                                                        <h4>Thời khóa biểu </h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="lichthi" class="menutab" id="menu-223" data-module="home" data-name="Lịch thi">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477389349-list-2.png" data-link="lichthi" class="menutab" id="menu-223" data-module="home" data-name="Lịch thi">
+                                                        <h4>Lịch thi</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="grade" class="menutab" id="menu-189" data-module="home" data-name="Bảng điểm">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477984406-nine.png" data-link="grade" class="menutab" id="menu-189" data-module="home" data-name="Bảng điểm">
+                                                        <h4>Bảng điểm</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="message" class="menutab" id="menu-142" data-module="home" data-name="Thông báo">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477388814-alarm-2.png" data-link="message" class="menutab" id="menu-142" data-module="home" data-name="Thông báo">
+                                                        <h4>Thông báo</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="grade_diemchuyen" class="menutab" id="menu-421" data-module="home" data-name="Điểm chuyển">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1481700005-shuffle_vang.png" data-link="grade_diemchuyen" class="menutab" id="menu-421" data-module="home" data-name="Điểm chuyển">
+                                                        <h4>Điểm chuyển</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="contact" class="menutab" id="menu-441" data-module="home" data-name="Góp ý">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1484395078-brainstorm.png" data-link="contact" class="menutab" id="menu-441" data-module="home" data-name="Góp ý">
+                                                        <h4>Góp ý</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="hoc-phi" class="menutab" id="menu-761" data-module="home" data-name="Học phí">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1509334664-dollar-symbol.png" data-link="hoc-phi" class="menutab" id="menu-761" data-module="home" data-name="Học phí">
+                                                        <h4>Học phí</h4>
+                        </div>
+                        </a>
+                    </div>
+                                                        </div>
+            </div>
+            <div class="box-content-home-ft">
+                <h4>Học tập</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid-item  col-lg-3 col-md-4 col-sm-6 col-xs-12" style="position: absolute; left: 0px; top: 185px;">
+    <div class="box-content-home-bg">
+        <div class="box-content-home-wp">
+            <div class="box-content-home">
+                <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="student_charts" class="menutab" id="menu-582" data-module="home" data-name="Điểm trung bình&lt;br&gt; ">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1490612596-line-chart1.png" data-link="student_charts" class="menutab" id="menu-582" data-module="home" data-name="Điểm trung bình&lt;br&gt; ">
+                                                        <h4>Điểm trung bình<br>&nbsp;</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="student_chartstinchi" class="menutab" id="menu-583" data-module="home" data-name="Số tín chỉ&lt;br&gt; ">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1490684514-line-chart3.png" data-link="student_chartstinchi" class="menutab" id="menu-583" data-module="home" data-name="Số tín chỉ&lt;br&gt; ">
+                                                        <h4>Số tín chỉ<br>&nbsp;</h4>
+                        </div>
+                        </a>
+                    </div>
+                                                        </div>
+            </div>
+            <div class="box-content-home-ft">
+                <h4>Thống kê học tập</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid-item  col-lg-3 col-md-4 col-sm-6 col-xs-12" style="position: absolute; left: 538px; top: 185px;">
+    <div class="box-content-home-bg">
+        <div class="box-content-home-wp">
+            <div class="box-content-home">
+                <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="ketqua_totnghiep" class="menutab" id="menu-301" data-module="home" data-name="Bằng tốt nghiệp&lt;br&gt; ">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477389634-graduation.png" data-link="ketqua_totnghiep" class="menutab" id="menu-301" data-module="home" data-name="Bằng tốt nghiệp&lt;br&gt; ">
+                                                        <h4>Bằng tốt nghiệp<br>&nbsp;</h4>
+                        </div>
+                        </a>
+                    </div>
+                                                        </div>
+            </div>
+            <div class="box-content-home-ft">
+                <h4>Tốt nghiệp</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid-item  col-lg-3 col-md-4 col-sm-6 col-xs-12" style="position: absolute; left: 1077px; top: 339px;">
+    <div class="box-content-home-bg">
+        <div class="box-content-home-wp">
+            <div class="box-content-home">
+                <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="student-register-relative" class="menutab" id="menu-722" data-module="home" data-name="Người thân">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1506999663-family-in-home64.png" data-link="student-register-relative" class="menutab" id="menu-722" data-module="home" data-name="Người thân">
+                                                        <h4>Người thân</h4>
+                        </div>
+                        </a>
+                    </div>
+                                                        </div>
+            </div>
+            <div class="box-content-home-ft">
+                <h4>Đăng ký thông tin</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid-item  col-lg-3 col-md-4 col-sm-6 col-xs-12" style="position: absolute; left: 0px; top: 371px;">
+    <div class="box-content-home-bg">
+        <div class="box-content-home-wp">
+            <div class="box-content-home">
+                <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="http://mybk.hcmut.edu.vn/" class="menutab" id="menu-201" data-module="home" data-name="myBK">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1474446947-bkpay.png" data-link="http://mybk.hcmut.edu.vn/" class="menutab" id="menu-201" data-module="home" data-name="myBK">
+                                                        <h4>myBK</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="http://www.aao.hcmut.edu.vn/index.php?route=catalog/chitietsv&amp;path=90&amp;tid=114" class="menutab" id="menu-381" data-module="home" data-name="Quy chế">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477388858-justice.png" data-link="http://www.aao.hcmut.edu.vn/index.php?route=catalog/chitietsv&amp;path=90&amp;tid=114" class="menutab" id="menu-381" data-module="home" data-name="Quy chế">
+                                                        <h4>Quy chế</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="http://www.aao.hcmut.edu.vn/index.php?route=catalog/chitietsv&amp;path=192&amp;tid=869" class="menutab" id="menu-382" data-module="home" data-name="Hướng dẫn">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477388870-user-guide-book.png" data-link="http://www.aao.hcmut.edu.vn/index.php?route=catalog/chitietsv&amp;path=192&amp;tid=869" class="menutab" id="menu-382" data-module="home" data-name="Hướng dẫn">
+                                                        <h4>Hướng dẫn</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="http://wiki.hcmut.edu.vn//index.php/Trang_Ch%C3%ADnh" class="menutab" id="menu-185" data-module="home" data-name="Bách Khoa Wiki">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1474446901-wikibk.png" data-link="http://wiki.hcmut.edu.vn//index.php/Trang_Ch%C3%ADnh" class="menutab" id="menu-185" data-module="home" data-name="Bách Khoa Wiki">
+                                                        <h4>Bách Khoa Wiki</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="http://www.aao.hcmut.edu.vn/index.php?route=catalog/chitiettb&amp;thongbao_id=1693" class="menutab" id="menu-384" data-module="home" data-name="Địa điểm học">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477541395-home2.png" data-link="http://www.aao.hcmut.edu.vn/index.php?route=catalog/chitiettb&amp;thongbao_id=1693" class="menutab" id="menu-384" data-module="home" data-name="Địa điểm học">
+                                                        <h4>Địa điểm học</h4>
+                        </div>
+                        </a>
+                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a style="text-decoration: none;" data-link="giohoc" class="menutab" id="menu-241" data-module="home" data-name="Giờ học">
+                        <div class="menu-box-wp">
+                                                            <img src="./Cổng Thông Tin Sinh Viên_files/1477388837-stopwatch.png" data-link="giohoc" class="menutab" id="menu-241" data-module="home" data-name="Giờ học">
+                                                        <h4>Giờ học</h4>
+                        </div>
+                        </a>
+                    </div>
+                                                        </div>
+            </div>
+            <div class="box-content-home-ft">
+                <h4>Hỗ trợ </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            </div>
+        </div><div class="jqx-tabs-content-element jqx-rc-b" style="display: block;">
+<meta name="_token" content="LYg8GHp7Kbmxlnq0YfxlnebTSuctQvDCRr6CxVMz">
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        $('#jqxLoader').jqxLoader('open');
+        $.ajax({
+
+            url: "lichthi/ajax_lichhoc",
+            method: "POST",
+            type: 'json',
+            data : {_token: $('meta[name="_token"]').attr('content')},
+            success: function (data, status, xhr) {
+                var show = true;
+                try
+                {
+                    var html_ex = "";
+                    if(data != null) {
+
+
+                            var myobj = data;
+                            var html_select = '';
+                            html_select += '<select class="form-control" name="select-lichhoc" id="select-lichhoc"><option value="all">Tất cả học kỳ</option>';
+                        
+                            if(myobj.length == 0)
+                            {
+                                html_ex += '<div align="center" style="margin-top:20px;margin-bottom:20px;font-size:14px;color:red;">Thời khóa biểu chưa được cập nhật!</div>';
+                                toastr["error"]("Không tìm thấy dữ liệu thời khóa biểu!")
+                            }
+                            else {
+
+                                for (var r in myobj) {
+                                    if (myobj.hasOwnProperty(r)) {
+                                        html_select += '<option value="' +  myobj[r].hk_nh + '">' + myobj[r].ten_hocky + '</option>';
+                                        html_ex += '<div align="left" class="lichhoc-all lichhoc-' + myobj[r].hk_nh + ' titlehocky">' + myobj[r].ten_hocky + '</div> <div align=left class="lichhoc-all lichhoc-' + myobj[r].hk_nh + '" >';
+                                        if (myobj[r].trang_thai=='Yes') html_ex +=  '<i>Ngày cập nhật: <span class=blue1>đang cập nhật thời khóa biểu</span></i></div>';
+                                        else
+                                            html_ex +=  '<i>Ngày cập nhật:'+myobj[r].ngay_cap_nhat + '</i></div> ';
+
+                                        html_ex += '<div class="content-tab-table">';
+                                        html_ex += '<table class="lichhoc-all lichhoc-' + myobj[r].hk_nh + ' table table-bordered table-striped"><thead>';
+                                        html_ex += '<tr  style="text-align: center">';
+                                        html_ex +='<th width="100px">Mã MH</th>';
+                                        html_ex +='<th width="18%">Tên môn học</th>';
+                                        html_ex +='<th >Tín chỉ</th>';
+                                        html_ex +='<th width="7%" >Tc học phí</th>';
+
+                                        html_ex +='<th >Nhóm-Tổ</th>';
+                                        html_ex +='<th  >Thứ</th>';
+                                        html_ex +='<th >Tiết</th>';
+                                        html_ex +='<th >Giờ học</th>';
+
+                                        html_ex +='<th >Phòng</th>';
+                                        html_ex +='<th >Cơ sở</th>';
+                                        html_ex +='<th >Tuần học</th>';
+                                        html_ex +='</tr>' ;
+
+                                        html_ex +='</thead><tbody>';
+
+
+                                        var lichhocs = myobj[r].tkb;
+                                        var tmphtml1='';
+                                        var tmphtml2='';
+                                        var tmphtml_total=0;
+                                        var tmp='';
+                                        for (var g in lichhocs) {
+                                            //   var ma_mh = lichhocs[g].ma_mh;
+                                            //     var ten_mh = lichhocs[g].ten_mh;
+                                            //     var nhomto = lichhocs[g].nhomto;
+                                            var tchp = lichhocs[g].tc_hp;
+                                            var muchp = lichhocs[g].muc_hocphi;
+                                            var kq=lichhocs[g].kq;
+                                            var tiet=lichhocs[g].tiet_kt1;
+                                            var thu=lichhocs[g].thu1;
+                                            var sotc=lichhocs[g].so_tin_chi;
+                                            var giohoc = lichhocs[g].giobd + ' - ' + lichhocs[g].giokt;
+                                            var macoso = lichhocs[g].macoso;
+                                            if(macoso == null) macoso = '--';
+                                            if (kq ==null ) kq= '--';
+                                            var phong=lichhocs[g].phong1;
+                                            if (phong ==null ) phong= '--';
+                                            if (tchp ==null || tchp==0) tchp= '--';
+                                            if (muchp == null || muchp==0 ) muchp= '--';
+                                            if (thu == null || thu==0 ) thu= '--';
+                                            if (sotc == null || sotc==0 ) sotc= '--';
+                                            if (tiet == -1 ) tiet= '--'
+                                            else
+                                                tiet=lichhocs[g].tiet_bd1 +'-'+ tiet;
+
+                                            tmphtml1 += '<tr>';
+                                            tmphtml1 += '<td>' + lichhocs[g].ma_mh + '</td>';
+                                            tmphtml1 += '<td>' + lichhocs[g].ten_mh + '</td>';
+                                            tmphtml1 += '<td align="center">' + sotc + '</td>';
+                                            tmphtml1 += '<td align="center">' + tchp + '</td>';
+
+                                            tmphtml1 += '<td align="center">' + lichhocs[g].nhomto + '</td>';
+                                            tmphtml1 += '<td align="center">' + thu + '</td>';
+                                            tmphtml1 += '<td align="center">' + tiet + '</td>';
+                                            tmphtml1 += '<td align="center">' + giohoc +'</td>';
+                                            tmphtml1 += '<td align="center">' + phong+ '</td>';
+                                            tmphtml1 += '<td align="center">' + macoso+ '</td>';
+                                            tmphtml1 += '<td >' + lichhocs[g].tuan_hoc + '</td>';
+                                            tmphtml1 += '</tr>';
+                                            if (tmp.search(lichhocs[g].ma_mh)==-1) {
+                                                tmphtml_total += parseFloat(lichhocs[g].so_tin_chi);
+                                                tmp+=';'+lichhocs[g].ma_mh;
+                                            }
+                                        }
+
+
+                                        html_ex +=tmphtml1;
+                                        html_ex +='<tr><td colspan="10" class="red">Tổng số tín chỉ đăng ký: '+tmphtml_total.toString()+'</td></tr>';
+                                        //if (tmphtml2!='') html_ex +='<th colspan="10" style="color: red">CÁC MÔN DỰ THÍNH ĐÃ ĐĂNG KÝ NHƯNG KHÔNG ĐƯỢC DỰ KIỂM TRA/ THI</th>'+tmphtml2;
+                                        if (tmphtml2!='') html_ex +='<th colspan="10" style="color: red">CÁC MÔN ĐĂNG KÝ KHÔNG THÀNH CÔNG </th>'+tmphtml2;
+
+                                        // html_ex += '</td></tr>';
+                                        html_ex += '</tbody>';
+                                        html_ex += '</table>';
+                                        html_ex += '</div>';
+
+                                    }
+                                }
+                            }
+
+                            html_select += '</select>';
+                            $(".lichhoc-select-div").html(html_select);
+
+
+                        var htmp_huongdan='<b>Ghi chú</b>: Các môn học có trong Thời khóa biểu là kết quả đăng ký môn học chính thức.' +
+                                'Sinh viên chỉ được thực hiện Đồ án, Thực tập, Luận văn tốt nghiệp, ... và được ghi điểm vào cuối học kỳ khi các môn này có trong Thời khóa biểu (có phân nhóm).' +
+                                'Với các môn không có Thứ, Tiết, Phòng: sinh viên liên hệ Bộ môn/Khoa để được hướng dẫn.';
+
+                        $(".lichhoc-content-div").html(html_ex);
+                        $(".lichhoc-huongdan-div").html(htmp_huongdan);
+                        $('#jqxLoader').jqxLoader('close');
+                    }
+
+
+                }
+                catch(err){
+                    $('#jqxLoader').jqxLoader('close');
+                }
+
+
+            },
+            error: function(e, ts, et) { //bootbox.alert('Lỗi hoặc không tìm thấy nội dung');
+                toastr["error"]("Lỗi hoặc không tìm thấy nội dung, vui lòng refresh lại trang!");
+                $('#jqxLoader').jqxLoader('close');}
+        });
+
+        $(document).on('change','#select-lichhoc',function (event) {
+            if($(this).val() == 'all')
+            {
+                $(".lichhoc-all").show();
+            }
+            else {
+                $(".lichhoc-all").hide();
+                var mhk = $(this).val();
+
+                $(".lichhoc-" + mhk).show();
+            }
+
+        });
+    });
+</script>
+
+<div class="row home-content-padding" style="padding:20px">
+
+    <div align="center" class="titletracuu">THỜI KHÓA BIỂU HỌC KỲ</div>
+    <div align="left">
+         Họ tên:
+        <span class="blue"><b>
+            NGUYỄN VĂN  ĐỨC (2310790)
+            </b></span>
+        <p>&nbsp;</p>
+            </div>
+    <div align="left" class="lichhoc-huongdan-div" style="color:#cc3c1f"><b>Ghi chú</b>: Các môn học có trong Thời khóa biểu là kết quả đăng ký môn học chính thức.Sinh viên chỉ được thực hiện Đồ án, Thực tập, Luận văn tốt nghiệp, ... và được ghi điểm vào cuối học kỳ khi các môn này có trong Thời khóa biểu (có phân nhóm).Với các môn không có Thứ, Tiết, Phòng: sinh viên liên hệ Bộ môn/Khoa để được hướng dẫn.</div>
+    <p></p>
+    <div align="center" class="lichhoc-select-div"><select class="form-control" name="select-lichhoc" id="select-lichhoc"><option value="all">Tất cả học kỳ</option><option value="20232">Học kỳ 2 Năm học 2023 - 2024</option><option value="20231">Học kỳ 1 Năm học 2023 - 2024</option></select></div>
+    <div align="center" class="lichhoc-content-div"><div align="left" class="lichhoc-all lichhoc-20232 titlehocky">Học kỳ 2 Năm học 2023 - 2024</div> <div align="left" class="lichhoc-all lichhoc-20232"><i>Ngày cập nhật:2024-02-02 11:09:33.0</i></div> <div class="content-tab-table"><table class="lichhoc-all lichhoc-20232 table table-bordered table-striped"><thead><tr style="text-align: center"><th width="100px">Mã MH</th><th width="18%">Tên môn học</th><th>Tín chỉ</th><th width="7%">Tc học phí</th><th>Nhóm-Tổ</th><th>Thứ</th><th>Tiết</th><th>Giờ học</th><th>Phòng</th><th>Cơ sở</th><th>Tuần học</th></tr></thead><tbody><tr><td>SA0001</td><td>Sinh hoạt Sinh viên</td><td align="center">--</td><td align="center">--</td><td align="center">L59</td><td align="center">--</td><td align="center">---</td><td align="center">- - -</td><td align="center">CS-DiAn</td><td align="center">BK-DAn</td><td>02|03|04|05|--|--|08|09|10|--|--|--|--|--|16|17|18|19|20|21|22|23|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">2</td><td align="center">1-5</td><td align="center">6:00 - 10:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>PH1007</td><td>Thí nghiệm Vật lý</td><td align="center">1</td><td align="center">1</td><td align="center">L07</td><td align="center">2</td><td align="center">5-6</td><td align="center">10:00 - 11:50</td><td align="center">H1-601</td><td align="center">BK-DAn</td><td>02|03|04|05|--|--|08|09|10|--|--|--|--|--|16|17|18|19|20|21|22|23|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">2</td><td align="center">8-12</td><td align="center">13:00 - 17:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">2</td><td align="center">13-15</td><td align="center">18:00 - 20:29</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">3</td><td align="center">1-5</td><td align="center">6:00 - 10:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>CO1028</td><td>Kỹ thuật Lập trình (TN)</td><td align="center">--</td><td align="center">--</td><td align="center">L06</td><td align="center">3</td><td align="center">2-6</td><td align="center">7:00 - 11:50</td><td align="center">H6-701</td><td align="center">BK-DAn</td><td>--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|18|--|20|--|22|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">3</td><td align="center">8-12</td><td align="center">13:00 - 17:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">3</td><td align="center">13-15</td><td align="center">18:00 - 20:29</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">4</td><td align="center">1-5</td><td align="center">6:00 - 10:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>CO1007</td><td>Cấu trúc Rời rạc cho Khoa học Máy tính</td><td align="center">4</td><td align="center">4</td><td align="center">L05</td><td align="center">4</td><td align="center">2-4</td><td align="center">7:00 - 9:50</td><td align="center">H1-GDH1</td><td align="center">BK-DAn</td><td>02|03|04|05|--|--|08|09|10|--|--|--|--|--|16|17|18|19|20|21|22|23|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">4</td><td align="center">8-12</td><td align="center">13:00 - 17:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MT1006</td><td>Giải tích 2 (Bài tập)</td><td align="center">--</td><td align="center">--</td><td align="center">L07</td><td align="center">4</td><td align="center">9-10</td><td align="center">14:00 - 15:50</td><td align="center">H2-202</td><td align="center">BK-DAn</td><td>--|--|04|--|--|--|08|--|10|--|--|--|--|--|16|--|18|--|20|--|22|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">4</td><td align="center">13-15</td><td align="center">18:00 - 20:29</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">5</td><td align="center">1-5</td><td align="center">6:00 - 10:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MT1005</td><td>Giải tích 2</td><td align="center">4</td><td align="center">4</td><td align="center">L04</td><td align="center">5</td><td align="center">2-4</td><td align="center">7:00 - 9:50</td><td align="center">H3-301</td><td align="center">BK-DAn</td><td>02|03|04|05|--|--|08|09|10|--|--|--|--|--|16|17|18|19|20|21|22|23|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">5</td><td align="center">8-12</td><td align="center">13:00 - 17:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>CO1027</td><td>Kỹ thuật Lập trình</td><td align="center">3</td><td align="center">3</td><td align="center">L01</td><td align="center">5</td><td align="center">9-10</td><td align="center">14:00 - 15:50</td><td align="center">H6-GDH6</td><td align="center">BK-DAn</td><td>02|03|04|05|--|--|08|09|10|--|--|--|--|--|16|17|18|19|20|21|22|23|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">5</td><td align="center">13-15</td><td align="center">18:00 - 20:29</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">6</td><td align="center">1-5</td><td align="center">6:00 - 10:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MT1007</td><td>Đại số Tuyến tính</td><td align="center">3</td><td align="center">3</td><td align="center">L11</td><td align="center">6</td><td align="center">7-8</td><td align="center">12:00 - 13:50</td><td align="center">H3-401</td><td align="center">BK-DAn</td><td>02|03|04|05|--|--|08|09|10|--|--|--|--|--|16|17|18|19|20|21|22|23|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">6</td><td align="center">8-12</td><td align="center">13:00 - 17:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>PE1047</td><td>Võ (Vovinam, Karate, Taewondo) (Học phần 2)</td><td align="center">--</td><td align="center">1.5</td><td align="center">L06</td><td align="center">6</td><td align="center">10-12</td><td align="center">15:00 - 17:50</td><td align="center">CS2-NHATHIDAU-SAN1</td><td align="center">BK-DAn</td><td>02|03|04|05|--|--|08|09|10|--|--|--|--|--|16|17|18|19|20|21|22|23|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">6</td><td align="center">13-15</td><td align="center">18:00 - 20:29</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">7</td><td align="center">1-5</td><td align="center">6:00 - 10:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">7</td><td align="center">8-12</td><td align="center">13:00 - 17:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">7</td><td align="center">13-15</td><td align="center">18:00 - 20:29</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">8</td><td align="center">1-5</td><td align="center">6:00 - 10:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td>MI1003</td><td>Giáo dục Quốc phòng</td><td align="center">--</td><td align="center">1</td><td align="center">A01</td><td align="center">8</td><td align="center">8-12</td><td align="center">13:00 - 17:50</td><td align="center">TT GIAO DUC QP-AN</td><td align="center">NGOAITRUONG</td><td>--|--|--|--|--|--|--|--|--|--|12|13|14|15|</td></tr><tr><td colspan="10" class="red">Tổng số tín chỉ đăng ký: 15</td></tr></tbody></table></div><div align="left" class="lichhoc-all lichhoc-20231 titlehocky">Học kỳ 1 Năm học 2023 - 2024</div> <div align="left" class="lichhoc-all lichhoc-20231"><i>Ngày cập nhật:2023-12-22 09:41:14.0</i></div> <div class="content-tab-table"><table class="lichhoc-all lichhoc-20231 table table-bordered table-striped"><thead><tr style="text-align: center"><th width="100px">Mã MH</th><th width="18%">Tên môn học</th><th>Tín chỉ</th><th width="7%">Tc học phí</th><th>Nhóm-Tổ</th><th>Thứ</th><th>Tiết</th><th>Giờ học</th><th>Phòng</th><th>Cơ sở</th><th>Tuần học</th></tr></thead><tbody><tr><td>CNTTCB</td><td>Chứng nhận Công nghệ Thông tin Cơ bản</td><td align="center">--</td><td align="center">--</td><td align="center">L04</td><td align="center">--</td><td align="center">---</td><td align="center">- - -</td><td align="center">CS-DiAn</td><td align="center">BK-DAn</td><td>--|</td></tr><tr><td>PE1023</td><td>Võ (Vovinam, Karate, Taewondo) (Học phần 1)</td><td align="center">--</td><td align="center">1.5</td><td align="center">L03</td><td align="center">2</td><td align="center">8-10</td><td align="center">13:00 - 15:50</td><td align="center">CS2-NHATHIDAU-SAN1</td><td align="center">BK-DAn</td><td>--|--|--|--|--|--|--|42|43|44|45|46|47|48|49|50|51|</td></tr><tr><td>PH1003</td><td>Vật lý 1</td><td align="center">4</td><td align="center">4</td><td align="center">L19</td><td align="center">3</td><td align="center">3-5</td><td align="center">8:00 - 10:50</td><td align="center">H2-201</td><td align="center">BK-DAn</td><td>--|--|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|</td></tr><tr><td>MT1004</td><td>Giải tích 1 (BT)</td><td align="center">--</td><td align="center">--</td><td align="center">L41</td><td align="center">3</td><td align="center">7-8</td><td align="center">12:00 - 13:50</td><td align="center">H1-802</td><td align="center">BK-DAn</td><td>--|--|--|--|39|--|41|--|43|--|45|--|47|--|49|--|51|</td></tr><tr><td>MT1003</td><td>Giải tích 1</td><td align="center">4</td><td align="center">4</td><td align="center">L21</td><td align="center">3</td><td align="center">10-12</td><td align="center">15:00 - 17:50</td><td align="center">H6-GDH6</td><td align="center">BK-DAn</td><td>--|--|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|</td></tr><tr><td>CO1006</td><td>Nhập môn Điện toán (Th)</td><td align="center">--</td><td align="center">--</td><td align="center">L11</td><td align="center">4</td><td align="center">8-12</td><td align="center">13:00 - 17:50</td><td align="center">H6-707</td><td align="center">BK-DAn</td><td>--|--|--|--|--|--|--|--|--|--|45|--|47|--|49|--|51|</td></tr><tr><td>SA0001</td><td>Sinh hoạt Sinh viên</td><td align="center">--</td><td align="center">--</td><td align="center">L59</td><td align="center">4</td><td align="center">11-12</td><td align="center">16:00 - 17:50</td><td align="center">H6-110</td><td align="center">BK-DAn</td><td>--|--|--|38|--|40|--|42|--|44|--|46|--|48|--|50|</td></tr><tr><td>CO1023</td><td>Hệ thống số</td><td align="center">3</td><td align="center">3</td><td align="center">L01</td><td align="center">5</td><td align="center">2-3</td><td align="center">7:00 - 8:50</td><td align="center">H6-GDH6</td><td align="center">BK-DAn</td><td>--|--|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|</td></tr><tr><td>CO1024</td><td>Hệ thống số (TN)</td><td align="center">--</td><td align="center">--</td><td align="center">L14</td><td align="center">6</td><td align="center">2-6</td><td align="center">7:00 - 11:50</td><td align="center">H6-605</td><td align="center">BK-DAn</td><td>--|--|--|--|--|--|41|--|43|--|45|--|47|--|49|--|51|</td></tr><tr><td>CO1005</td><td>Nhập môn Điện toán</td><td align="center">3</td><td align="center">3</td><td align="center">L02</td><td align="center">6</td><td align="center">9-10</td><td align="center">14:00 - 15:50</td><td align="center">H6-GDH6</td><td align="center">BK-DAn</td><td>--|--|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|</td></tr><tr><td>PH1004</td><td>Vật lý 1 (BT)</td><td align="center">--</td><td align="center">--</td><td align="center">L18</td><td align="center">6</td><td align="center">11-12</td><td align="center">16:00 - 17:50</td><td align="center">H1-101</td><td align="center">BK-DAn</td><td>--|--|--|--|39|--|41|--|43|--|45|--|47|--|49|--|51|</td></tr><tr><td>PE1023</td><td>Võ (Vovinam, Karate, Taewondo) (Học phần 1)</td><td align="center">--</td><td align="center">1.5</td><td align="center">L03</td><td align="center">6</td><td align="center">13-15</td><td align="center">18:00 - 20:29</td><td align="center">CS2-NHATHIDAU-SAN1</td><td align="center">BK-DAn</td><td>--|--|--|--|--|--|--|42|43|44|45|46|</td></tr><tr><td colspan="10" class="red">Tổng số tín chỉ đăng ký: 14</td></tr></tbody></table></div></div><br>
+    <p align="left" style="display: none">
+        - Các <span class="erro">mã lỗi</span> không đăng ký được: </p>
+    <div align="center" style="display: none">
+        <table width="80%" border="1" align="center" cellpadding="0" cellspacing="0" class="style4">
+            <tbody><tr>
+                <td width="5%" valign="top"><p align="center"><strong>E</strong></p></td>
+                <td width="30%" valign="top"><p>&nbsp;Đang xét điều kiện nhận TTTN/LVTN</p></td>
+                <td width="5%" valign="top"><p align="center"><strong>0</strong></p></td>
+                <td width="30%" valign="top"><p>&nbsp;Thiếu môn tiên quyết</p></td>
+            </tr>
+            <tr>
+                <td valign="top"><p align="center"><strong>N</strong></p></td>
+                <td valign="top"><p>&nbsp;Không đủ điều kiện nhận TTTN</p></td>
+                <td valign="top"><p align="center"><strong>1</strong></p></td>
+                <td valign="top"><p>&nbsp;Thiếu môn song hành</p></td>
+            </tr>
+            <tr>
+                <td valign="top"><p align="center"><strong>L</strong></p></td>
+                <td valign="top"><p>&nbsp;Không đủ điều kiện nhận LVTN</p></td>
+                <td valign="top"><p align="center"><strong>2</strong></p></td>
+                <td valign="top"><p>&nbsp;Thiếu môn học trước</p></td>
+            </tr>
+            <tr>
+                <td valign="top"><p align="center"><strong>K</strong></p></td>
+                <td valign="top"><p>&nbsp;Môn học không được mở</p></td>
+                <td valign="top"><p align="center"><strong>D</strong></p></td>
+                <td valign="top"><p>&nbsp;Môn học đã đạt hoặc chưa có điểm</p></td>
+            </tr>
+            <tr>
+                <td valign="top"><p align="center"><strong>C</strong></p></td>
+                <td valign="top"><p>&nbsp;Quá sĩ số tối đa</p></td>
+                <td valign="top"><p align="center"><strong>O</strong></p></td>
+                <td valign="top"><p>&nbsp;Không có TKB trong HK chính</p></td>
+            </tr>
+            <tr>
+                <td valign="top"><p align="center"><strong>V</strong></p></td>
+                <td valign="top"><p>&nbsp;Quá số tín chỉ tối đa</p></td>
+                <td valign="top"><p align="center"><strong>S</strong></p></td>
+                <td valign="top"><p>&nbsp;SV diện tạm dừng hoặc nghỉ học</p></td>
+            </tr>
+            <tr>
+                <td valign="top"><p align="center"><strong>T</strong></p></td>
+                <td valign="top"><p>&nbsp;Trùng TKB</p></td>
+                <td valign="top"><p align="center"><strong>I</strong></p></td>
+                <td valign="top"><p>&nbsp;Không có xác nhận của BM/Khoa</p></td>
+            </tr>
+            <tr>
+                <td valign="top"><p align="center"><strong>X</strong></p></td>
+                <td valign="top"><p>&nbsp;Có tham gia Mùa hè xanh</p></td>
+                <td valign="top"><p align="center"><strong>m</strong></p></td>
+                <td valign="top"><p>&nbsp;Có nhóm môn học CQ bằng 1</p></td>
+            </tr>
+            <tr>
+                <td valign="top"><p align="center"><strong>A</strong></p></td>
+                <td valign="top"><p>&nbsp;Có TTTN hoặc TT ngoài trường</p></td>
+                <td valign="top"><p align="center"><strong>o</strong></p></td>
+                <td valign="top"><p>&nbsp;Không có nhóm môn học bằng 1</p></td>
+            </tr>
+            <tr>
+                <td valign="top"><p align="center"><strong>H</strong></p></td>
+                <td valign="top"><p>&nbsp;Hủy</p></td>
+                <td valign="top"><p align="center"><strong>k</strong></p></td>
+                <td valign="top"><p>&nbsp;Không có nhóm môn học bằng 2</p></td>
+            </tr>
+            <tr>
+                <td valign="top"><p align="center"><strong>G</strong></p></td>
+                <td valign="top" colspan="3"><p>&nbsp;Không đủ thời gian di chuyển giữa hai cơ sở </p></td>
+            </tr>
+
+        </tbody></table>
+        <table width="80%" border="1" align="center" cellpadding="0" cellspacing="0" class="style4">
+            <tbody><tr>
+                <td width="5%" valign="top"><p align="center"><strong>P</strong></p> </td>
+                <td width="80%" colspan="3" valign="top"><p>&nbsp;Sinh viên đã thanh toán trễ hạn hoặc không thanh toán học phí (sinh viên bị cấm thi)
+                        SV nộp đơn trình bày lý do trễ hạn để được phục hồi thời khoá biểu &amp; cấp giấy vào phòng thi</p></td>
+            </tr>
+
+        </tbody></table>
+    </div>
+</div>
+
+
+
+
+
+
+
+</div></div>
+    </div>
+
+</div>
+
+                </div>
+                <div class="row home-content-padding">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="home-content-calendar-wp">
+            <div class="home-content-calendar">
+                <div class="home-content-calendar-title">
+                    <h4 class="title-cal">Phòng đào tạo</h4>
+                </div>
+                <div class="home-content-calendar-table">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+                                <tr>
+                                    <td>Cao đẳng, đại học chính quy
+                                        <br>
+                                        Email: pdt@hcmut.edu.vn
+
+                                    </td>
+                                </tr>
+                                <tr><td>
+                                        <b>Cơ sở 1:</b> Lý Thường Kiệt<br>
+                                        Địa chỉ: 268 Lý Thường Kiệt P.14 Q.10 HCM - P.101 nhà A1
+                                        <br>
+                                        Điện thoai: 02.838 647 256 - 5221
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td><b>Cơ sở 2:</b> Dĩ An<br>
+                                        Địa chỉ: Trường ĐH Bách Khoa, khu đô thị ĐHQG HCM, Thủ Đức, HCM - P.107 nhà H1
+                                        <br>
+                                        Điện thoai:
+
+                                    </td>
+
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="home-content-calendar-wp">
+            <div class="home-content-calendar">
+                <div class="home-content-calendar-title">
+                    <h4 class="title-cal">Phòng đào tạo (VLVH)</h4>
+                </div>
+                <div class="home-content-calendar-table">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+                                <tr>
+                                    <td>Vừa làm vừa học, đào tạo từ xa, chính quy bằng 2<br>
+                                        Địa chỉ: 268 Lý Thường Kiệt P.14 Q.10 HCM - P.201 nhà A4
+                                        <br>
+                                        Điện thoai:
+                                        <br>
+                                        Email: pdt@hcmut.edu.vn
+                                        
+                                    </td>
+
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="home-content-calendar-wp">
+            <div class="home-content-calendar">
+                <div class="home-content-calendar-title">
+                    <h4 class="title-cal">Văn phòng đào tạo quốc tế</h4>
+                </div>
+                <div class="home-content-calendar-table">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+                                <tr>
+                                    <td>
+
+                                        Địa chỉ: 268 Lý Thường Kiệt P.14 Q.10 HCM - P.306 nhà A4
+                                        <br>
+                                        Điện thoai: 02. 838 654 183
+                                        <br>
+                                        Email:
+                                        <br>
+                                        Website:<a href="http://oisp.hcmut.edu.vn/" target="_self">http://oisp.hcmut.edu.vn/</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>            </div>
+        </div>
+    </div>
+    <!-- end content -->
+
+</div>
+
+<!-- footer -->
+<footer class="footer-wp">
+    <p>Copyright©2016. Phòng Đào tạo - Trường Đại học Bách Khoa TPHCM.</p>
+    <p>Mọi thắc mắc vui lòng liên hệ email: <a href="mailto:pdt@hcmut.edu.vn">  pdt@hcmut.edu.vn</a></p>
+</footer>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="./Cổng Thông Tin Sinh Viên_files/jquery.min.js.download"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./Cổng Thông Tin Sinh Viên_files/bootstrap.min.js.download"></script>
+<script src="./Cổng Thông Tin Sinh Viên_files/bootbox.min.js.download"></script>
+<script src="./Cổng Thông Tin Sinh Viên_files/lightbox-plus-jquery.min.js.download"></script><div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href="https://mybk.hcmut.edu.vn/stinfo/"></a><a class="lb-next" href="https://mybk.hcmut.edu.vn/stinfo/"></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxcore.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxtabs.js.download"></script>
+
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxwindow.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxgrid.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxdata.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxbuttons.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxscrollbar.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxmenu.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxcheckbox.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxlistbox.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxdropdownlist.js.download"></script>
+
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxgrid.sort.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxgrid.filter.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxgrid.pager.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxgrid.selection.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxgrid.edit.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxdata.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxgrid.columnsresize.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxtooltip.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxcombobox.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxdata.export.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxvalidator.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxinput.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxnumberinput.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxdatatable.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxloader.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxgrid.grouping.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxtooltip.js.download"></script>
+
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxdata.export.js.download"></script>
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/jqxgrid.export.js.download"></script>
+
+<script type="text/javascript" src="./Cổng Thông Tin Sinh Viên_files/validator.min.js.download"></script>
+
+
+<!-- Menu left -->
+<script>
+    $(document).ready(function() {
+        $('.button').on('click', function() {
+            $('.content').toggleClass('isOpen');
+            $('.wrapper').toggleClass('isOpen1');
+            $('.sidebar').toggleClass('isClose');
+        });
+        $('.has-sub').hover(
+                function(){ $(this).addClass('hover-sub-menu') },
+                function(){ $(this).removeClass('hover-sub-menu') }
+        )
+        $(".has-sub").click(function(){
+            $(".has-sub").removeClass("hover-sub-menu");
+        });
+        $(".has-sub").mouseleave(function(){
+            $(".has-sub").removeClass("open");
+        });
+    });
+</script>
+<script>
+    $(window).resize(function(){
+        if ($(window).width() <= 1200){
+            $( ".wrapper" ).removeClass( "isOpen1" );
+            $( ".sidebar" ).removeClass( "isClose" );
+            $( ".content" ).removeClass( "isOpen" );
+
+        }
+    });
+</script>
+<!-- jquery scrollbar -->
+<!-- Scrollbar -->
+<script src="./Cổng Thông Tin Sinh Viên_files/jquery.mousewheel.js.download"></script>
+<script src="./Cổng Thông Tin Sinh Viên_files/jquery.mCustomScrollbar.js.download"></script>
+<script>
+    (function($){
+        $(window).load(function(){
+            $(".content_scroll-noti").mCustomScrollbar({
+                scrollButtons:{
+                    enable:true
+                }
+            });
+        });
+    })(jQuery);
+</script>
+<script src="./Cổng Thông Tin Sinh Viên_files/script.js.download"></script>
+<script src="./Cổng Thông Tin Sinh Viên_files/myjs.js.download"></script>
+<script src="./Cổng Thông Tin Sinh Viên_files/masonry.pkgd.min.js.download"></script>
+<script src="./Cổng Thông Tin Sinh Viên_files/imagesloaded.pkgd.min.js.download"></script>
+<script>
+    $(document).ready(function() {
+        // init Masonry
+        var $grid = $('.grid').masonry({
+          //  percentPosition: true,
+            animate: true,
+            itemSelector:'.grid-item',
+
+         });
+        // layout Masonry after each image loads
+        $grid.imagesLoaded().progress( function() {
+            $grid.masonry('layout');
+        });
+
+    });
+
+</script>
+
+
+
+
+</body></html>
