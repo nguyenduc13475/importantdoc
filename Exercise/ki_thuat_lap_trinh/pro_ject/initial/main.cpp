@@ -53,13 +53,13 @@ void sa_tc_03() {
 }
 
 void sa_tc_04() {
-    int result = checkPassword("foo", "bar@hcmut");
+    int result = checkPassword("012345pink#pink", "pink@gmail.com");
     cout << result;
 }
 
 void sa_tc_05() {
-    const char * foo[3] = {"concac", "bulon", "dondam"};
-    int result = findCorrectPassword(foo, 3);
+    const char * foo[7] = {"123xyz", "pink#pink", "pink123", "xxxx@xxxx", "pink#pink","pink123", "pink123"};
+    int result = findCorrectPassword(foo, 7);
     cout << result;
 }
 

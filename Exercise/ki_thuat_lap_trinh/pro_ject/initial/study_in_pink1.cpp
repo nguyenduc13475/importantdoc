@@ -36,6 +36,11 @@ bool readFile(
 
 // Helper Functions
 
+double dCeil(double n){
+    if (abs(n - (int)n) < 1e-7) return round(n);
+    else return ceil(n);
+}
+
 int clamp(int n, int lowerBound, int upperBound){
     return max(lowerBound, min(upperBound, n));
 }
@@ -125,21 +130,21 @@ int firstMeet(int & exp1, int & exp2, int e1) {
         else exp2 += 149;
 
         int D = e1 * 3 + exp1 * 7;
-        if (D % 2) exp1 = ceil(exp1 - D / 100.);
-        else exp1 = ceil(exp1 + D / 200.);
+        if (D % 2) exp1 = dCeil(exp1 - D / 100.);
+        else exp1 = dCeil(exp1 + D / 200.);
     } else {
-        if (e1 >= 4 && e1 <= 19) exp2 = ceil(exp2 + e1 / 4. + 19);
-        else if (e1 >= 20 && e1 <= 49) exp2 = ceil(exp2 + e1 / 9. + 21);
-        else if (e1 >= 50 && e1 <= 65) exp2 = ceil(exp2 + e1 / 16. + 17);
+        if (e1 >= 4 && e1 <= 19) exp2 = dCeil(exp2 + e1 / 4. + 19);
+        else if (e1 >= 20 && e1 <= 49) exp2 = dCeil(exp2 + e1 / 9. + 21);
+        else if (e1 >= 50 && e1 <= 65) exp2 = dCeil(exp2 + e1 / 16. + 17);
         else if (e1 >= 66 && e1 <= 79) {
-            exp2 = ceil(exp2 + e1 / 4. + 19);
-            if (exp2 > 200) exp2 = ceil(exp2 + e1 / 9. + 21);
+            exp2 = dCeil(exp2 + e1 / 4. + 19);
+            if (exp2 > 200) exp2 = dCeil(exp2 + e1 / 9. + 21);
         } else {
-            exp2 = ceil(exp2 + e1 / 4. + 19);
-            exp2 = ceil(exp2 + e1 / 9. + 21);
+            exp2 = dCeil(exp2 + e1 / 4. + 19);
+            exp2 = dCeil(exp2 + e1 / 9. + 21);
             if (exp2 > 400) {
-                exp2 = ceil(exp2 + e1 / 16. + 17);
-                exp2 = ceil(1.15 * exp2);
+                exp2 = dCeil(exp2 + e1 / 16. + 17);
+                exp2 = dCeil(1.15 * exp2);
             }
         }
 
@@ -158,70 +163,70 @@ int traceLuggage(int & HP1, int & EXP1, int & M1, int E2) {
     if (clamp(E2, 0, 99) != E2) return -99;
 
     // Route 1
-    uint8_t P1 = getProbability(EXP1);
+    uint16_t P1 = getProbability(EXP1);
 
     // Route 2
     uint16_t moneySpent = 0;
     if (E2 % 2){
         while (true){
             if (HP1 < 200){
-                HP1 = ceil(HP1 * 1.3);
+                HP1 = dCeil(HP1 * 1.3);
                 moneySpent += 150;
             } else {
-                HP1 = ceil(HP1 * 1.1);
+                HP1 = dCeil(HP1 * 1.1);
                 moneySpent += 70;
             }
             if (moneySpent > 0.5 * M1) break;
 
             if (EXP1 < 400) moneySpent += 200;
             else moneySpent += 120;
-            EXP1 = clamp(ceil(EXP1 * 1.13), 0, 600);
+            EXP1 = clamp(dCeil(EXP1 * 1.13), 0, 600);
             if (moneySpent > 0.5 * M1) break;
 
             if (EXP1 < 300) moneySpent += 100;
             else moneySpent += 120;
-            EXP1 = ceil(EXP1 * 0.9);
+            EXP1 = dCeil(EXP1 * 0.9);
             if (moneySpent > 0.5 * M1) break;
         }
     } else {
         if (HP1 < 200){
-            HP1 = ceil(HP1 * 1.3);
+            HP1 = dCeil(HP1 * 1.3);
             moneySpent += 150;
         } else {
-            HP1 = ceil(HP1 * 1.1);
+            HP1 = dCeil(HP1 * 1.1);
             moneySpent += 70;
         }
         if (M1 > moneySpent){
             if (EXP1 < 400) moneySpent += 200;
             else moneySpent += 120;
-            EXP1 = clamp(ceil(EXP1 * 1.13), 0, 600);
+            EXP1 = clamp(dCeil(EXP1 * 1.13), 0, 600);
             if (M1 > moneySpent){
                 if (EXP1 < 300) moneySpent += 100;
                 else moneySpent += 120;
-                EXP1 = ceil(EXP1 * 0.9);
+                EXP1 = dCeil(EXP1 * 0.9);
             }
         }
     }
 
     M1 = clamp(M1 - moneySpent, 0, 3000);
-    HP1 = ceil(clamp(HP1, 0, 666) * 0.83);
-    EXP1 = clamp(ceil(EXP1 * 1.17), 0, 600);
-    uint8_t P2 = getProbability(EXP1);
+    HP1 = dCeil(clamp(HP1, 0, 666) * 0.83);
+    EXP1 = clamp(dCeil(EXP1 * 1.17), 0, 600);
+    uint16_t P2 = getProbability(EXP1);
 
     // Route 3
-    uint8_t P[10] = {32, 47, 28, 79, 100, 50, 22, 83, 64, 11};
-    uint8_t P3 = P[((E2 / 10) + (E2 % 10)) % 10];
+    uint16_t P[10] = {32, 47, 28, 79, 100, 50, 22, 83, 64, 11};
+    uint16_t P3 = P[((E2 / 10) + (E2 % 10)) % 10];
 
     // All Route
-    if (P1 == 100 && P2 == 100 && P3 == 100) EXP1 = ceil(EXP1 * 0.75);
+    if (P1 == 100 && P2 == 100 && P3 == 100) EXP1 = dCeil(EXP1 * 0.75);
     else {
-        uint8_t averageP = round((P1 + P2 + P3) / 100.);
+        uint16_t averageP = round((P1 + P2 + P3) / 3.);
         if (averageP < 50){
-            HP1 = ceil(HP1 * 0.85);
-            EXP1 = clamp(ceil(EXP1 * 1.15), 0, 600);
+            HP1 = dCeil(HP1 * 0.85);
+            EXP1 = clamp(dCeil(EXP1 * 1.15), 0, 600);
         } else {
-            HP1 = ceil(HP1 * 0.9);
-            EXP1 = clamp(ceil(EXP1 * 1.2), 0, 600);
+            HP1 = dCeil(HP1 * 0.9);
+            EXP1 = clamp(dCeil(EXP1 * 1.2), 0, 600);
         }
     }
 
@@ -250,17 +255,17 @@ int chaseTaxi(int & HP1, int & EXP1, int & HP2, int & EXP2, int E3) {
     int taxiScore = taxiMatrix[iMeet][jMeet];
 
     if (SherlockWatsonScore < abs(taxiScore)){
-        EXP1 = ceil(EXP1 * 0.88);
-        EXP2 = ceil(EXP2 * 0.88);
-        HP1 = ceil(HP1 * 0.9);
-        HP2 = ceil(HP2 * 0.9);
+        EXP1 = dCeil(EXP1 * 0.88);
+        EXP2 = dCeil(EXP2 * 0.88);
+        HP1 = dCeil(HP1 * 0.9);
+        HP2 = dCeil(HP2 * 0.9);
 
         return taxiScore;
     } else {
-        EXP1 = clamp(ceil(EXP1 * 1.12), 0, 600);
-        EXP2 = clamp(ceil(EXP2 * 1.12), 0, 600);
-        HP1 = clamp(ceil(HP1 * 1.1), 0, 666);
-        HP2 = clamp(ceil(HP2 * 1.1), 0, 666);
+        EXP1 = clamp(dCeil(EXP1 * 1.12), 0, 600);
+        EXP2 = clamp(dCeil(EXP2 * 1.12), 0, 600);
+        HP1 = clamp(dCeil(HP1 * 1.1), 0, 666);
+        HP2 = clamp(dCeil(HP2 * 1.1), 0, 666);
 
         return SherlockWatsonScore;
     }
@@ -269,8 +274,8 @@ int chaseTaxi(int & HP1, int & EXP1, int & HP2, int & EXP2, int E3) {
 // Task 4
 int checkPassword(const char * s, const char * email) {
     // TODO: Complete this function
-    if (strlen(email) < 8) return -1;
-    if (strlen(email) > 20) return -2;
+    if (strlen(s) < 8) return -1;
+    if (strlen(s) > 20) return -2;
 
     uint8_t delimiterIndex = strchr(email, '@') - email;
     char se[delimiterIndex + 1] = {};
@@ -293,12 +298,12 @@ int checkPassword(const char * s, const char * email) {
 int findCorrectPassword(const char * arr_pwds[], int num_pwds) {
     // TODO: Complete this function
     uint8_t indices[num_pwds];
-    for (uint8_t i = 0; i < num_pwds; i++) indices[num_pwds] = i;
+    for (uint8_t i = 0; i < num_pwds; i++) indices[i] = i;
 
     for (uint8_t i = 0; i < num_pwds; i++){
         uint8_t currentMinIndex = i;
         for (uint8_t j = i + 1; j < num_pwds; j++){
-            int8_t cmp = strcmp(arr_pwds[i], arr_pwds[j]);
+            int8_t cmp = strcmp(arr_pwds[currentMinIndex], arr_pwds[j]);
             if (cmp == 1) currentMinIndex = j;
         }
 
@@ -324,14 +329,14 @@ int findCorrectPassword(const char * arr_pwds[], int num_pwds) {
         }
     }
 
-    uint8_t maxIndex = indices[0];
+    uint8_t maxIndex = 0;
     for (uint8_t i = 1; i <= currentIndex; i++)
-        if (frequencies[i] > frequencies[maxIndex]) maxIndex = indices[i];
+        if (frequencies[i] > frequencies[maxIndex]) maxIndex = i;
         else if (frequencies[i] == frequencies[maxIndex])
-            if (lengths[i] > lengths[maxIndex]) maxIndex = indices[i];
-            else if (lengths[i] == lengths[maxIndex]) maxIndex = min(maxIndex, indices[i]);
+            if (lengths[i] > lengths[maxIndex]) maxIndex = i;
+            else if (lengths[i] == lengths[maxIndex]) maxIndex = indices[i] > indices[maxIndex] ? maxIndex : i;
 
-    return maxIndex;
+    return indices[maxIndex];
 }
 
 ////////////////////////////////////////////////

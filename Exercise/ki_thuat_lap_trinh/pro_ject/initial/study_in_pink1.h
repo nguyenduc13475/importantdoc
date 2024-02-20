@@ -21,6 +21,8 @@ bool readFile( const string & filename, int & HP1, int & HP2, int & EXP1, int & 
 /// DO NOT modify any parameters in the functions.
 ////////////////////////////////////////////////////////////////////////
 
+double dCeil(double n);
+
 int clamp(int n, int lowerBound, int upperBound);
 
 bool containSpecialChar(const char * s, const char * specialChars);
