@@ -21,7 +21,7 @@ bool readFile( const string & filename, int & HP1, int & HP2, int & EXP1, int & 
 /// DO NOT modify any parameters in the functions.
 ////////////////////////////////////////////////////////////////////////
 
-double dCeil(double n);
+int dCeil(double n);
 
 int clamp(int n, int lowerBound, int upperBound);
 
@@ -33,7 +33,7 @@ uint8_t recursiveSumOfDigits(uint32_t n);
 
 uint32_t nearestSquareNumber(uint32_t n);
 
-uint8_t getProbability(uint16_t exp);
+double getProbability(uint16_t exp);
 
 int getMaxOfTwoDiagonals(int (&matrix)[10][10], uint8_t iMeet, uint8_t jMeet);
 

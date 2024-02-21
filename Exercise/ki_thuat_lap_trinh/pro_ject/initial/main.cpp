@@ -53,18 +53,30 @@ void sa_tc_03() {
 }
 
 void sa_tc_04() {
-    int result = checkPassword("012345pink#pink", "pink@gmail.com");
-    cout << result;
+    int result = checkPassword("012345ABC$67", "pink@gmail.com");
+    cout << result << endl;
+    result = checkPassword("01234567890123456789", "pink@gmail.com");
+    cout << result << endl;
+    result = checkPassword("abcpink123pink", "pink@gmail.com");
+    cout << result << endl;
+    result = checkPassword("abc123cccddde", "pink@gmail.com");
+    cout << result << endl;
+    result = checkPassword("abc123ccdde?", "pink@gmail.com");
+    cout << result << endl;
+    result = checkPassword("abc123ccdde@#$!%", "pink@gmail.com");
+    cout << result << endl;
+    result = checkPassword("abc123ccdde@#abccc", "pink@gmail.com");
+    cout << result << endl;
 }
 
 void sa_tc_05() {
-    const char * foo[7] = {"123xyz", "pink#pink", "pink123", "xxxx@xxxx", "pink#pink","pink123", "pink123"};
-    int result = findCorrectPassword(foo, 7);
+    const char * foo[10] = {"concac", "daulong", "daubuoi", "concac", "dauchim", "concac", "daubuoi", "daulong", "daulong", "daubuoi"};
+    int result = findCorrectPassword(foo, 10);
     cout << result;
 }
 
 int main(int argc, const char * argv[]) {
-    sa_tc_01();
+    sa_tc_03();
     system("pause"); // nho remove
     return 0;
 }

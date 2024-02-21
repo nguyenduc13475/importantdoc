@@ -8,553 +8,139 @@
 \usepackage{graphicx}
 \usepackage{adjustbox}
 
-\title{Homework 1b - Predicate}
+\title{Homework 2 - Set - Function}
 \author{Nguyễn Văn Đức - L05 - 2310790}
 \date\today
 
-\makeatletter
-\newcommand*\makealpha[1]{\symbol{\numexpr96+#1}}
-\makeatother
-
 \newenvironment{solution}{\renewcommand\qedsymbol{}\begin{proof}[Solution]}{\end{proof}}
-\graphicspath{{./anhbaocao/}}
 
 \begin{document}
-
 \maketitle
-\renewcommand{\labelenumi}{\textbf{\makealpha{\arabic{enumi}})}}
 
-\def\colspace{88pt}
-\setlength{\tabcolsep}{0pt}
-
-\section*{Section 1.4}
-\subsection*{Problem 9}
-Let $P(x)$ be the statement "$x$ can speak Russian" and let $Q(x)$ be the statement "$x$ knows the computer language C++." Express each of these sentences in terms of $P(x)$, $Q(x)$, quantifiers, and logical connectives. The domain for quantifiers consists of all students at your school.
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item There is a student at your school who can speak Russian and who knows C++.
-\item There is a student at your school who can speak Russian but who doesn't know C++.
-\item Every student at your school either can speak Russian or knows C++.
-\item No student at your school can speak Russian or knows C++.
-\end{enumerate}
-
+\section*{Section 2.1}
+\subsection*{Problem 11}
 \begin{solution}
-\hspace{1pt}
-
-\begin{enumerate}
-\item $\exists x(P(x) \land Q(x))$
-\item $\exists x(P(x) \land \neg Q(x))$
-\item $\forall x(P(x) \lor Q(x))$
-\item $\neg \exists x(P(x) \lor Q(x))$
-\end{enumerate}
 \end{solution}
-
 \clearpage
-\subsection*{Problem 10}
-Let $C(x)$ be the statement "$x$ has a cat" let $D(x)$ be the statement "$x$ has a dog" and let $F(x)$ be the statement "$x$ has a ferret." Express each of these statements in terms of $C(x)$, $D(x)$, $F(x)$, quantifiers, and logical connectives. Let the domain consist of all students in your class.
 
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item A student in your class has a cat, a dog, and a ferret.
-\item All students in your class have a cat, a dog, or a ferret.
-\item Some student in your class has a cat and a ferret, but not a dog.
-\item No student in your class has a cat, a dog, and a ferret.
-\item For each of the three animals, cats, dogs, and ferrets, there is a student in your class who has this animal as a pet.
-\end{enumerate}
-
+\subsection*{Problem 26}
 \begin{solution}
-\hspace{1pt}
-
-\begin{enumerate}
-\item $\exists x(C(x) \land D(x) \land F(x))$
-\item $\forall x(C(x) \lor D(x) \lor F(x))$
-\item $\exists x(C(x) \land F(x) \land \neg D(x))$
-\item $\neg \exists x(C(x) \land D(x) \land F(x))$
-\item $(\exists xC(x)) \land (\exists xD(x)) \land (\exists xF(x))$
-\end{enumerate}
 \end{solution}
-
 \clearpage
-\subsection*{Problem 33}
-Express each of these statements using quantifiers. Then form the negation of the statement, so that no negation is to the left of a quantifier. Next, express the negation in simple English. (Do not simply use the phrase "It is not the case that.")
 
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item Some old dogs can learn new tricks.
-\item No rabbit knows calculus.
-\item Every bird can fly.
-\item There is no dog that can talk.
-\item There is no one in this class who knows French and Russian.
-\end{enumerate}
-
+\subsection*{Problem 41}
 \begin{solution}
-In each case we need to specify some predicates and identify the domain (universe of discourse). 
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item Let $T(x)$ be the predicate that $x$ can learn new tricks, and let the domain be old dogs.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item Our original statement is $\exists xT(x)$.
-\item Its negation is $\neg \exists xT(x)$, which we must to rewrite in the required manner as $\forall x \neg T(x)$.
-\item In English : "Every old dog is unable to learn new tricks."
-\end{itemize}
-\item Let $C(x)$ be the predicate that $x$ knows calculus, and let the domain be rabbits.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item Our original statement is $\neg \exists xC(x)$.
-\item Its negation is, of course, simply $\exists xC(x)$.
-\item In English : "There is a rabbit that knows calculus."
-\end{itemize}
-\item Let $F(x)$ be the predicate that $x$ can fly, and let the domain be birds.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item Our original statement is $\forall xF(x)$.
-\item Its negation is $\neg \forall xF(x)$, which we must to rewrite in the required manner as $\exists x \neg F(x)$.
-\item In English : "There is a bird who cannot fly."
-\end{itemize}
-\item Let $T(x)$ be the predicate that $x$ can talk, and let the domain be dogs.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item Our original statement is $\neg \exists xT(x)$.
-\item Its negation is, of course, simply $\exists xT(x)$.
-\item In English : "There is a dog that talks."
-\end{itemize}
-\item Let $F(x)$ and $R(x)$ be the predicates that $x$ knows French and knows Russian, respectively, and let the domain be people in this class.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item Our original statement is $\neg \exists x(F(x) \land R(x))$.
-\item Its negation is, of course, simply $\exists x(F(x) \land R(x))$.
-\item In English : "There is someone in this class who knows French and Russian."
-\end{itemize}
-\end{enumerate}
 \end{solution}
-
-\subsection*{Problem 34}
-Express the negation of these propositions using quantifiers, and then express the negation in English.
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item Some drivers do not obey the speed limit.
-\item All Swedish movies are serious.
-\item No one can keep a secret.
-\item There is someone in this class who does not have a good attitude.
-\end{enumerate}
-
-\begin{solution}
-In each case we need to specify some predicates and identify the domain (universe of discourse). 
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item Let $S(x)$ be "$x$ obeys the speed limit" where the domain of discourse is drivers.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item The original statement is $\exists x \neg S(x)$.
-\item The negation is $\forall xS(x)$.
-\item In English : "All drivers obey the speed limit."
-\end{itemize}
-\item Let $S(x)$ be "$x$ is serious" where the domain of discourse is Swedish movies.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item The original statement is $\forall xS(x)$.
-\item The negation is $\exists x \neg S(x)$.
-\item In English : "Some Swedish movies are not serious."
-\end{itemize}
-\item Let $S(x)$ be "$x$ can keep a secret" where the domain of discourse is people.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item The original statement is $\neg \exists xS(x)$.
-\item The negation is $\exists xS(x)$.
-\item In English : "Some people can keep a secret."
-\end{itemize}
-\item Let $S(x)$ be "$x$ has a good attitude" where the domain of discourse is people in this class.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item The original statement is $\exists x \neg S(x)$.
-\item The negation is $\forall xS(x)$.
-\item In English : "Everyone in this class has a good attitude."
-\end{itemize}
-\end{enumerate}
-\end{solution}
-
 \clearpage
-\subsection*{Problem 39}
-Translate these specifications into English where $F(p)$ is "Printer $p$ is out of service", $B(p)$ is "Printer $p$ is busy", $L(j)$ is "Print job $j$ is lost" and $Q(j)$ is "Print job $j$ is queued."
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item $\exists p(F(p) \land B(p)) \rightarrow \exists jL(j)$
-\item $\forall pB(p) \rightarrow \exists jQ(j)$
-\item $\exists j(Q(j) \land L(j)) \rightarrow \exists pF(p)$
-\item $(\forall pB(p) \land \forall jQ(j)) \rightarrow \exists jL(j)$
-\end{enumerate}
-
-\begin{solution}
-\hspace{1pt}
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item If there is a printer that is both out of service and busy, then some job has been lost.
-\item If every printer is busy, then there is a job in the queue.
-\item If there is a job that is both queued and lost, then some printer is out of service.
-\item If every printer is busy and every job is queued, then some job is lost.
-\end{enumerate}
-\end{solution}
-
-\subsection*{Problem 44}
-Determine whether $\forall x(P(x) \leftrightarrow Q(x))$ and $\forall xP(x) \leftrightarrow \forall xQ(x)$ are logically equivalent. Justify your answer.
-
-\begin{solution}
-We want propositional functions $P$ and $Q$ that are sometimes, but not always, true (so that the second biconditional is \textbf{F} $\leftrightarrow$ \textbf{F} and hence true), but such that there is an x making one true and the other false. For example, we can take $P(x)$ to mean that $x$ is an even number (a multiple of 2) and $Q(x)$ to mean that $x$ is a multiple of 3. Then an example like $x = 4$ or $x = 9$ shows that $\forall x(P(x) \leftrightarrow Q(x))$ is false. Hence, $\forall x(P(x) \leftrightarrow Q(x))$ and $\forall xP(x) \leftrightarrow \forall xQ(x)$ are not logically equivalent.
-\end{solution}
 
 \subsection*{Problem 45}
-Show that $\exists x(P(x) \lor Q(x))$ and $\exists xP(x) \lor \exists xQ(x)$ are logically equivalent.
-
-\begin{proof}
-Both are true precisely when at least one of $P(x)$ and $Q(x)$ is true for at least one value of $x$ in the domain (universe of discourse). Hence, both are logically equivalent.
-\end{proof}
-
-\clearpage
-\subsection*{Problem 46}
-Establish these logical equivalences, where $x$ does not occur as a free variable in $A$. Assume that the domain is nonempty.
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item $(\forall xP(x)) \lor A \equiv \forall x(P(x) \lor A)$
-\item $(\exists xP(x)) \lor A \equiv \exists x(P(x) \lor A)$
-\end{enumerate}
-
-\begin{proof}
-\hspace{1pt}
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item There are two cases. If $A$ is true, then $(\forall xP(x)) \lor A$ is true, and since $P(x) \lor A$ is true for all $x$, $\forall x(P(x) \lor A)$ is also true. Thus both sides of the logical equivalence are true (hence equivalent). Now suppose that $A$ is false. If $P(x)$ is true for all $x$, then the left-hand side is true. Furthermore, the right-hand side is also true (since $P(x) \lor A$ is true for all $x$). On the other hand, if $P(x)$ is false for some $x$, then both sides are false. Therefore again the two sides are logically equivalent.
-\item There are two cases. If $A$ is true, then $(\exists xP(x)) \lor A$ is true, and since $P(x) \lor A$ is true for some (really all) $x$, $\exists x(P(x) \lor A)$ is also true. Thus both sides of the logical equivalence are true (hence equivalent). Now suppose that $A$ is false. If $P(x)$ is true for at least one $x$, then the left-hand side is true. Furthermore, the right-hand side is also true (since $P(x) \lor A$ is true for that $x$). On the other hand, if $P(x)$ is false for all $x$, then both sides are false. Therefore again the two sides are logically equivalent.
-\end{enumerate}
-\end{proof}
-
-\clearpage
-\subsection*{Problem 47}
-Establish these logical equivalences, where $x$ does not occur as a free variable in $A$. Assume that the domain is nonempty.
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item $(\forall xP(x)) \land A \equiv \forall x(P(x) \land A)$
-\item $(\exists xP(x)) \land A \equiv \exists x(P(x) \land A)$
-\end{enumerate}
-
-\begin{proof}
-\hspace{1pt}
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item Suppose that $A$ is true. Then the left-hand side is logically equivalent to $\forall xP(x)$, since the conjunction of any proposition with a true proposition has the same truth value as that proposition. By similar reasoning the right-hand side is equivalent to $\forall xP(x)$. Therefore the two propositions are logically equivalent in this case. On the other hand, suppose that A is false. Then the left-hand side is certainly false. Furthermore, for every x, $P(x) \land A$ is false, so the right-hand side is false as well. Thus in all cases, the two propositions have the same truth value. And for that, these two are logical equivalent.
-\item This problem is similar to part \textbf{(a)}. If $A$ is true, then both sides are logically equivalent to $\exists xP(x)$. If $A$ is false, then both sides are false. Hence, both are logically equivalent.
-\end{enumerate}
-\end{proof}
-
-\clearpage
-\subsection*{Problem 61}
-Let $P(x)$, $Q(x)$, $R(x)$, and $S(x)$ be the statements "$x$ is a baby", "x is logical", "x is able to manage a crocodile" and "x is despised", respectively. Suppose that the domain consists of all people. Express each of these statements using quantifiers; logical connectives; and $P(x)$, $Q(x)$, $R(x)$, and $S(x)$.
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item Babies are illogical.
-\item Nobody is despised who can manage a crocodile.
-\item Illogical persons are despised.
-\item Babies cannot manage crocodiles.
-\item Does (d) follow from (a), (b), and (c)? If not, is there a correct conclusion?
-\end{enumerate}
-
 \begin{solution}
-\hspace{1pt}
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item $\forall x(P(x) \rightarrow \neg Q(x))$
-\item $\forall x(R(x) \rightarrow \neg S(x))$
-\item $\forall x(\neg Q(x) \rightarrow S(x))$
-\item $\forall x(P(x) \rightarrow \neg R(x))$
-\item The conclusion follows. Suppose that $x$ is a baby. Then by the first premise, $x$ is illogical, and hence, by the third premise, $x$ is despised. But the second premise says that if $x$ could manage a crocodile, then $x$ would not be despised. Therefore $x$ cannot manage a crocodile. Thus we have proved that babies cannot manage crocodiles. 
-\end{enumerate}
 \end{solution}
-
 \clearpage
-\subsection*{Problem 62}
-Let $P(x)$, $Q(x)$, $R(x)$, and $S(x)$ be the statements "$x$ is a duck", "x is one of my poultry", "x is an officer" and "x is willing to waltz", respectively. Express each of these statements using quantifiers; logical connectives; and $P(x)$, $Q(x)$, $R(x)$, and $S(x)$.
 
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item No ducks are willing to waltz.
-\item No officers ever decline to waltz.
-\item All my poultry are ducks.
-\item My poultry are not officers.
-\item Does (d) follow from (a), (b), and (c)? If not, is there a correct conclusion?
-\end{enumerate}
-
+\section*{Section 2.2}
+\subsection*{Problem 15}
 \begin{solution}
-\hspace{1pt}
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item $\forall x(P(x) \rightarrow \neg S(x))$
-\item $\forall x(R(x) \rightarrow S(x))$
-\item $\forall x(Q(x) \rightarrow P(x))$
-\item $\forall x(Q(x) \rightarrow \neg R(x))$
-\item Yes. If $x$ is one of my poultry, then he is a duck (by part \textbf{(c)}), hence not willing to waltz (part \textbf{(a)}). Since officers are always willing to waltz (part \textbf{(b)}), $x$ is not an officer.
-\end{enumerate}
 \end{solution}
-
 \clearpage
-\section*{Section 1.5}
-\subsection*{Problem 17}
-Express each of these system specifications using predicates, quantifiers, and logical connectives, if necessary.
 
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item Every user has access to exactly one mailbox.
-\item There is a process that continues to run during all error conditions only if the kernel is working correctly.
-\item All users on the campus network can access all websites whose url has a .edu extension.
-\item There are exactly two systems that monitor every remote server.
-\end{enumerate}
-
+\subsection*{Problem 19}
 \begin{solution}
-\hspace{1pt}
-
-\begin{enumerate}
-\item Let $A(u,m)$ be the predicate that user $u$ has access to mailbox $m$. Then the system specification can be expressed as :\\$\forall u \exists m(A(u,m) \land \forall n(n \neq m \rightarrow \neg A(u,n)))$
-\item Let $H(e)$ be the predicate that error condition $e$ is in effect and $S(x,y)$ means that the status of $x$ is $y$. Then the system specification can be expressed as : $\exists p \forall e(H(e) \rightarrow S(p,\textrm{running})) \rightarrow S(kernel,\textrm{working correctly})$
-\item Let $E(s,x)$ be the predicate that website $s$ has extension $x$ and $A(u,s)$ means that user $u$ can access website $s$. Then the system specification can be expressed as : $\forall u \forall s(E(s,\textrm{.edu}) \rightarrow A(u,s))$
-\item Let $M(a,b)$ be the predicate that system $a$ monitors remote server $b$. We will assume that the specification is that there exist two distinct systems such that they monitor every remote server, and no other system has the property of monitoring every remote system. Thus our answer is :\\$\exists x \exists y(x \neq y \land \forall z((\forall sM(z,s)) \leftrightarrow (z = x \lor z = y)))$
-\end{enumerate}
 \end{solution}
-
 \clearpage
-\subsection*{Problem 18}
-Express each of these system specifications using predicates, quantifiers, and logical connectives, if necessary.
 
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item At least one console must be accessible during every fault condition.
-\item The e-mail address of every user can be retrieved whenever the archive contains at least one message sent by every user on the system.
-\item For every security breach there is at least one mechanism that can detect that breach if and only if there is a process that has not been compromised.
-\item There are at least two paths connecting every two distinct endpoints on the network.
-\item No one knows the password of every user on the system except for the system administrator, who knows all passwords.
-\end{enumerate}
-
+\subsection*{Problem 21}
 \begin{solution}
-\hspace{1pt}
-
-\begin{enumerate}
-\item Let $A(x)$ be the predicate that console $x$ is accessible, and $H(x)$ means that fault condition $x$ is happening. Then the system specification can be expressed as : $\forall f(H(f) \rightarrow \exists cA(c))$
-\item Let $A(x)$ be the predicate that the archive contains message $x$, $S(x,y)$ means that user $x$ sent message $y$ , and $R(x)$ means that the e-mail address of user $x$ can be retrieved. Then the system specification can be expressed as : $(\forall u \exists m(A(m) \land S(u,m))) \rightarrow \forall uR(u)$
-\item Let $D(x,y)$ be the predicate that mechanism $x$ can detect breach $y$, and $C(x)$ means that process $x$ has been compromised. Then the system specification can be expressed as : $(\forall b \exists mD(m,b)) \leftrightarrow \exists p \neg C(p)$
-\item Let $C(p,x,y)$ be the predicate that path $p$ connects endpoint $x$ to endpoint $y$. Then the system specification can be expressed as :\\$\forall x \forall y(x \neq y \rightarrow \exists p \exists q(p \neq q \land C(p,x,y) \land C(q,x,y)))$
-\item Let $K(x,y)$ be the predicate that person $x$ knows the password of user $y$. Then the system specification can be expressed as :\\$\forall x((\forall uK(x,u)) \leftrightarrow x = \textrm{SysAdm})$
-\end{enumerate}
 \end{solution}
-
 \clearpage
-\subsection*{Problem 34}
-Find a common domain for the variables $x$, $y$, and $z$ for which the statement $\forall x \forall y((x \neq y) \rightarrow \forall z((z = x) \lor (z = y)))$ is true and another domain for which it is false.
-
-\begin{solution}
-The logical expression is asserting that the domain consists of at most two members. It is saying that whenever you have two unequal objects, any object has to be one of those two. Therefore any domain having one or two members will make it true, and any domain with more than two members will make it false.
-\end{solution}
 
 \subsection*{Problem 35}
-Find a common domain for the variables $x$, $y$, $z$, and $w$ for which the statement $\forall x \forall y \forall z \exists w((w \neq x) \land (w \neq y) \land (w \neq z))$ is true and another common domain for these variables for which it is false.
-
 \begin{solution}
-If the domain (universe of discourse) has at least four members, then no matter what values are assigned to $x$, $y$, and $z$, there will always be another member of the domain, different from those three, that we can assign to $w$ to make the statement true. Thus we can use a domain such as United States Senators. On the other hand, for any domain with three or fewer members, if we assign all the members to $x$, $y$, and $z$ (repeating some if necessary), then there will be nothing left to assign to $w$ to make the statement true. For this we can use a domain such as your biological parents.
 \end{solution}
-
 \clearpage
-\subsection*{Problem 36}
-Express each of these statements using quantifiers. Then form the negation of the statement so that no negation is to the left of a quantifier. Next, express the negation in simple English. (Do not simply use the phrase "It is not the case that.")
 
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item No one has lost more than one thousand dollars playing the lottery.
-\item There is a student in this class who has chatted with exactly one other student.
-\item No student in this class has sent e-mail to exactly two other students in this class.
-\item Some student has solved every exercise in this book.
-\item No student has solved at least one exercise in every section of this book.
-\end{enumerate}
-
+\section*{Section 2.3}
+\subsection*{Problem 25}
 \begin{solution}
-\hspace{1pt} 
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item Let $L(x,y)$ mean that person $x$ has lost $y$ dollars playing the lottery.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item Our original statement is $\neg \exists x \exists y(y > 1000 \land L(x,y))$.
-\item Its negation of course is $\exists x \exists y(y > 1000 \land L(x,y))$.
-\item In English : "Someone has lost more than \$1000 playing the lottery."
-\end{itemize}
-\item Let $C(x,y)$ mean that person $x$ has chatted with person $y$.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item The given statement is $\exists x \exists y(y \neq x \land \forall z(z \neq x \rightarrow (z = y \leftrightarrow C(x,z))))$.
-\item The negation is therefore $\forall x \forall y(y \neq x \rightarrow \exists z(z \neq x \land \neg (z = y \leftrightarrow C(x,z))))$.
-\item In English : "Everybody in this class has either chatted with no one else or has chatted with two or more others."
-\end{itemize}
-\item Let $E(x,y)$ mean that person $x$ has sent e-mail to person $y$.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item The given statement is $\neg \exists x \exists y \exists z(y \neq z \land x \neq y \land x \neq z \land \forall w(w \neq x \rightarrow (E(x,w) \leftrightarrow (w = y \lor w = z))))$.
-\item The negation is obviously $\exists x \exists y \exists z(y \neq z \land x \neq y \land x \neq z \land \forall w(w \neq x \rightarrow (E(x,w) \leftrightarrow (w = y \lor w = z))))$.
-\item In English : "Some student in this class has sent e-mail to exactly two other students in this class."
-\end{itemize}
-\item Let $S(x,y)$ mean that student $x$ has solved exercise $y$.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item The statement is $\exists x \forall y S(x,y)$.
-\item The negation is $\forall x \exists y \neg S(x,y)$.
-\item In English : "For every student in this class, there is some exercise that he or she has not solved."
-\end{itemize}
-
-\item Let $S(x,y)$ mean that student $x$ has solved exercise $y$, and let $B(y,z)$ mean that exercise $y$ is in section $z$ of the book.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item The statement is $\neg \exists x \forall z \exists y(B(y,z) \land S(x,y))$.
-\item The negation is of course $\exists x \forall z \exists y(B(y,z) \land S(x,y))$.
-\item In English : "Some student has solved at least one exercise in every section of this book."
-\end{itemize}
-\end{enumerate}
 \end{solution}
+\clearpage
+
+\subsection*{Problem 33}
+\begin{solution}
+\end{solution}
+\clearpage
+
+\subsection*{Problem 42}
+\begin{solution}
+\end{solution}
+\clearpage
+
+\subsection*{Problem 60}
+\begin{solution}
+\end{solution}
+\clearpage
+
+\subsection*{Problem 72}
+\begin{solution}
+\end{solution}
+\clearpage
+
+\section*{Section 2.4}
+\subsection*{Problem 25}
+\begin{solution}
+\end{solution}
+\clearpage
+
+\subsection*{Problem 38}
+\begin{solution}
+\end{solution}
+\clearpage
+
+\subsection*{Problem 43}
+\begin{solution}
+\end{solution}
+\clearpage
+
+\subsection*{Problem 44}
+\begin{solution}
+\end{solution}
+\clearpage
+
+\section*{Section 2.5}
+\subsection*{Problem 12}
+\begin{solution}
+\end{solution}
+\clearpage
+
+\subsection*{Problem 19}
+\begin{solution}
+\end{solution}
+\clearpage
+
+\subsection*{Problem 29}
+\begin{solution}
+\end{solution}
+\clearpage
 
 \subsection*{Problem 37}
-Express each of these statements using quantifiers. Then form the negation of the statement so that no negation is to the left of a quantifier. Next, express the negation in simple English. (Do not simply use the phrase "It is not the case that.")
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item Every student in this class has taken exactly two mathematics classes at this school.
-\item Someone has visited every country in the world except Libya.
-\item No one has climbed every mountain in the Himalayas.
-\item Every movie actor has either been in a movie with Kevin Bacon or has been in a movie with someone who has been in a movie with Kevin Bacon.
-\end{enumerate}
-
 \begin{solution}
-In each case we need to specify some predicates and identify the domain (universe of discourse). 
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item  Let $T(x,y)$ be the predicate that $x$ has taken $y$, where $x$ ranges over students in this class and $y$ ranges over mathematics classes at this school.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item Our original statement is :\\$\forall x \exists y \exists z(y \neq z \land T(x,y) \land T(x,z) \land \forall w(T(x,w) \rightarrow (w = y \lor w = z)))$.
-\item Its negation of course is :\\$\exists x \forall y \forall z(y = z \lor \neg T(x,y) \lor \neg T(x,z) \lor \exists w(T(x,w) \land w \neq y \land w \neq z))$.
-\item In English : "There is someone in this class for whom no matter which two distinct math courses you consider, these are not the two and only two math courses this person has taken."
-\end{itemize}
-\item Let $V(x,y)$ be the predicate that $x$ has visited $y$, where $x$ ranges over people and $y$ ranges over countries.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item The given statement is $\exists x \forall y(V(x,y) \leftrightarrow y \neq \textrm{Libya})$.
-\item The negation is therefore $\forall x \exists y(V(x,y) \leftrightarrow y = \textrm{Libya})$.
-\item In English : "For every person there is a country such that either that country is Libya and the person has visited it, or else that country is not Libya and the person has not visited it."
-\end{itemize}
-\item Let $C(x,y)$ be the predicate that $x$ has climbed $y$, where $x$ ranges over people and $y$ ranges over mountains in the Himalayas.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item Our statement is $\neg \exists x \forall yC(x,y)$.
-\item Its negation is, of course, simply $\exists x \forall yC(x,y)$.
-\item In English : "Someone has climbed every mountain in the Himalayas."
-\end{itemize}
-\item Let $M(x,y,z)$ be the predicate that $x$ has been in movie $z$ with $y$, where the domains for $x$ and $y$ are movie actors, and for $z$ is movies.
-\begin{itemize}[leftmargin=0pt, topsep = 0pt]
-\item The statement is :\\$\forall x((\exists zM(x,\textrm{Kevin Bacon},z)) \lor (\exists y \exists z_1 \exists z_2(M(x,y,z_1) \land M(y,\textrm{Kevin Bacon},z_2))))$.
-\item The negation is :\\$\exists x((\forall z \neg M(x,\textrm{Kevin Bacon},z)) \land (\forall y \forall z_1 \forall z_2(\neg M(x,y,z_1) \lor \neg M(y,\textrm{Kevin Bacon},z_2))))$.
-\item In English : "There is someone who has neither been in a movie with Kevin Bacon nor been in a movie with someone who has been in a movie with Kevin Bacon."
-\end{itemize}
-\end{enumerate}
 \end{solution}
-
-\subsection*{Problem 47}
-Show that the two statements $\neg \exists x \forall yP(x,y)$ and $\forall x \exists y \neg P(x,y)$, where both quantifiers over the first variable in $P(x,y)$ have the same domain, and both quantifiers over the second variable in $P(x,y)$ have the same domain, are logically equivalent.
-
-\begin{proof}
-$\neg \exists x \forall yP(x,y) \equiv \forall x \neg \forall yP(x,y) \equiv \forall x \exists y \neg P(x,y)$
-\end{proof}
-
 \clearpage
-\subsection*{Problem 48}
-Show that $\forall xP(x) \lor \forall xQ(x)$ and $\forall x \forall y(P(x) \lor Q(y))$, where all quantifiers have the same nonempty domain, are logically equivalent. (The new variable $y$ is used to combine the quantifications correctly.)
 
-\begin{proof}
-We need to show that each of these propositions implies the other. Suppose that $\forall xP(x) \lor \forall xQ(x)$ is true. We want to show that $\forall x \forall y(P(x) \lor Q(y))$ is true. By our hypothesis, one of two things must be true. Either $P$ is universally true, or $Q$ is universally true. In the first case, $\forall x \forall y(P(x) \lor Q(y))$ is true, since the first expression in the disjunction is true, no matter what $x$ and $y$ are; and in the second case, $\forall x \forall y(P(x) \lor Q(y))$ is also true, since now the second expression in the disjunction is true, no matter what $x$ and $y$ are. Next we need to prove the converse. So suppose that $\forall x \forall y(P(x) \lor Q(y))$ is true. We want to show that $\forall xP(x) \lor \forall xQ(x)$ is true. If $\forall xP(x)$ is true, then we are done. Otherwise, $P(x_0)$ must be false for some $x_0$ in the domain of discourse. For this $x_0$ , then, the hypothesis tells us that $P(x_0) \lor Q(y)$ is true, no matter what $y$ is. Since $P(x_0)$ is false, it must be the case that $Q(y)$ is true for each $y$. In other words, $\forall yQ(y)$ is true, or, to change the name of the meaningless quantified variable, $\forall xQ(x)$ is true. This certainly implies that $\forall xP(x) \lor \forall xQ(x)$ is true, as desired.
-\end{proof}
-
-\clearpage
-\subsection*{Problem 49}
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item Show that $\forall xP(x) \land \exists xQ(x)$ is logically equivalent to $\forall x \exists y(P(x) \land Q(y))$, where all quantifiers have the same nonempty domain.
-\item Show that $\forall xP(x) \lor \exists xQ(x)$ is equivalent to $\forall x \exists y(P(x) \lor Q(y))$, where all quantifiers have the same nonempty domain.
-\end{enumerate}
-
-\begin{proof}
-\hspace{1pt}
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item We prove this by arguing that whenever the first proposition is true, so is the second; and that whenever the second proposition is true, so is the first. So suppose that $\forall xP(x) \land \exists xQ(x)$ is true. In particular, $P$ always holds, and there is some object, call it $y$, in the domain (universe of discourse) that makes $Q$ true. Now to show that the second proposition is true, suppose that $x$ is any object in the domain. By our assumptions, $P(x)$ is true. Furthermore, $Q(y)$ is true for the particular $y$ we mentioned above. Therefore $P(x) \land Q(y)$ is true for this $x$ and $y$. Since $x$ was arbitrary, we have showed that $\forall x \exists y(P(x) \land Q(y))$ is true, as desired. Conversely, suppose that the second proposition is true. Letting $x$ be any member of the domain allows us to assert that there exists a $y$ such that $P(x) \land Q(y)$ is true, and therefore $Q(y)$ is true. Thus by the definition of existential quantifiers, $\exists xQ(x)$ is true. Furthermore, our hypothesis tells us in particular that $\forall xP(x)$ is true. Therefore the first proposition, $\forall xP(x) \land \exists xQ(x)$ is true. Hence, $\forall xP(x) \land \exists xQ(x)$ is logically equivalent to $\forall x \exists y(P(x) \land Q(y))$.
-\item This is similar to part \textbf{(a)}. Suppose that $\forall xP(x) \lor \exists xQ(x)$ is true. Thus either $P$ always holds, or there is some object, call it $y$, in the domain that makes $Q$ true. In the first case it follows that $P(x) \lor Q(y)$ is true for all $x$, and so we can conclude that $\forall x \exists y(P(x) \lor Q(y))$ is true (it does not matter in this case whether $Q(y)$ is true or not). In the second case, $Q(y)$ is true for this particular y, and so $P(x) \lor Q(y$) is true regardless of what $x$ is. Again, it follows that $\forall x \exists y(P(x) \lor Q(y))$ is true. Conversely, suppose that the second proposition is true. If $P(x$) is true for all $x$, then the first proposition must be true. If not, then $P(x)$ fails for some $x$, but for this $x$ there must be a $y$ such that $P(x) \lor Q(y)$ is true; hence $Q(y)$ must be true. Therefore $\exists yQ(y)$ holds, and thus the first proposition is true. Hence, $\forall xP(x) \lor \exists xQ(x)$ is equivalent to $\forall x \exists y(P(x) \lor Q(y))$.
-\end{enumerate}
-\end{proof}
-
-\clearpage
-\section*{Section 1.6}
-\subsection*{Problem 11}
-Show that the argument form with premises $p_1$, $p_2$,..., $p_n$ and conclusion $q \rightarrow r$ is valid if the argument form with premises $p_1$, $p_2$,..., $p_n$, $q$, and conclusion $r$ is valid.
-
-\begin{proof}
-We are asked to show that whenever $p_1$, $p_2$,..., $p_n$ are true, then $q \rightarrow r$ must be true, given that we know that whenever $p_1$ , $p_2$ , ... , $p_n$ and $q$ are true, then $r$ must be true. So suppose that $p_1$, $p_2$,..., $p_n$ are true. We want to establish that $q \rightarrow r$ is true. If $q$ is false, then we are done, vacuously. Otherwise, $q$ is true, so by the validity of the given argument form, we know that $r$ is true. 
-\end{proof}
-
-\subsection*{Problem 12}
-Show that the argument form with premises $(p \land t) \rightarrow (r \lor s)$, $q \rightarrow (u \land t)$, $u \rightarrow p$, and $\neg s$ and conclusion $q \rightarrow r$ is valid by first using Exercise 11 and then using rules of inference from Table 1.
-\begin{proof}
-Applying Exercise 11, we want to show that the conclusion $r$ follows from the five premises $(p \land t) \rightarrow (r \lor s)$, $q \rightarrow (u \land t)$, $u \rightarrow p$, $\neg s$, and $q$. From $q$ and $q \rightarrow (u \land t)$ we get $u \land t$ by modus ponens. From there we get both $u$ and $t$ by simplification (and the commutative law). From $u$ and $u \rightarrow p$ we get $p$ by modus ponens. From $p$ and $t$ we get $p \land t$ by conjunction. From that and $(p \land t) \rightarrow (r \lor s)$ we get $r \lor s$ by modus ponens. From that and $\neg s$ we finally get $r$ by disjunctive syllogism.
-\end{proof}
-
-\subsection*{Problem 23}
-Identify the error or errors in this argument that supposedly shows that if $\exists xP(x) \land \exists xQ(x)$ is true then $\exists x(P(x) \land Q(x))$ is true.\\
-
-\noindent
-\begin{tabular}{l@{\hspace{6pt}}l@{\hspace{6pt}}l}
-1. & $\exists xP(x) \lor \exists xQ(x)$ & Premise \\
-2. & $\exists xP(x)$ & Simplification from (1) \\
-3. & $P(c)$ & Existential instantiation from (2) \\
-4. & $\exists xQ(x)$ & Simplification from (1) \\
-5. & $Q(c)$ & Existential instantiation from (4) \\
-6. & $P(c) \land Q(c)$ & Conjunction from (3) and (5) \\
-7. & $\exists x(P(x) \land Q(x))$ & Existential generalization \\
-\end{tabular}
-
+\section*{Section 8.2}
+\subsection*{Problem 28}
 \begin{solution}
-The error occurs in step (5), because we cannot assume, as is being done here, that the $c$ that makes $P$ true is the same as the $c$ that makes $Q$ true. 
 \end{solution}
-
 \clearpage
-\subsection*{Problem 24}
-Identify the error or errors in this argument that supposedly shows that if $\forall x(P(x) \lor Q(x))$ is true then $\forall xP(x) \lor \forall xQ(x)$ is true.\\
-
-\noindent
-\begin{tabular}{l@{\hspace{6pt}}l@{\hspace{6pt}}l}
-1. & $\forall x(P(x) \lor Q(x))$ & Premise \\
-2. & $P(c) \lor Q(c)$ & Universal instantiation from (1) \\
-3. & $P(c)$ & Simplification from (2) \\
-4. & $\forall xP(x)$ & Universal generalization from (3) \\
-5. & $Q(c)$ & Simplification from (2) \\
-6. & $\forall xQ(x)$ & Universal generalization from (5) \\
-7. & $\forall xP(x) \lor \forall xQ(x)$ & Conjunction from (4) and (6) \\
-\end{tabular}
-
-\begin{solution}
-Steps 3 and 5 are incorrect; simplification applies to conjunctions, not disjunctions.
-\end{solution}
-
-\clearpage
-\subsection*{Problem 34}
-The Logic Problem, taken from \textit{WFF'N PROOF, The Game of Logic}, has these two assumptions:\\
-\textit{1.}"Logic is difficult or not many students like logic."\\
-\textit{2.}"If mathematics is easy, then logic is not difficult."\\
-By translating these assumptions into statements involving propositional variables and logical connectives, determine whether each of the following are valid conclusions of these assumptions:
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item That mathematics is not easy, if many students like logic.
-\item That not many students like logic, if mathematics is not easy.
-\item That mathematics is not easy or logic is difficult.
-\item That logic is not difficult or mathematics is not easy.
-\item That if not many students like logic, then either mathematics is not easy or logic is not difficult.
-\end{enumerate}
-
-\begin{solution}
-Let us use the following letters to stand for the relevant propositions: $d$ for "logic is difficult"; $s$ for "many students like logic"; and $e$ for "mathematics is easy." Then the assumptions are $d \lor \neg s$ and $e \rightarrow \neg d$.  The first of these is equivalent to $s \rightarrow d$, and the second assumption is equivalent to its contrapositive, $d \rightarrow \neg e$. And finally, by combining these two conditional statements, we see that $s \rightarrow \neg e$ also follows from our assumptions.
-
-\begin{enumerate}[leftmargin=16pt, topsep = 8pt]
-\item Here we are asked whether we can conclude that $s \rightarrow \neg e$. As we noted above, the answer is yes, this conclusion is valid.
-\item The question concerns $\neg e \rightarrow \neg s$. This is equivalent to its contrapositive, $s \rightarrow e$. That doesn't seem to follow from our assumptions, so let's find a case in which the assumptions hold but this conditional statement does not. This conditional statement fails in the case in which $s$ is true and $e$ is false. If we take $d$ to be true as well, then both of our assumptions are true. Therefore this conclusion is not valid.
-\item The issue is $\neg e \lor d$, which is equivalent to the conditional statement $e \rightarrow d$. This does not follow from our assumptions. If we take $d$ to be false, $e$ to be true, and $s$ to be false, then this proposition is false but our assumptions are true.
-\item The issue is $\neg d \lor \neg e$, which is equivalent to the conditional statement $d \rightarrow \neg e$. We noted above that this validly follows from our assumptions.
-\item This sentence says $\neg s \rightarrow (\neg e \lor \neg d)$. The only case in which this is false is when $s$ is false and both $e$ and $d$ are true. But in this case, our assumption $e \rightarrow \neg d$ is also violated. Therefore, in all cases in which the assumptions hold, this statement holds as well, so it is a valid conclusion.
-\end{enumerate}
-\end{solution}
 
 \subsection*{Problem 35}
-Determine whether this argument, taken from Kalish and Montague [KaMo64], is valid.
-
-\noindent
-"If Superman were able and willing to prevent evil, he would do so. If Superman were unable to prevent evil, he would be impotent; if he were unwilling to prevent evil, he would be malevolent. Superman does not prevent evil. If Superman exists, he is neither impotent nor malevolent. Therefore, Superman does not exist."
-
 \begin{solution}
-This argument is valid. We argue by contradiction. Assume that Superman does exist. Then he is not impotent, and he is not malevolent (this follows from the fourth sentence). Therefore by (the contrapositives of) the two parts of the second sentence, we conclude that he is able to prevent evil, and he is willing to prevent evil. By the first sentence, we therefore know that Superman does prevent evil. This contradicts the third sentence. Since we have arrived at a contradiction, our original assumption must have been false, so we conclude finally that Superman does not exist.
 \end{solution}
-
 \clearpage
+
+\subsection*{Problem 40}
+\begin{solution}
+\end{solution}
+\clearpage
+
 \end{document}
