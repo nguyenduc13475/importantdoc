@@ -1,0 +1,6 @@
+cout << "----- Sample Testcase 08 -----" << endl;
+    const char * arr_pwds[] = {"123xyz", "pink#pink", "pink123", "xxxx@xxxx", "pink#pink", "pink123", "pink123"};
+    int num_pwds = 7;
+    cout << "num_pwds: " << num_pwds << endl;
+    int result = findCorrectPassword(arr_pwds, num_pwds);
+    cout << "num_pwds: " << num_pwds << ", result: " << result << endl;

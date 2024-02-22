@@ -325,7 +325,7 @@ int checkPassword(const char * s, const char * email) {
     uint8_t delimiterIndex = strchr(email, '@') - email;
     char se[delimiterIndex + 1] = {};
     strncpy(se, email, delimiterIndex);
-    char * sePointer = strstr(s, se);
+    const char * sePointer = strstr(s, se);
     // Case 3, password contains se
     if (sePointer) return -(300 + (sePointer - s));
     
@@ -359,6 +359,7 @@ int findCorrectPassword(const char * arr_pwds[], int num_pwds) {
             if (cmp == 1) currentMinIndex = j;
         }
 
+        // Swap positions
         const char * temp1 = arr_pwds[i];
         arr_pwds[i] = arr_pwds[currentMinIndex];
         arr_pwds[currentMinIndex] = temp1;
@@ -368,9 +369,9 @@ int findCorrectPassword(const char * arr_pwds[], int num_pwds) {
         indices[currentMinIndex] = temp2;
     }
 
-    // Define the array that contains the number of occurrences of each password in the array of passwords
+    // Define the array that contains the number of occurrences of each password in the sorted array of passwords
     uint8_t frequencies[num_pwds] = {1}, currentIndex = 0;
-    // Define the array that contains the length of each distinct password in the array of passwords
+    // Define the array that contains the length of each distinct password in the sorted array of passwords
     size_t lengths[num_pwds] = {strlen(arr_pwds[0])};
 
     // Calculate values for the two arrays above

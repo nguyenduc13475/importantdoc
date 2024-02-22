@@ -10,8 +10,13 @@
 //The library here is concretely set, students are not allowed to include any other libraries.
 
 #include "study_in_pink1.h"
+#include <ctime>
 
 using namespace std;
+
+int randrange(int a, int b){
+    return rand() / 32767. * (b - a) + a;
+};
 
 void sa_tc_01() {
     cout << "----- Sample Testcase 01 -----" << endl;
@@ -20,10 +25,14 @@ void sa_tc_01() {
     if (!readFile(input_file, HP1, HP2, EXP1, EXP2, M1, M2, E1, E2, E3)) {
         return;
     }
+    EXP1 = randrange(-200, 800);
+    EXP2 = randrange(-200, 800);
+    E1 = randrange(-10, 110);
 
     cout << "EXP1: " << EXP1 << ", EXP2: " << EXP2 << ", E1: " << E1 << endl;
     int result = firstMeet(EXP1, EXP2, E1);
     cout << "EXP1: " << EXP1 << ", EXP2: " << EXP2 << ", result: " << result << endl;
+    cout << " --------------------------------------- " << endl;
 }
 
 void sa_tc_02() {
@@ -33,7 +42,10 @@ void sa_tc_02() {
     if (!readFile(input_file, HP1, HP2, EXP1, EXP2, M1, M2, E1, E2, E3)) {
         return;
     }
-
+    HP1 = 60; 
+    EXP1 = 120;
+    E2 = 18;
+    M1 = 5;
     cout << "HP1: " << HP1 << ", EXP1: " << EXP1 << ", E2: " << E2 << ", M1: " << M1 << endl;
     int result = traceLuggage(HP1, EXP1, M1, E2);
     cout << "HP1: " << HP1 << ", EXP1: " << EXP1 << ", M1: " << M1 << ", result: " << result << endl;
@@ -46,10 +58,16 @@ void sa_tc_03() {
     if (!readFile(input_file, HP1, HP2, EXP1, EXP2, M1, M2, E1, E2, E3)) {
         return;
     }
+    HP1 = randrange(-20, 686);
+    EXP1 = randrange(-20, 620);
+    HP2 = randrange(-20, 686);
+    EXP2 = randrange(-20, 620);
+    E3 = randrange(-8, 108);
 
-    cout << "HP1: " << HP1 << ", EXP1: " << EXP1 << ", HP2: " << HP2 << ", EXP2: " << EXP2 << ", E3: " << E3;
+    cout << "HP1: " << HP1 << ", EXP1: " << EXP1 << ", HP2: " << HP2 << ", EXP2: " << EXP2 << ", E3: " << E3 << endl;
     int result = chaseTaxi(HP1, EXP1, HP2, EXP2, E3);
-    cout << "HP1: " << HP1 << ", EXP1: " << EXP1 << ", HP2: " << HP2 << ", EXP2: " << EXP2 << ", result: " << result;
+    cout << "HP1: " << HP1 << ", EXP1: " << EXP1 << ", HP2: " << HP2 << ", EXP2: " << EXP2 << ", result: " << result << endl;
+    cout << "--------------------------------------------" << endl;
 }
 
 void sa_tc_04() {
@@ -70,13 +88,13 @@ void sa_tc_04() {
 }
 
 void sa_tc_05() {
-    const char * foo[10] = {"concac", "daulong", "daubuoi", "concac", "dauchim", "concac", "daubuoi", "daulong", "daulong", "daubuoi"};
-    int result = findCorrectPassword(foo, 10);
+    const char* foo[7] = {"123xyz", "pink#pink", "pink123", "xxxx@xxxx", "pink#pink", "pink123", "pink123"};
+    int result = findCorrectPassword(foo, 7);
     cout << result;
 }
 
 int main(int argc, const char * argv[]) {
-    sa_tc_03();
+    sa_tc_05();
     system("pause"); // nho remove
     return 0;
 }
