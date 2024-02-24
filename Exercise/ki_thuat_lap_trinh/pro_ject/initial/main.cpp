@@ -42,10 +42,6 @@ void sa_tc_02() {
     if (!readFile(input_file, HP1, HP2, EXP1, EXP2, M1, M2, E1, E2, E3)) {
         return;
     }
-    HP1 = 60; 
-    EXP1 = 120;
-    E2 = 18;
-    M1 = 5;
     cout << "HP1: " << HP1 << ", EXP1: " << EXP1 << ", E2: " << E2 << ", M1: " << M1 << endl;
     int result = traceLuggage(HP1, EXP1, M1, E2);
     cout << "HP1: " << HP1 << ", EXP1: " << EXP1 << ", M1: " << M1 << ", result: " << result << endl;
@@ -94,7 +90,7 @@ void sa_tc_05() {
 }
 
 int main(int argc, const char * argv[]) {
-    sa_tc_05();
+    sa_tc_02();
     system("pause"); // nho remove
     return 0;
 }
