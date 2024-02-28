@@ -325,7 +325,7 @@ int checkPassword(const char * s, const char * email) {
 
     // Get se, that is the part in the left of '@' in the email
     uint8_t delimiterIndex = strchr(email, '@') - email;
-    char se[delimiterIndex + 1] = {};
+    char se[200] = {};
     strncpy(se, email, delimiterIndex);
     const char * sePointer = strstr(s, se);
     // Case 3, password contains se
@@ -350,7 +350,7 @@ int checkPassword(const char * s, const char * email) {
 int findCorrectPassword(const char * arr_pwds[], int num_pwds) {
     // TODO: Complete this function
     // Define the array that contains the index of each password
-    uint8_t indices[num_pwds];
+    uint8_t indices[50];
     for (uint8_t i = 0; i < num_pwds; i++) indices[i] = i;
 
     // Implement the selection sort on the array of passwords
@@ -372,18 +372,19 @@ int findCorrectPassword(const char * arr_pwds[], int num_pwds) {
     }
 
     // Define the array that contains the number of occurrences of each password in the sorted array of passwords
-    uint8_t frequencies[num_pwds] = {1}, currentIndex = 0;
+    uint8_t frequencies[50] = {1}, currentIndex = 0;
     // Define the array that contains the length of each distinct password in the sorted array of passwords
-    size_t lengths[num_pwds] = {strlen(arr_pwds[0])};
+    size_t lengths[50] = {strlen(arr_pwds[0])};
 
     // Calculate values for the two arrays above
     for (uint8_t i = 1; i < num_pwds; i++){
-        if (!strcmp(arr_pwds[i], arr_pwds[i - 1])) frequencies[currentIndex] += 1;
-        else {
+        if (!strcmp(arr_pwds[i], arr_pwds[i - 1])){
+            frequencies[currentIndex] += 1;
+            if (indices[i] < indices[currentIndex]) indices[currentIndex] = indices[i];
+        } else {
             currentIndex++;
             frequencies[currentIndex] = 1;
             lengths[currentIndex] = strlen(arr_pwds[i]);
-            // Index of the first password in the group of identical passwords
             indices[currentIndex] = indices[i];
         }
     }
@@ -392,12 +393,14 @@ int findCorrectPassword(const char * arr_pwds[], int num_pwds) {
     // If two distinct passwords have the same frequency, choose the longer password
     // If two distinct passwords have the same frequency and length, choose the password that appears earlier
     uint8_t maxIndex = 0;
-    for (uint8_t i = 1; i <= currentIndex; i++)
+    for (uint8_t i = 1; i <= currentIndex; i++){
         if (frequencies[i] > frequencies[maxIndex]) maxIndex = i;
-        else if (frequencies[i] == frequencies[maxIndex])
+        else if (frequencies[i] == frequencies[maxIndex]){
             if (lengths[i] > lengths[maxIndex]) maxIndex = i;
             else if (lengths[i] == lengths[maxIndex]) maxIndex = indices[i] > indices[maxIndex] ? maxIndex : i;
-    
+        }
+    }
+        
     return indices[maxIndex];
 }
 

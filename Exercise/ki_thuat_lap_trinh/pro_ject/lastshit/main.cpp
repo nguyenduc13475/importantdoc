@@ -84,8 +84,35 @@ void sa_tc_04() {
 }
 
 void sa_tc_05() {
-    const char* foo[6] = {"pink@123", "123!pink", "1234#xyz", "pink#pink", "pink#pink","pink@123"};
-    int result = findCorrectPassword(foo, 6);
+    const char* foo[28] = {"iKv#FeDKd", "#vgT%VSgL",
+"JcdHZrGK$obOqwwO",
+"j%XNysbjtvG",
+"YJZKULF@",
+"OEbpgbr%xbkDUGCax",
+"leV#KmeWuuBt#",
+"EVFtMMDM%LieIITKZ",
+"iH!FXuAjJSXr",
+"Zmr#kmkZAE",
+"TBEQJCXRmtQj!L",
+"leV#KmeWuuBt#",
+"OEbpgbr%xbkDUGCax",
+"LPVSf!wLFAgaHIJC",
+"JcdHZrGK$obOqwwO",
+"cvFre$lgUmF",
+"#vgT%VSgL",
+"cvFre$lgUmF",
+"!PWtt#DoxYQANg$",
+"%HoMqxhs$",
+"kXdkCwGb%L#aCwoeypuO",
+"iH!FXuAjJSXr",
+"RglWOPpzkp#",
+"JcdHZrGK$obOqwwO",
+"YJZKULF@",
+"Zmr#kmkZAE",
+"OEbpgbr%xbkDUGCax",
+"%HoMqxhs$"};
+
+    int result = findCorrectPassword(foo, 28);
     cout << result;
 }
 
