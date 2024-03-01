@@ -401,7 +401,7 @@ int findCorrectPassword(const char * arr_pwds[], int num_pwds) {
         }
     }
         
-    return indices[0];
+    return indices[maxIndex];
 }
 
 ////////////////////////////////////////////////
