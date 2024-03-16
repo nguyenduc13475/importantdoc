@@ -50,9 +50,6 @@ class TestStudyInPink {
             cout << arr_mv_objs->str() << endl;
             
             delete arr_mv_objs;
-            delete sherlock;
-            delete watson;
-            delete criminal;
             delete map;
         }
 
@@ -95,8 +92,9 @@ class TestStudyInPink {
 };
 
 int main(int argc, const char * argv[]) {
-    TestStudyInPink::satc_01();
-    // TestStudyInPink::satc_02();
+    // TestStudyInPink::satc_01();
+    TestStudyInPink::satc_02();
     // TestStudyInPink::satc_03();
+    system("pause");
     return 0;
 }

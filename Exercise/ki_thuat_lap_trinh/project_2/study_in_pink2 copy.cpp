@@ -1,52 +1,8 @@
-/*
-* Ho Chi Minh City University of Technology
-* Faculty of Computer Science and Engineering
-* Initial code for Assignment 1
-* Programming Fundamentals Spring 2023
-* Author: Vu Van Tien
-* Date: 02.02.2023
-*/
+#include "study_in_pink2.h"
 
-//The library here is concretely set, students are not allowed to include any other libraries.
-#ifndef _H_STUDY_IN_PINK_2_H_
-#define _H_STUDY_IN_PINK_2_H_
-
-#include "main.h"
-
-////////////////////////////////////////////////////////////////////////
-/// STUDENT'S ANSWER BEGINS HERE
-/// Complete the following functions
-/// DO NOT modify any parameters in the functions.
-////////////////////////////////////////////////////////////////////////
-
-// Forward declaration
-// class MovingObject;
-// class Position;
-// class Configuration;
-// class Map;
-
-// class Criminal;
-// class RobotS;
-// class RobotW;
-// class RobotSW;
-// class RobotC;
-
-// class ArrayMovingObject;
-// class StudyPinkProgram;
-
-// class BaseItem;
-// class BaseBag;
-// class SherlockBag;
-// class WatsonBag;
-
-class TestStudyInPink;
-
-enum ItemType {MAGIC_BOOK, ENERGY_DRINK, FIRST_AID, EXCEMPTION_CARD, PASSING_CARD};
-enum ElementType {PATH, WALL, FAKE_WALL};
-enum RobotType {C = 0, S, W, SW};
-
-// Done
 class MapElement {
+    friend class TestStudyInPink;
+
     protected:
         ElementType type;
 
@@ -64,18 +20,24 @@ class MapElement {
 
 // Done
 class Path : public MapElement {
+    friend class TestStudyInPink;
+
     public:
         Path(): MapElement(PATH){}
 };
 
 // Done
 class Wall : public MapElement {
+    friend class TestStudyInPink;
+
     public:
         Wall(): MapElement(WALL){};
 };
 
 // Done
 class FakeWall : public MapElement {
+    friend class TestStudyInPink;
+
     private:
         int req_exp;
     
@@ -88,7 +50,60 @@ class FakeWall : public MapElement {
 };
 
 // Done
+class Position {
+    friend class TestStudyInPink;
+
+    private:
+        int r, c;
+
+    public:
+        static const Position npos;
+
+        Position(int r = 0, int c = 0): r(r), c(c){}
+
+        Position(const string & str_pos){
+            int comma_position = str_pos.find(',');
+            r = stoi(str_pos.substr(1, comma_position - 1));
+            c = stoi(str_pos.substr(comma_position + 1, str_pos.length() - comma_position - 2));
+        }
+
+        int getRow() const {
+            return r;
+        }
+
+        int getCol() const {
+            return c;
+        }
+
+        void setRow(int r) {
+            this->r = r;
+        }
+
+        void setCol(int c) {
+            this->c = c;
+        }
+
+        string str() const {
+            return "(" + std::to_string(r) + "," + std::to_string(r) + ")";
+        }
+
+        bool isEqual(Position y) const {
+            return r == y.r && c == y.c;
+        }
+};
+
+const Position Position::npos = Position(-1, -1);
+
+int operator - (Position x, Position y){
+    return abs(x.getRow() - y.getRow()) + abs(y.getCol() - y.getCol());
+}
+
+const Position Position::npos = Position(-1, -1);
+
+// Done
 class Map {
+    friend class TestStudyInPink;
+
     private:
         int num_rows, num_cols;
         MapElement*** map;
@@ -155,70 +170,25 @@ class Map {
                 string obj_name = mv_obj->getName();
                 if (obj_name == "Sherlock" || obj_name == "Criminal" || obj_name == "") return true;
                 if (obj_name == "Watson"){
-                    if (((Watson*) mv_obj)->getExp() > ((FakeWall*) map[r][c])->getReqExp()) return true;
+                    if (((Character*) mv_obj)->getExp() > ((FakeWall*) map[r][c])->getReqExp()) return true;
                     else return false;
                 }
             }
         }
 
-        int getNumRows(){
+        int getNumRows() const {
             return num_rows;
         }
 
-        int getNumCols(){
+        int getNumCols() const {
             return num_cols;
         }
 };
 
 // Done
-class Position {
-    private:
-        int r, c;
-
-    public:
-        static const Position npos;
-
-        Position(int r = 0, int c = 0): r(r), c(c){}
-
-        Position(const string & str_pos){
-            int comma_position = str_pos.find(',');
-            r = stoi(str_pos.substr(1, comma_position - 1));
-            c = stoi(str_pos.substr(comma_position + 1, str_pos.length() - comma_position - 2));
-        }
-
-        int getRow() const {
-            return r;
-        }
-
-        int getCol() const {
-            return c;
-        }
-
-        void setRow(int r) {
-            this->r = r;
-        }
-
-        void setCol(int c) {
-            this->c = c;
-        }
-
-        string str() const {
-            return "(" + std::to_string(r) + "," + std::to_string(r) + ")";
-        }
-
-        bool isEqual(Position y) const {
-            return r == y.r && c == y.c;
-        }
-
-        int operator - (Position y){
-            return abs(r - y.r) + abs(c - y.c);
-        }
-};
-
-const Position Position::npos = {-1, -1};
-
-// Done
 class MovingObject {
+    friend class TestStudyInPink;
+
     protected:
         int index;
         Position pos;
@@ -250,6 +220,8 @@ class MovingObject {
 
 // Done
 class Character: public MovingObject {
+    friend class TestStudyInPink;
+
     public:
         Character(
             int index, 
@@ -257,10 +229,17 @@ class Character: public MovingObject {
             Map * map,
             const string & name=""
         ): MovingObject(index, pos, map, name) {}
+
+        virtual int getHp() const;
+        virtual int getExp() const;
+        virtual void setHp(int hp);
+        virtual void setExp(int exp);
 };
 
 // Done
 class Sherlock: public Character {
+    friend class TestStudyInPink;
+
     private:
         int hp, exp;
         const string moving_rule;
@@ -300,17 +279,31 @@ class Sherlock: public Character {
             if (!next_position.isEqual(Position::npos)) pos = next_position;
         }
 
-        string str(){
+        string str() const {
             return "Sherlock[index=" + to_string(index) + ";pos=" + pos.str() + ";moving_rule=" + moving_rule + "]";
         }
 
-        int getHp(){
+        int getHp() const {
             return hp;
+        }
+
+        int getExp() const {
+            return exp;
+        }
+
+        void setHp(int hp){
+            this->hp = hp;
+        }
+
+        void setExp(int exp){
+            this->exp = exp;
         }
 };
 
 // Done
 class Watson: public Character {
+    friend class TestStudyInPink;
+
     private:
         int hp, exp;
         const string moving_rule;
@@ -350,21 +343,31 @@ class Watson: public Character {
             if (!next_position.isEqual(Position::npos)) pos = next_position;
         }
 
-        string str(){
+        string str () const {
             return "Watson[index=" + to_string(index) + ";pos=" + pos.str() + ";moving_rule=" + moving_rule + "]";
         }
 
-        int getHp(){
+        int getHp() const {
             return hp;
         }
 
-        int getExp(){
+        int getExp() const {
             return exp;
+        }
+
+        void setHp(int hp){
+            this->hp = hp;
+        }
+
+        void setExp(int exp){
+            this->exp = exp;
         }
 };
 
 // Done
 class Criminal: public Character{
+    friend class TestStudyInPink;
+
     private:
         Sherlock * sherlock;
         Watson * watson;
@@ -413,13 +416,15 @@ class Criminal: public Character{
             if (!next_position.isEqual(Position::npos)) pos = next_position;
         }
 
-        string str(){
+        string str() const {
             return "Criminal[index=" + to_string(index) + ";pos=" + pos.str() + "]";
         }
 };
 
 // Done
 class ArrayMovingObject {
+    friend class TestStudyInPink;
+
     private:
         MovingObject ** arr_mv_objs;
         int count = 0, capacity;
@@ -487,7 +492,7 @@ Position * positionArrayAnalysis(const string & position_array, int n){
 
 // Done
 class Configuration {
-    friend class StudyPinkProgram;
+    friend class TestStudyInPink;
 
     private:
         int map_num_rows, map_num_cols;
@@ -570,61 +575,217 @@ class Configuration {
             ";NUM_STEPS=" + to_string(num_steps);
         }
 
-        Position getSherlockInitPos(){
+        Position getSherlockInitPos() const {
             return sherlock_init_pos;
         }
 
-        Position getWatsonInitPos(){
+        Position getWatsonInitPos() const {
             return watson_init_pos;
         }
 
-        Position getCriminalInitPos(){
+        Position getCriminalInitPos() const {
             return criminal_init_pos;
         }
 
-        int getSherlockInitHp(){
+        int getSherlockInitHp() const {
             return sherlock_init_hp;
         }
 
-        int getWatsonInitHp(){
+        int getWatsonInitHp() const {
             return watson_init_hp;
         }
 
-        int getSherlockInitExp(){
+        int getSherlockInitExp() const {
             return sherlock_init_exp;
         }
 
-        int getWatsonInitExp(){
+        int getWatsonInitExp() const {
             return watson_init_exp;
         }
 
-        string getSherlockMovingRule(){
+        string getSherlockMovingRule() const {
             return sherlock_moving_rule;
         }
 
-        string getWatsonMovingRule(){
+        string getWatsonMovingRule() const {
             return watson_moving_rule;
+        }
+
+        int getNumSteps() const {
+            return num_steps;
         }
 };
 
 // Robot, BaseItem, BaseBag,...
 class BaseItem {
+    friend class TestStudyInPink;
 
+    protected:
+        BaseItem * next_item_ptr;
+        ItemType item_type;
+
+    public:
+        BaseItem(ItemType item_type): item_type(item_type){}
+
+        virtual bool canUse(Character * obj, Robot * robot) = 0;
+
+        virtual void use(Character * obj, Robot * robot) = 0;
+
+        BaseItem * getNextItemPtr() const {
+            return next_item_ptr;
+        }
+
+        ItemType getType() const {
+            return item_type;
+        }
+};
+
+class MagicBook: public BaseItem {
+    friend class TestStudyInPink;
+
+    public:
+        MagicBook(): BaseItem(MAGIC_BOOK){}
+
+        bool canUse(Character * obj, Robot * robot){
+            if (obj->getExp() <= 350) return true;
+            return false;
+        }
+
+        void use(Character * obj, Robot * robot){
+            obj->setExp(obj->getExp() * 1.25);
+        }
+};
+
+class EnergyDrink: public BaseItem {
+    friend class TestStudyInPink;
+
+    public:
+        EnergyDrink(): BaseItem(ENERGY_DRINK){}
+
+        bool canUse(Character * obj, Robot * robot){
+            if (obj->getHp() <= 100) return true;
+            return false;
+        }
+
+        void use(Character * obj, Robot * robot){
+            obj->setHp(obj->getHp() * 1.2);
+        }
+};
+
+class FirstAid: public BaseItem {
+    friend class TestStudyInPink;
+
+    public:
+        FirstAid(): BaseItem(FIRST_AID){}
+
+        bool canUse(Character * obj, Robot * robot){
+            if (obj->getHp() <= 100 || obj->getExp() <= 350) return true;
+            return false;
+        }
+
+        void use(Character * obj, Robot * robot){
+            obj->setHp(obj->getHp() * 1.5);
+        }
+};
+
+class ExcemptionCard: public BaseItem {
+    friend class TestStudyInPink;
+
+    public:
+        ExcemptionCard(): BaseItem(EXCEMPTION_CARD){}
+
+        bool canUse(Character * obj, Robot * robot){
+            if (obj->getName() == "Sherlock" && obj->getHp() % 2) return true;
+            return false;
+        }
+
+        void use(Character * obj, Robot * robot){
+            //TODO
+        }
+};
+
+int recursiveSumOfDigits(int n) {
+    if (n <= 9) return n;
+
+    int sum = 0;
+    while (n != 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+
+    return recursiveSumOfDigits(sum);
+}
+
+class PassingCard: public BaseItem {
+    friend class TestStudyInPink;
+
+    private:
+        string challenge;
+
+    public:
+        PassingCard(): BaseItem(PASSING_CARD){}
+
+        bool canUse(Character * obj, Robot * robot){
+            if (obj->getName() == "Watson" && !(obj->getHp() % 2)) return true;
+            return false;
+        }
+
+        void use(Character * obj, Robot * robot){
+            //TODO
+            // if (challenge == robot->getType())
+        }
 };
 
 class BaseBag {
+    friend class TestStudyInPink;
+
+    private:
+        Character * obj;
+        int count;
+        BaseItem * first_item;
     
+    public:
+        virtual bool insert (BaseItem* item);
+
+        virtual BaseItem* get();
+
+        virtual BaseItem* get(ItemType itemType);
+
+        virtual string str() const {
+            string information = "Bag[count=" + to_string(count) + ";";
+            BaseItem * traveler = first_item;
+
+            while (traveler){
+                switch(traveler->getType()){
+                    case MAGIC_BOOK: information += "MagicBook"; break;
+                    case ENERGY_DRINK: information += "EnergyDrink"; break;
+                    case FIRST_AID: information += "FirstAid"; break;
+                    case EXCEMPTION_CARD: information += "ExcemptionCard"; break;
+                    case PASSING_CARD: information += "PassingCard";
+                }
+
+                if (traveler->getNextItemPtr()) information += ";";
+                else information += "]";
+            }
+
+            return  information;
+        };
 };
 
 class SherlockBag: BaseBag {
+    friend class TestStudyInPink;
+
     
 };
 
 class WatsonBag: BaseBag {
+    friend class TestStudyInPink;
     
 };
 
 class Robot: public MovingObject {
+    friend class TestStudyInPink;
+
     protected:
         RobotType robot_type;
         BaseItem * item;
@@ -636,9 +797,17 @@ class Robot: public MovingObject {
             Map * map, 
             RobotType robot_type
         ): MovingObject(index, init_pos, map), robot_type(robot_type){}
+
+        virtual string str() const = 0;
+
+        RobotType getType() const {
+            return robot_type;
+        }
 };
 
 class RobotC: public Robot {
+    friend class TestStudyInPink;
+
     private:
         Criminal * criminal;
 
@@ -647,20 +816,34 @@ class RobotC: public Robot {
             int index, 
             const Position & init_pos, 
             Map * map,
-            RobotType robot_type, 
             Criminal* criminal
-        ): Robot(index, init_pos, map, robot_type), criminal(criminal){}
+        ): Robot(index, init_pos, map, C), criminal(criminal){}
 
         Position getNextPosition(){
             return criminal->getCurrentPosition();
         }
 
+        Position getCurrentPosition() const {
+            return pos;
+        }
+
         void move(){
             pos = getNextPosition();
+        }
+
+        int getDistance(Character * character) const {
+            if (character->getName() == "Sherlock") return pos - character->getCurrentPosition();
+            else if (character->getName() == "Watson") return pos - character->getCurrentPosition();
+        }
+
+        string str() const {
+            return "Robot[pos=" + pos.str() + ";type=C" + ";dist=]";
         }
 };
 
 class RobotS: public Robot {
+    friend class TestStudyInPink;
+
     private:
         Criminal * criminal;
         Sherlock * sherlock;
@@ -670,10 +853,9 @@ class RobotS: public Robot {
             int index, 
             const Position & init_pos, 
             Map * map,
-            RobotType robot_type, 
             Criminal* criminal,
             Sherlock * sherlock
-        ): Robot(index, init_pos, map, robot_type), criminal(criminal), sherlock(sherlock){}
+        ): Robot(index, init_pos, map, S), criminal(criminal), sherlock(sherlock){}
 
         Position getNextPosition(){
             int r = pos.getRow();
@@ -698,17 +880,32 @@ class RobotS: public Robot {
                 }
             }
             
-            if 
-            return min_position;
+            if (map->isValid(min_position, this)) return min_position;
+            else return Position::npos;
+        }
+
+        Position getCurrentPosition() const {
+            return pos;
         }
 
         void move(){
             Position next_position = getNextPosition();
             if (!next_position.isEqual(Position::npos)) pos = next_position;
         }
+
+        int getDistance() const {
+            return pos - sherlock->getCurrentPosition();
+        }
+
+        string str () const {
+            int foo = getDistance();
+            return "Robot[pos=" + pos.str() + ";type=S" + ";dist=" + to_string(getDistance()) + "]";
+        }
 };
 
 class RobotW: public Robot {
+    friend class TestStudyInPink;
+
     private:
         Criminal * criminal;
         Watson * watson;
@@ -718,16 +915,15 @@ class RobotW: public Robot {
             int index, 
             const Position & init_pos, 
             Map * map,
-            RobotType robot_type, 
             Criminal* criminal,
             Watson * watson
-        ): Robot(index, init_pos, map, robot_type), criminal(criminal), watson(watson){}
+        ): Robot(index, init_pos, map, W), criminal(criminal), watson(watson){}
 
         Position getNextPosition(){
             int r = pos.getRow();
             int c = pos.getCol();
             int min_distance = INT_MAX;
-            Position min_position = Position::npos;
+            Position min_position;
             Position temp;
 
             for (int i = 0; i < 4; i++){
@@ -745,17 +941,32 @@ class RobotW: public Robot {
                     min_position = temp;
                 }
             }
+            
+            if (map->isValid(min_position, this)) return min_position;
+            else return Position::npos;
+        }
 
-            return min_position;
+        Position getCurrentPosition() const {
+            return pos;
         }
 
         void move(){
             Position next_position = getNextPosition();
             if (!next_position.isEqual(Position::npos)) pos = next_position;
         }
+
+        int getDistance() const {
+            return pos - watson->getCurrentPosition();
+        }
+
+        string str () const {
+            return "Robot[pos=" + pos.str() + ";type=S" + ";dist=" + to_string(getDistance()) + "]";
+        }
 };
 
 class RobotSW: public Robot {
+    friend class TestStudyInPink;
+
     private:
         Criminal * criminal;
         Sherlock * sherlock;
@@ -766,17 +977,16 @@ class RobotSW: public Robot {
             int index, 
             const Position & init_pos, 
             Map * map,
-            RobotType robot_type, 
             Criminal* criminal,
             Sherlock * sherlock,
             Watson * watson
-        ): Robot(index, init_pos, map, robot_type), criminal(criminal), sherlock(sherlock), watson(watson){}
+        ): Robot(index, init_pos, map, SW), criminal(criminal), sherlock(sherlock), watson(watson){}
 
         Position getNextPosition(){
             int r = pos.getRow();
             int c = pos.getCol();
             int min_distance = INT_MAX;
-            Position min_position = Position::npos;
+            Position min_position;
             Position temp;
 
             for (int i = 0; i < 8; i++){
@@ -791,7 +1001,7 @@ class RobotSW: public Robot {
                     case 7: temp = Position(r - 2, c);
                 }
 
-                int distance = (temp - sherlock->getCurrentPosition()) - (temp - watson->getCurrentPosition());
+                int distance = (temp - sherlock->getCurrentPosition()) + (temp - watson->getCurrentPosition());
                 
                 if (distance < min_distance){
                     min_distance = distance;
@@ -799,16 +1009,31 @@ class RobotSW: public Robot {
                 }
             }
 
-            return min_position;
+            if (map->isValid(min_position, this)) return min_position;
+            else return Position::npos;
+        }
+
+        Position getCurrentPosition() const {
+            return pos;
         }
 
         void move(){
             Position next_position = getNextPosition();
             if (!next_position.isEqual(Position::npos)) pos = next_position;
-        }   
+        }
+
+        int getDistance() const {
+            return (pos - sherlock->getCurrentPosition()) + (pos - watson->getCurrentPosition());
+        }
+
+        string str() const {
+            return "Robot[pos=" + pos.str() + ";type=S" + ";dist=" + to_string(getDistance()) + "]";
+        }
 };
 
 class StudyPinkProgram {
+    friend class TestStudyInPink;
+
     private:
         Configuration * config;
         Sherlock * sherlock;
@@ -820,6 +1045,7 @@ class StudyPinkProgram {
     public:
         StudyPinkProgram(const string & config_file_path){
             config = new Configuration(config_file_path);
+
             sherlock = new Sherlock(
                 1,
                 config->getSherlockMovingRule(),
@@ -849,11 +1075,15 @@ class StudyPinkProgram {
             arr_mv_objs->add(criminal);
             arr_mv_objs->add(sherlock);
             arr_mv_objs->add(watson);
-        };
+        }
 
         bool isStop() const {
-            return !sherlock->getHp() || !watson->getHp();
-        };
+            return 
+                !sherlock->getHp() || 
+                !watson->getHp() || 
+                sherlock->getCurrentPosition().isEqual(criminal->getCurrentPosition()) ||
+                watson->getCurrentPosition().isEqual(criminal->getCurrentPosition());
+        }
 
         void printResult() const {
             if (sherlock->getCurrentPosition().isEqual(criminal->getCurrentPosition())) {
@@ -874,7 +1104,7 @@ class StudyPinkProgram {
         }
 
         void run(bool verbose) {
-            for (int istep = 0; istep < config->num_steps; ++istep) {
+            for (int istep = 0; istep < config->getNumSteps(); ++istep) {
                 for (int i = 0; i < arr_mv_objs->size(); ++i) {
                     arr_mv_objs->get(i)->move();
 
@@ -893,8 +1123,3 @@ class StudyPinkProgram {
 
         ~StudyPinkProgram();
 };
-
-////////////////////////////////////////////////
-/// END OF STUDENT'S ANSWER
-////////////////////////////////////////////////
-#endif /* _H_STUDY_IN_PINK_2_H_ */

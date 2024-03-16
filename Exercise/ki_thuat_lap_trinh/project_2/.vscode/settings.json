@@ -26,6 +26,13 @@
         "streambuf": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "array": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "functional": "cpp",
+        "stdexcept": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp"
     }
 }
