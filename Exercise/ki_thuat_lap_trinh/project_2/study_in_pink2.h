@@ -235,6 +235,7 @@ class Criminal: public Character{
     private:
         Sherlock * sherlock;
         Watson * watson;
+        int move_step = 0;
 
     public:
         Criminal(
@@ -252,6 +253,8 @@ class Criminal: public Character{
         Position getCurrentPosition() const;
 
         void move();
+
+        int getMoveStep() const;
 
         string str() const;
 };
@@ -306,11 +309,13 @@ class BaseItem {
     friend class TestStudyInPink;
 
     protected:
-        BaseItem * next_item_ptr;
+        BaseItem * next_item_ptr = nullptr;
         ItemType item_type;
 
     public:
         BaseItem(ItemType item_type);
+
+        virtual ~BaseItem();
 
         virtual bool canUse(Character * obj, Robot * robot) = 0;
 
@@ -318,25 +323,126 @@ class BaseItem {
 
         BaseItem * getNextItemPtr() const;
 
+        void setNextItemPtr(BaseItem * next_item_ptr);
+
         ItemType getType() const;
+};
+
+class MagicBook: public BaseItem {
+    friend class TestStudyInPink;
+
+    public:
+        MagicBook();
+
+        virtual ~MagicBook();
+
+        bool canUse(Character * obj, Robot * robot);
+
+        void use(Character * obj, Robot * robot);
+};
+
+class EnergyDrink: public BaseItem {
+    friend class TestStudyInPink;
+
+    public:
+        EnergyDrink();
+
+        virtual ~EnergyDrink();
+
+        bool canUse(Character * obj, Robot * robot);
+
+        void use(Character * obj, Robot * robot);
+};
+
+class FirstAid: public BaseItem {
+    friend class TestStudyInPink;
+
+    public:
+        FirstAid();
+
+        virtual ~FirstAid();
+
+        bool canUse(Character * obj, Robot * robot);
+
+        void use(Character * obj, Robot * robot);
+};
+
+class ExcemptionCard: public BaseItem {
+    friend class TestStudyInPink;
+
+    public:
+        ExcemptionCard();
+
+        virtual ~ExcemptionCard();
+
+        bool canUse(Character * obj, Robot * robot);
+
+        void use(Character * obj, Robot * robot);
+};
+
+class PassingCard: public BaseItem {
+    friend class TestStudyInPink;
+
+    private:
+        const string challenge;
+
+    public:
+        PassingCard(const string & challenge);
+
+        virtual ~PassingCard();
+
+        bool canUse(Character * obj, Robot * robot);
+
+        void use(Character * obj, Robot * robot);
 };
 
 class BaseBag {
     friend class TestStudyInPink;
 
-    private:
+    protected:
         Character * obj;
         int count;
+        int capacity;
         BaseItem * first_item;
     
     public:
+        BaseBag(Character * obj);
+
+        virtual ~BaseBag();
+
         virtual bool insert (BaseItem* item);
 
-        virtual BaseItem* get();
+        virtual BaseItem* get(Robot * robot);
 
-        virtual BaseItem* get(ItemType itemType);
+        virtual BaseItem* get(ItemType itemType, Robot * robot);
 
-        virtual string str() const;
+        virtual string str() const = 0;
+};
+
+class SherlockBag: public BaseBag {
+    friend class TestStudyInPink;
+
+    public:
+        SherlockBag(Sherlock * sherlock);
+
+        virtual ~SherlockBag();
+
+        BaseItem* get(ItemType itemType);
+
+        string str() const;
+};
+
+class WatsonBag: public BaseBag {
+    friend class TestStudyInPink;
+
+    public:
+        WatsonBag(Watson * watson);
+
+        virtual ~WatsonBag();
+
+        BaseItem* get(ItemType itemType);
+
+        string str() const;
 };
 
 class Robot: public MovingObject {
