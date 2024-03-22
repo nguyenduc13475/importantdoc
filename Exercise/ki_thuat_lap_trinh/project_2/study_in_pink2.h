@@ -73,7 +73,11 @@ class Position {
         string str() const;
 
         bool isEqual(Position y) const;
+
+        bool isEqual(int in_r, int in_c) const;
 };
+
+int operator - (Position x, Position y);
 
 class Map;
 
@@ -153,6 +157,12 @@ class Character: public MovingObject {
         virtual void setHp(int hp);
 
         virtual void setExp(int exp);
+
+        virtual bool isInvincible() const;
+
+        virtual void setInvincible();
+
+        virtual void setVulnerable();
 };
 
 class Sherlock: public Character {
@@ -162,6 +172,7 @@ class Sherlock: public Character {
         int hp, exp;
         const string moving_rule;
         int move_step = 0;
+        bool invincible = false;
         
     public:
         Sherlock(
@@ -190,6 +201,14 @@ class Sherlock: public Character {
         void setHp(int hp);
 
         void setExp(int exp);
+
+        bool isInvincible() const;
+
+        void setInvincible();
+
+        void setVulnerable();
+
+        void teleport(Position new_position);
 };
 
 class Watson: public Character {
@@ -199,6 +218,7 @@ class Watson: public Character {
         int hp, exp;
         const string moving_rule;
         int move_step = 0;
+        bool invincible = false;
 
     public:
         Watson(
@@ -227,6 +247,14 @@ class Watson: public Character {
         void setHp(int hp);
 
         void setExp(int exp);
+
+        bool isInvincible() const;
+
+        void setInvincible();
+
+        void setVulnerable();
+
+        void teleport(Position new_position);
 };
 
 class Criminal: public Character{
@@ -282,10 +310,12 @@ class ArrayMovingObject {
         string str() const;
 };
 
+Position * positionArrayAnalysis(const string & position_array, int n);
+
 class Configuration {
     friend class TestStudyInPink;
 
-    public:
+    private:
         int map_num_rows, map_num_cols;
         int max_num_moving_objects;
         int num_walls, num_fake_walls;
@@ -301,6 +331,28 @@ class Configuration {
         virtual ~Configuration();
 
         string str() const;
+
+        int getNumSteps() const;
+
+        string getSherlockMovingRule() const;
+
+        Position getSherlockInitPos() const;
+
+        int getSherlockInitHp() const;
+
+        int getSherlockInitExp() const;
+
+        string getWatsonMovingRule() const;
+
+        Position getWatsonInitPos() const;
+
+        int getWatsonInitHp() const;
+
+        int getWatsonInitExp() const;
+
+        Position getCriminalInitPos() const;
+
+        int getMaxNumMovingObjects() const;
 };
 
 class Robot;
@@ -327,6 +379,10 @@ class BaseItem {
 
         ItemType getType() const;
 };
+
+int dCeil(double n);
+
+int clamp(int n, int lowerBound, int upperBound);
 
 class MagicBook: public BaseItem {
     friend class TestStudyInPink;
@@ -387,7 +443,7 @@ class PassingCard: public BaseItem {
         const string challenge;
 
     public:
-        PassingCard(const string & challenge);
+        PassingCard(int t);
 
         virtual ~PassingCard();
 
@@ -412,11 +468,13 @@ class BaseBag {
 
         virtual bool insert (BaseItem* item);
 
-        virtual BaseItem* get(Robot * robot);
+        virtual BaseItem* get();
 
-        virtual BaseItem* get(ItemType itemType, Robot * robot);
+        virtual BaseItem* get(ItemType itemType);
 
-        virtual string str() const = 0;
+        virtual BaseItem* getRestore();
+
+        virtual string str() const;
 };
 
 class SherlockBag: public BaseBag {
@@ -426,10 +484,6 @@ class SherlockBag: public BaseBag {
         SherlockBag(Sherlock * sherlock);
 
         virtual ~SherlockBag();
-
-        BaseItem* get(ItemType itemType);
-
-        string str() const;
 };
 
 class WatsonBag: public BaseBag {
@@ -439,10 +493,6 @@ class WatsonBag: public BaseBag {
         WatsonBag(Watson * watson);
 
         virtual ~WatsonBag();
-
-        BaseItem* get(ItemType itemType);
-
-        string str() const;
 };
 
 class Robot: public MovingObject {
@@ -464,6 +514,8 @@ class Robot: public MovingObject {
         virtual string str() const = 0;
 
         RobotType getType() const;
+
+        BaseItem * getItem() const;
 };
 
 class RobotC: public Robot {
@@ -585,6 +637,9 @@ class StudyPinkProgram {
         Criminal * criminal;
         Map * map;
         ArrayMovingObject * arr_mv_objs;
+        bool is_first_robot = true;
+        SherlockBag * sherlock_bag;
+        WatsonBag * watson_bag;
 
     public:
         StudyPinkProgram(const string & config_file_path);

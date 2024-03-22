@@ -57,10 +57,14 @@ bool Position::isEqual(Position y) const {
     return r == y.r && c == y.c;
 }
 
+bool Position::isEqual(int in_r, int in_c) const {
+    return r == in_r && c == in_c;
+}
+
 const Position Position::npos = Position(-1, -1);
 
 int operator - (Position x, Position y){
-    return abs(x.getRow() - y.getRow()) + abs(y.getCol() - y.getCol());
+    return abs(x.getRow() - y.getRow()) + abs(x.getCol() - y.getCol());
 }
 
 // Map
@@ -140,7 +144,7 @@ bool Map::isValid(const Position &pos , MovingObject *mv_obj) const {
         string obj_name = mv_obj->getName();
         if (obj_name == "Sherlock" || obj_name == "Criminal" || obj_name == "") return true;
         if (obj_name == "Watson"){
-            if (((Character*) mv_obj)->getExp() > ((FakeWall*) map[r][c])->getReqExp()) return true;
+            if (((Character*) mv_obj)->getExp() >= ((FakeWall*) map[r][c])->getReqExp()) return true;
             else return false;
         }
     }
@@ -171,6 +175,12 @@ int Character::getExp() const {}
 void Character::setHp(int hp){}
 
 void Character::setExp(int exp){}
+
+bool Character::isInvincible() const {return false;}
+
+void Character::setInvincible() {};
+
+void Character::setVulnerable() {};
 
 // Sherlock
 Sherlock::Sherlock(
@@ -206,6 +216,7 @@ Position Sherlock::getCurrentPosition() const {
 void Sherlock::move(){
     Position next_position = getNextPosition();
     if (!next_position.isEqual(Position::npos)) pos = next_position;
+    move_step = (move_step + 1) % moving_rule.length();
 }
 
 string Sherlock::str() const {
@@ -226,6 +237,22 @@ void Sherlock::setHp(int hp){
 
 void Sherlock::setExp(int exp){
     this->exp = exp;
+}
+
+bool Sherlock::isInvincible() const {
+    return invincible;
+}
+
+void Sherlock::setInvincible() {
+    this->invincible = true;
+}
+
+void Sherlock::setVulnerable() {
+    this->invincible = false;
+}
+
+void Sherlock::teleport(Position new_position){
+    pos = new_position;
 }
 
 // Watson
@@ -262,6 +289,7 @@ Position Watson::getCurrentPosition() const {
 void Watson::move(){
     Position next_position = getNextPosition();
     if (!next_position.isEqual(Position::npos)) pos = next_position;
+    move_step = (move_step + 1) % moving_rule.length();
 }
 
 string Watson::str () const {
@@ -282,6 +310,22 @@ void Watson::setHp(int hp){
 
 void Watson::setExp(int exp){
     this->exp = exp;
+}
+
+bool Watson::isInvincible() const {
+    return invincible;
+}
+
+void Watson::setInvincible() {
+    this->invincible = true;
+}
+
+void Watson::setVulnerable() {
+    this->invincible = false;
+}
+
+void Watson::teleport(Position new_position){
+    pos = new_position;
 }
 
 // Criminal
@@ -313,7 +357,7 @@ Position Criminal::getNextPosition(){
         int distance = (temp - sherlock->getCurrentPosition()) + (temp - watson->getCurrentPosition());
         
         if (
-            distance > max_distance && 
+            distance >= max_distance && 
             map->isValid(temp, this) && 
             !temp.isEqual(sherlock->getCurrentPosition()) &&
             !temp.isEqual(watson->getCurrentPosition())
@@ -366,7 +410,6 @@ bool ArrayMovingObject::isFull() const {
 
 bool ArrayMovingObject::add(MovingObject * mv_obj){
     if (isFull()) {
-        delete mv_obj;
         return false;
     } else {
         arr_mv_objs[count] = mv_obj;
@@ -388,6 +431,7 @@ string ArrayMovingObject::str() const {
 
     for (int i = 0; i < count; i++) information += ";" + arr_mv_objs[i]->str();
 
+    information += "]";
     return information;
 }
 
@@ -430,7 +474,7 @@ Configuration::Configuration(const string & filepath){
         else if (attribute_name == "SHERLOCK_INIT_POS") sherlock_init_pos = Position(attribute_value);
         else if (attribute_name == "SHERLOCK_INIT_HP") sherlock_init_hp = stoi(attribute_value);
         else if (attribute_name == "SHERLOCK_INIT_EXP") sherlock_init_exp = stoi(attribute_value);
-        else if (attribute_name == "WATSON_MOVING_RULE") sherlock_moving_rule = attribute_value;
+        else if (attribute_name == "WATSON_MOVING_RULE") watson_moving_rule = attribute_value;
         else if (attribute_name == "WATSON_INIT_POS") watson_init_pos = Position(attribute_value);
         else if (attribute_name == "WATSON_INIT_HP") watson_init_hp = stoi(attribute_value);
         else if (attribute_name == "WATSON_INIT_EXP") watson_init_exp = stoi(attribute_value);
@@ -451,8 +495,9 @@ string Configuration::str() const {
     for (int i = 0; i < num_walls; i++){
         arr_walls_str += arr_walls[i].str();
         if (i < num_walls - 1) arr_walls_str += ";";
-        else arr_walls_str += "]";
     }
+
+    arr_walls_str += "]";
 
     for (int i = 0; i < num_fake_walls; i++){
         arr_fake_walls_str += arr_fake_walls[i].str();
@@ -462,27 +507,73 @@ string Configuration::str() const {
     arr_fake_walls_str += "]";
 
     return 
-    "Configuration[MAP_NUM_ROWS=" + to_string(map_num_rows) + 
-    ";MAP_NUM_COLS=" + to_string(map_num_cols) +
-    ";MAX_NUM_MOVING_OBJECTS=" + to_string(max_num_moving_objects) +
-    ";NUM_WALLS=" + to_string(num_walls) +
-    ";ARRAY_WALLS=" + arr_walls_str +
-    ";NUM_FAKE_WALLS=" + to_string(num_fake_walls) +
-    ";ARRAY_FAKE_WALLS=" + arr_fake_walls_str +
-    ";SHERLOCK_MOVING_RULE=" + sherlock_moving_rule +
-    ";SHERLOCK_INIT_POS=" + sherlock_init_pos.str() +
-    ";SHERLOCK_INIT_HP=" + to_string(sherlock_init_hp) +
-    ";SHERLOCK_INIT_EXP=" + to_string(sherlock_init_exp) +
-    ";WATSON_MOVING_RULE=" + watson_moving_rule +
-    ";WATSON_INIT_POS=" + watson_init_pos.str() +
-    ";WATSON_INIT_HP=" + to_string(watson_init_hp) +
-    ";WATSON_INIT_EXP=" + to_string(watson_init_exp) +
-    ";CRIMINAL_INIT_POS=" + criminal_init_pos.str() +
-    ";NUM_STEPS=" + to_string(num_steps);
+    "Configuration[\nMAP_NUM_ROWS=" + to_string(map_num_rows) + 
+    "\nMAP_NUM_COLS=" + to_string(map_num_cols) +
+    "\nMAX_NUM_MOVING_OBJECTS=" + to_string(max_num_moving_objects) +
+    "\nNUM_WALLS=" + to_string(num_walls) +
+    "\nARRAY_WALLS=" + arr_walls_str +
+    "\nNUM_FAKE_WALLS=" + to_string(num_fake_walls) +
+    "\nARRAY_FAKE_WALLS=" + arr_fake_walls_str +
+    "\nSHERLOCK_MOVING_RULE=" + sherlock_moving_rule +
+    "\nSHERLOCK_INIT_POS=" + sherlock_init_pos.str() +
+    "\nSHERLOCK_INIT_HP=" + to_string(sherlock_init_hp) +
+    "\nSHERLOCK_INIT_EXP=" + to_string(sherlock_init_exp) +
+    "\nWATSON_MOVING_RULE=" + watson_moving_rule +
+    "\nWATSON_INIT_POS=" + watson_init_pos.str() +
+    "\nWATSON_INIT_HP=" + to_string(watson_init_hp) +
+    "\nWATSON_INIT_EXP=" + to_string(watson_init_exp) +
+    "\nCRIMINAL_INIT_POS=" + criminal_init_pos.str() +
+    "\nNUM_STEPS=" + to_string(num_steps) + "\n]";
+}
+
+int Configuration::getNumSteps() const {
+    return num_steps;
+}
+
+string Configuration::getSherlockMovingRule() const {
+    return sherlock_moving_rule;
+}
+
+Position Configuration::getSherlockInitPos() const {
+    return sherlock_init_pos;
+}
+
+int Configuration::getSherlockInitHp() const {
+    return sherlock_init_hp;
+}
+
+int Configuration::getSherlockInitExp() const {
+    return sherlock_init_exp;
+}
+
+string Configuration::getWatsonMovingRule() const {
+    return watson_moving_rule;
+}
+
+Position Configuration::getWatsonInitPos() const {
+    return watson_init_pos;
+}
+
+int Configuration::getWatsonInitHp() const {
+    return watson_init_hp;
+}
+
+int Configuration::getWatsonInitExp() const {
+    return watson_init_exp;
+}
+
+Position Configuration::getCriminalInitPos() const {
+    return criminal_init_pos;
+}
+
+int Configuration::getMaxNumMovingObjects() const {
+    return max_num_moving_objects;
 }
 
 // BaseItem
 BaseItem::BaseItem(ItemType item_type): item_type(item_type){}
+
+BaseItem::~BaseItem(){}
 
 BaseItem * BaseItem::getNextItemPtr() const {
     return next_item_ptr;
@@ -496,18 +587,25 @@ ItemType BaseItem::getType() const {
     return item_type;
 }
 
+int dCeil(double n){
+    return n + 0.999999;
+}
+
+int clamp(int n, int lowerBound, int upperBound){
+    return max(lowerBound, min(upperBound, n));
+}
+
 // MagicBook
 MagicBook::MagicBook(): BaseItem(MAGIC_BOOK){}
 
 MagicBook::~MagicBook(){}
 
 bool MagicBook::canUse(Character * obj, Robot * robot){
-    if (obj->getExp() <= 350) return true;
-    return false;
+    return obj->getExp() <= 350;
 }
 
 void MagicBook::use(Character * obj, Robot * robot){
-    obj->setExp(obj->getExp() * 1.25);
+    obj->setExp(clamp(dCeil(obj->getExp() * 1.25), 0, 900));
 }
 
 // EnergyDrink
@@ -516,12 +614,11 @@ EnergyDrink::EnergyDrink(): BaseItem(ENERGY_DRINK){}
 EnergyDrink::~EnergyDrink(){}
 
 bool EnergyDrink::canUse(Character * obj, Robot * robot){
-    if (obj->getHp() <= 100) return true;
-    return false;
+    return obj->getHp() <= 100;
 }
 
 void EnergyDrink::use(Character * obj, Robot * robot){
-    obj->setHp(obj->getHp() * 1.2);
+    obj->setHp(clamp(dCeil(obj->getHp() * 1.2), 0, 500));
 }
 
 // FirstAid
@@ -530,12 +627,11 @@ FirstAid::FirstAid(): BaseItem(FIRST_AID){}
 FirstAid::~FirstAid(){}
 
 bool FirstAid::canUse(Character * obj, Robot * robot){
-    if (obj->getHp() <= 100 || obj->getExp() <= 350) return true;
-    return false;
+    return obj->getHp() <= 100 || obj->getExp() <= 350;
 }
 
 void FirstAid::use(Character * obj, Robot * robot){
-    obj->setHp(obj->getHp() * 1.5);
+    obj->setHp(clamp(dCeil(obj->getHp() * 1.5), 0, 500));
 }
 
 // ExcemptionCard
@@ -544,28 +640,37 @@ ExcemptionCard::ExcemptionCard(): BaseItem(EXCEMPTION_CARD){}
 ExcemptionCard::~ExcemptionCard(){}
 
 bool ExcemptionCard::canUse(Character * obj, Robot * robot){
-    if (obj->getName() == "Sherlock" && obj->getHp() % 2) return true;
-    return false;
+    return obj->getName() == "Sherlock" && obj->getHp() % 2;
 }
 
 void ExcemptionCard::use(Character * obj, Robot * robot){
-    //TODO
+    obj->setInvincible();
 }
 
 // PassingCard
 
-PassingCard::PassingCard(const string & challenge): BaseItem(PASSING_CARD), challenge(challenge){}
+PassingCard::PassingCard(int t): 
+    BaseItem(PASSING_CARD), 
+    challenge(t == 0 ? "RobotS" : t == 1 ? "RobotC" : t == 2 ? "RobotSW" : "all")
+{}
 
 PassingCard::~PassingCard(){}
 
 bool PassingCard::canUse(Character * obj, Robot * robot){
-    if (obj->getName() == "Watson" && !(obj->getHp() % 2)) return true;
-    return false;
+    return obj->getName() == "Watson" && !(obj->getHp() % 2);
 }
 
 void PassingCard::use(Character * obj, Robot * robot){
-    //TODO
-    // if (challenge == robot->getType())
+    string robot_name;
+    switch (robot->getType()){
+        case C: robot_name = "RobotC"; break;
+        case W: robot_name = "RobotW"; break;
+        case S: robot_name = "RobotS"; break;
+        case SW: robot_name = "RobotSW"; break;
+    }
+
+    if (challenge != "all" && challenge != robot_name) obj->setExp(clamp(obj->getExp() - 50, 0, 900));
+    obj->setInvincible();
 }
 
 // BaseBag
@@ -604,12 +709,12 @@ bool BaseBag::insert(BaseItem* item){
     return true;
 }
 
-BaseItem * BaseBag::get(ItemType itemType, Robot * robot){
+BaseItem * BaseBag::get(ItemType itemType){
     BaseItem * traveler = first_item;
     BaseItem * previous_traveler = nullptr;
 
     while (traveler){
-        if (traveler->canUse(obj, robot) && traveler->getType() == itemType){
+        if (traveler->canUse(obj, nullptr) && traveler->getType() == itemType){
             if (traveler != first_item){
                 BaseItem * temp = traveler->getNextItemPtr();
                 previous_traveler->setNextItemPtr(first_item);
@@ -630,12 +735,38 @@ BaseItem * BaseBag::get(ItemType itemType, Robot * robot){
     return nullptr;
 }
 
-BaseItem * BaseBag::get(Robot * robot){
+BaseItem * BaseBag::get(){
     BaseItem * traveler = first_item;
     BaseItem * previous_traveler = nullptr;
 
     while (traveler){
-        if (traveler->canUse(obj, robot)){
+        if (traveler->canUse(obj, nullptr)){
+            if (traveler != first_item){
+                BaseItem * temp = traveler->getNextItemPtr();
+                previous_traveler->setNextItemPtr(first_item);
+                traveler->setNextItemPtr(first_item->getNextItemPtr());
+                first_item->setNextItemPtr(temp);
+                first_item = traveler;
+            }
+
+            first_item = first_item->getNextItemPtr();
+            traveler->setNextItemPtr(nullptr);
+            return traveler;
+        }
+
+        previous_traveler = traveler;
+        traveler = traveler->getNextItemPtr();
+    }
+
+    return nullptr;
+}
+
+BaseItem * BaseBag::getRestore(){
+    BaseItem * traveler = first_item;
+    BaseItem * previous_traveler = nullptr;
+
+    while (traveler){
+        if (traveler->canUse(obj, nullptr) && traveler->getType() != PASSING_CARD && traveler->getType() != EXCEMPTION_CARD){
             if (traveler != first_item){
                 BaseItem * temp = traveler->getNextItemPtr();
                 previous_traveler->setNextItemPtr(first_item);
@@ -699,14 +830,18 @@ Robot::Robot(
         case 7: item = new ExcemptionCard(); break;
         case 8:
         case 9: 
-            int t = (r * 11 + j) % 4;
-            item = new PassingCard(t == 0 ? "RobotS" : t == 1 ? "RobotC" : t == 2 ? "RobotSW" : "all"); 
+            int t = (r * 11 + c) % 4;
+            item = new PassingCard(t); 
             break;
     }
 }
 
 RobotType Robot::getType() const {
     return robot_type;
+}
+
+BaseItem * Robot::getItem() const {
+    return item;
 }
 
 // RobotC
@@ -909,38 +1044,47 @@ StudyPinkProgram::StudyPinkProgram(const string & config_file_path){
 
     sherlock = new Sherlock(
         1,
-        config->sherlock_moving_rule,
-        config->sherlock_init_pos, 
+        config->getSherlockMovingRule(),
+        config->getSherlockInitPos(), 
         map,
-        config->sherlock_init_hp, 
-        config->sherlock_init_exp
+        config->getSherlockInitHp(), 
+        config->getSherlockInitExp()
     );
 
     watson = new Watson(
         2,
-        config->watson_moving_rule,
-        config->watson_init_pos, 
+        config->getWatsonMovingRule(),
+        config->getWatsonInitPos(), 
         map,
-        config->watson_init_hp, 
-        config->watson_init_exp
+        config->getWatsonInitHp(), 
+        config->getWatsonInitExp()
     );
 
     criminal = new Criminal(
         0,
-        config->criminal_init_pos, 
+        config->getCriminalInitPos(), 
         map,
         sherlock, 
         watson
     );
 
-    arr_mv_objs->add(criminal);
-    arr_mv_objs->add(sherlock);
-    arr_mv_objs->add(watson);
+    arr_mv_objs = new ArrayMovingObject(config->getMaxNumMovingObjects());
+    
+    if (!arr_mv_objs->isFull()){
+        arr_mv_objs->add(criminal);
+        if (!arr_mv_objs->isFull()){
+            arr_mv_objs->add(sherlock);
+            if (!arr_mv_objs->isFull()) arr_mv_objs->add(watson);
+        }
+    }
+
+    sherlock_bag = new SherlockBag(sherlock);
+    watson_bag = new WatsonBag(watson);
 }
 
 bool StudyPinkProgram::isStop() const {
     return 
-        !sherlock->getHp() || 
+        !sherlock->getHp() ||
         !watson->getHp() || 
         sherlock->getCurrentPosition().isEqual(criminal->getCurrentPosition()) ||
         watson->getCurrentPosition().isEqual(criminal->getCurrentPosition());
@@ -965,75 +1109,153 @@ void StudyPinkProgram::printStep(int si) const {
 }
 
 void StudyPinkProgram::run(bool verbose) {
-    for (int istep = 0; istep < config->num_steps; ++istep) {
+    for (int istep = 0; istep < config->getNumSteps(); ++istep) {
+        // Lưu lại vị trí cũ tội phạm
         Position criminal_previous_position = criminal->getCurrentPosition();
-        criminal->move();
-        if (criminal->getMoveStep() % 3 == 0){
-            int current_size = arr_mv_objs->size();
 
-            if (current_size == 3) arr_mv_objs->add(new RobotC(4, criminal_previous_position, map, criminal));
-            else {
-                int sherlock_distance = criminal_previous_position - sherlock->getCurrentPosition();
-                int watson_distance = criminal_previous_position - watson->getCurrentPosition();
-
-                if (sherlock_distance < watson_distance)
-                    arr_mv_objs->add(new RobotS(current_size, criminal_previous_position, map, criminal, sherlock));
-                else if (sherlock_distance > watson_distance)
-                    arr_mv_objs->add(new RobotW(current_size, criminal_previous_position, map, criminal, watson));
-                else arr_mv_objs->add(new RobotSW(current_size, criminal_previous_position, map, criminal, sherlock, watson));
-            }
-        }
-
-        sherlock->move();
-        if (sherlock->getCurrentPosition().isEqual(criminal->getCurrentPosition())){
-            printStep(istep);
-            break;
-        }
-        bool caught_criminal = false;
-        for (int i = 3; i < arr_mv_objs->size(); i++){
-            Robot * current_robot = (Robot *) arr_mv_objs->get(i);
-            if (sherlock->getCurrentPosition().isEqual(current_robot->getCurrentPosition())){
-                if (current_robot->getType() == C){
-                    if (sherlock->getHp() > 500){
-                        caught_criminal = true;
-                        delete current_robot;
-                        break;
-                    } else {
-
-                    }
-                }
-            }
-        }
-        if (caught_criminal){
-            printStep(istep);
-            break;
-        }
-    
-        for (int i = 1; i < arr_mv_objs->size(); ++i) {
+        // Move từng thằng
+        for (int i = 0; i < arr_mv_objs->size(); ++i) {
             arr_mv_objs->get(i)->move();
-        }
-
-        
-
-        for (int i = 3; i < arr_mv_objs->size(); i++){
-            Robot * current_robot = (Robot*)arr_mv_objs->get(i);
-            RobotType current_robot_type = current_robot->getType();
-            if (current_robot_type == C){
-                if (current_robot->getCurrentPosition() == sherlock->getCurrentPosition()){
-                    if (sherlock->getHp() > 500){
-                        delete current_robot;
-                        sherlock->set
-                    }
-                }
+            if (isStop()) {
+                printStep(istep);
+                break;
+            }
+            if (verbose) {
+                printStep(istep);
             }
         }
 
-        
+        if (isStop()) break;
+        else {
+            // Tạo Robot mới
+            if (criminal->getMoveStep() % 3 == 0){
+                int current_num_objects = arr_mv_objs->size();
 
-        if (verbose) {
-            printStep(istep);
+                if (is_first_robot){
+                    RobotC * new_robot = new RobotC(current_num_objects, criminal_previous_position, map, criminal);
+                    if (arr_mv_objs->add(new_robot)) is_first_robot = false;
+                    else delete new_robot;
+                } else {
+                    int sherlock_distance = criminal_previous_position - sherlock->getCurrentPosition();
+                    int watson_distance = criminal_previous_position - watson->getCurrentPosition();
+
+                    if (sherlock_distance < watson_distance){
+                        RobotS * new_robot = new RobotS(current_num_objects, criminal_previous_position, map, criminal, sherlock);
+                        if (!arr_mv_objs->add(new_robot)) delete new_robot;
+                    } else if (sherlock_distance > watson_distance){
+                        RobotW * new_robot = new RobotW(current_num_objects, criminal_previous_position, map, criminal, watson);
+                        if (!arr_mv_objs->add(new_robot)) delete new_robot;
+                    } else {
+                        RobotSW * new_robot = new RobotSW(
+                            current_num_objects, criminal_previous_position, map, 
+                            criminal, sherlock, watson
+                        );
+                        if (!arr_mv_objs->add(new_robot)) delete new_robot;
+                    }
+                }
+            }
+            // Tráo Card
+            if (arr_mv_objs->size() >= 3){
+                if (sherlock->getCurrentPosition().isEqual(watson->getCurrentPosition())){
+                    BaseItem * new_card;
+
+                    while (new_card = sherlock_bag->get(PASSING_CARD))
+                        watson_bag->insert(new_card);
+                    
+                    while (new_card = watson_bag->get(EXCEMPTION_CARD))
+                        sherlock_bag->insert(new_card);
+                }
+            }
+            // Chạm trán Robot
+            if (arr_mv_objs->size() >= 3){
+                for (int i = 3; i < arr_mv_objs->size(); i++){
+                    Robot * current_robot = (Robot *) arr_mv_objs->get(i);
+                    RobotType current_type = current_robot->getType();
+                    Position current_robot_position = current_robot->getCurrentPosition();
+                    Position current_sherlock_position = sherlock->getCurrentPosition();
+                    Position current_watson_position = watson->getCurrentPosition();
+                    
+                    if (current_type == C){
+                        if (current_sherlock_position.isEqual(current_robot_position)){
+                            sherlock_bag->get(EXCEMPTION_CARD);
+                            if (sherlock->getHp() > 500) sherlock->teleport(criminal->getCurrentPosition());
+                            else sherlock_bag->insert(current_robot->getItem());
+                            sherlock_bag->getRestore()->use(sherlock, nullptr);
+                        }
+                        if (current_watson_position.isEqual(current_robot_position)){
+                            BaseItem * passing_card = watson_bag->get(PASSING_CARD);
+                            if (passing_card) passing_card->use(watson, current_robot);
+                            if (watson->isInvincible()){
+                                watson->teleport(criminal->getCurrentPosition());
+                                watson->setVulnerable();
+                            } else {
+                                watson_bag->getRestore()->use(sherlock, nullptr);
+                            }
+                            watson_bag->insert(current_robot->getItem());
+                        }
+                    } else if (current_type == S){
+                        if (current_sherlock_position.isEqual(current_robot_position)){
+                            BaseItem * excemption_card = sherlock_bag->get(EXCEMPTION_CARD);
+                            if (excemption_card) excemption_card->use(sherlock, current_robot);
+                            if (sherlock->getExp() > 400) sherlock_bag->insert(current_robot->getItem());
+                            else if (!sherlock->isInvincible()) sherlock->setExp(dCeil(sherlock->getExp() * 0.9));
+                            if (sherlock->isInvincible()) sherlock->setVulnerable();
+                            sherlock_bag->getRestore()->use(sherlock, nullptr);
+                        }
+                    } else if (current_type == W){
+                        if (current_sherlock_position.isEqual(current_robot_position)){
+                            sherlock_bag->get(EXCEMPTION_CARD);
+                            sherlock_bag->insert(current_robot->getItem());
+                            sherlock_bag->getRestore()->use(sherlock, nullptr);
+                        }
+                        if (current_watson_position.isEqual(current_robot_position)){
+                            BaseItem * passing_card = watson_bag->get(PASSING_CARD);
+                            if (passing_card) passing_card->use(watson, current_robot);
+
+                            if (watson->isInvincible()){
+                                watson_bag->insert(current_robot->getItem());
+                                watson->setVulnerable();
+                            } else {
+                                if (watson->getHp() > 350) watson_bag->insert(current_robot->getItem());
+                                else watson->setHp(dCeil(watson->getHp() * 0.95));
+                                watson_bag->getRestore()->use(sherlock, nullptr);
+                            }
+                        }
+                    } else if (current_type == SW){
+                        if (current_sherlock_position.isEqual(current_robot_position)){
+                            BaseItem * excemption_card = sherlock_bag->get(EXCEMPTION_CARD);
+                            if (excemption_card) excemption_card->use(sherlock, current_robot);
+                            if (sherlock->getExp() > 300 && sherlock->getHp() > 335) 
+                                sherlock_bag->insert(current_robot->getItem());
+                            else if (!sherlock->isInvincible()) {
+                                sherlock->setExp(dCeil(sherlock->getExp() * 0.85));
+                                sherlock->setHp(dCeil(sherlock->getHp() * 0.85));
+                            }
+                            if (sherlock->isInvincible()) sherlock->setVulnerable();
+                            sherlock_bag->getRestore()->use(sherlock, nullptr);
+                        }
+                        if (current_watson_position.isEqual(current_robot_position)){
+                            BaseItem * passing_card = sherlock_bag->get(PASSING_CARD);
+                            if (passing_card) passing_card->use(watson, current_robot);
+
+                            if (watson->isInvincible()){
+                                watson_bag->insert(current_robot->getItem());
+                                watson->setVulnerable();
+                            } else {
+                                if (watson->getExp() > 600 && watson->getHp() > 165) watson_bag->insert(current_robot->getItem());
+                                else {
+                                    watson->setExp(dCeil(watson->getExp() * 0.85));
+                                    watson->setHp(dCeil(watson->getHp() * 0.85));
+                                }
+                                watson_bag->getRestore()->use(sherlock, nullptr);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
+
     printResult();
 }
 
