@@ -1090,91 +1090,86 @@ void StudyPinkProgram::run(bool verbose) {
             // Chạm trán Robot
             if (arr_mv_objs->size() >= 3){
                 for (int i = 3; i < arr_mv_objs->size(); i++){
-                    Robot * current_robot = (Robot *) arr_mv_objs->get(i);
-                    RobotType current_type = current_robot->getType();
-                    Position current_robot_position = current_robot->getCurrentPosition();
-                    Position current_sherlock_position = sherlock->getCurrentPosition();
-                    Position current_watson_position = watson->getCurrentPosition();
+                    Robot * robot = (Robot *) arr_mv_objs->get(i);
+                    RobotType robot_type = robot->getType();
+                    Position robot_position = robot->getCurrentPosition();
+                    BaseItem * item = robot->getItem();
                     
-                    if (current_type == C){
-                        if (current_sherlock_position.isEqual(current_robot_position)){
-                            sherlock_bag->get(EXCEMPTION_CARD);
-                            if (sherlock->getHp() > 500) sherlock->teleport(criminal->getCurrentPosition());
-                            else sherlock_bag->insert(current_robot->getItem());
-                            sherlock_bag->get()->use(sherlock, nullptr);
-                        }
-                        if (current_watson_position.isEqual(current_robot_position)){
-                            BaseItem * passing_card = watson_bag->get(PASSING_CARD);
-                            if (passing_card) passing_card->use(watson, current_robot);
-                            if (watson->isInvincible()){
-                                watson->teleport(criminal->getCurrentPosition());
-                                watson->toggleProtectedStatus();
-                            } else {
-                                watson_bag->get()->use(sherlock, nullptr);
-                            }
-                            watson_bag->insert(current_robot->getItem());
-                        }
-                    } else if (current_type == S){
-                        if (current_sherlock_position.isEqual(current_robot_position)){
-                            BaseItem * excemption_card = sherlock_bag->get(EXCEMPTION_CARD);
-                            if (excemption_card) excemption_card->use(sherlock, current_robot);
-                            if (sherlock->getExp() > 400) sherlock_bag->insert(current_robot->getItem());
-                            else if (!sherlock->isInvincible()) sherlock->setExp(dCeil(sherlock->getExp() * 0.9));
-                            if (sherlock->isInvincible()) sherlock->toggleProtectedStatus();
-                            sherlock_bag->get()->use(sherlock, nullptr);
-                        }
-                    } else if (current_type == W){
-                        if (current_sherlock_position.isEqual(current_robot_position)){
-                            sherlock_bag->get(EXCEMPTION_CARD);
-                            sherlock_bag->insert(current_robot->getItem());
-                            sherlock_bag->get()->use(sherlock, nullptr);
-                        }
-                        if (current_watson_position.isEqual(current_robot_position)){
-                            BaseItem * passing_card = watson_bag->get(PASSING_CARD);
-                            if (passing_card) passing_card->use(watson, current_robot);
+                    if (sherlock->getCurrentPosition().isEqual(robot_position)){
+                        sherlock->toggleFightingStatus();
+                        BaseItem * card = sherlock_bag->get();
+                        if (card) card->use(sherlock, robot);
 
-                            if (watson->isInvincible()){
-                                watson_bag->insert(current_robot->getItem());
-                                watson->toggleProtectedStatus();
-                            } else {
-                                if (watson->getHp() > 350) watson_bag->insert(current_robot->getItem());
-                                else watson->setHp(dCeil(watson->getHp() * 0.95));
-                                watson_bag->get()->use(sherlock, nullptr);
-                            }
-                        }
-                    } else if (current_type == SW){
-                        if (current_sherlock_position.isEqual(current_robot_position)){
-                            BaseItem * excemption_card = sherlock_bag->get(EXCEMPTION_CARD);
-                            if (excemption_card) excemption_card->use(sherlock, current_robot);
-                            if (sherlock->getExp() > 300 && sherlock->getHp() > 335) 
-                                sherlock_bag->insert(current_robot->getItem());
-                            else if (!sherlock->isInvincible()) {
-                                sherlock->setExp(dCeil(sherlock->getExp() * 0.85));
-                                sherlock->setHp(dCeil(sherlock->getHp() * 0.85));
-                            }
-                            if (sherlock->isInvincible()) sherlock->toggleProtectedStatus();
-                            sherlock_bag->get()->use(sherlock, nullptr);
-                        }
-                        if (current_watson_position.isEqual(current_robot_position)){
-                            BaseItem * passing_card = sherlock_bag->get(PASSING_CARD);
-                            if (passing_card) passing_card->use(watson, current_robot);
-
-                            if (watson->isInvincible()){
-                                watson_bag->insert(current_robot->getItem());
-                                watson->toggleProtectedStatus();
-                            } else {
-                                if (watson->getExp() > 600 && watson->getHp() > 165) watson_bag->insert(current_robot->getItem());
-                                else {
-                                    watson->setExp(dCeil(watson->getExp() * 0.85));
-                                    watson->setHp(dCeil(watson->getHp() * 0.85));
+                        switch (robot_type){
+                            C:
+                                if (sherlock->getHp() > 500) sherlock->teleport(criminal->getCurrentPosition());
+                                else sherlock_bag->insert(item);
+                                break;
+                            S:
+                                if (sherlock->getExp() > 400) sherlock_bag->insert(item);
+                                else if (!sherlock->isInvincible()) sherlock->setExp(dCeil(sherlock->getExp() * 0.9));
+                                break;
+                            W:
+                                sherlock_bag->insert(item);
+                                break;
+                            SW:
+                                if (sherlock->getExp() > 300 && sherlock->getHp() > 335) 
+                                    sherlock_bag->insert(item);
+                                else if (!sherlock->isInvincible()) {
+                                    sherlock->setExp(dCeil(sherlock->getExp() * 0.85));
+                                    sherlock->setHp(dCeil(sherlock->getHp() * 0.85));
                                 }
-                                watson_bag->get()->use(sherlock, nullptr);
-                            }
+                                break;
                         }
+
+                        sherlock->toggleFightingStatus();
+                        if (sherlock->isInvincible()) sherlock->toggleProtectedStatus();
+                        BaseItem * restore = sherlock_bag->get();
+                        if (restore) restore->use(sherlock, nullptr);
+                    }
+
+                    if (watson->getCurrentPosition().isEqual(robot_position)){
+                        watson->toggleFightingStatus();
+                        BaseItem * card = watson_bag->get();
+                        if (card) card->use(watson, robot);
+
+                        switch (robot_type){
+                            C:
+                                watson_bag->insert(item);
+                                if (watson->isInvincible()) watson->teleport(criminal->getCurrentPosition());
+                                break;
+                            S:
+                                if (watson->isInvincible()) watson_bag->insert(item);
+                                break;
+                            W:
+                                if (watson->isInvincible()) watson_bag->insert(item);
+                                else {
+                                    if (watson->getHp() > 350) watson_bag->insert(item);
+                                    else watson->setHp(dCeil(watson->getHp() * 0.95));
+                                }
+                                break;
+                            SW:
+                                if (watson->isInvincible()) watson_bag->insert(item);
+                                else {
+                                    if (watson->getExp() > 600 && watson->getHp() > 165) watson_bag->insert(item);
+                                    else {
+                                        watson->setExp(dCeil(watson->getExp() * 0.85));
+                                        watson->setHp(dCeil(watson->getHp() * 0.85));
+                                    }
+                                }
+                                break;
+                        }
+
+                        watson->toggleFightingStatus();
+                        if (watson->isInvincible()) watson->toggleProtectedStatus();
+                        BaseItem * restore = watson_bag->get();
+                        if (restore) restore->use(watson, nullptr);
                     }
                 }
             }
         }
+
+        if (isStop()) break;
     }
 
     printResult();
