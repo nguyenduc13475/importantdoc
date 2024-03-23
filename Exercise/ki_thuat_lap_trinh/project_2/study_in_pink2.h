@@ -108,7 +108,7 @@ class MovingObject {
 
         virtual string str() const = 0;
 
-        string getName();
+        string getName() const;
 };
 
 class Map {
@@ -150,29 +150,67 @@ class Character: public MovingObject {
 
         virtual ~Character();
 
-        virtual int getHp() const;
+        Position getCurrentPosition() const;
 
-        virtual int getExp() const;
+        virtual int getHp() const {};
+        
+        virtual int getExp() const {};
+        
+        virtual void setHp(int hp) {};
+        
+        virtual void setExp(int exp) {};
 
-        virtual void setHp(int hp);
+        virtual void toggleProtectedStatus() {};
 
-        virtual void setExp(int exp);
-
-        virtual bool isInvincible() const;
-
-        virtual void setInvincible();
-
-        virtual void setVulnerable();
+        virtual bool isDoneFighting() const {};
 };
 
-class Sherlock: public Character {
-    friend class TestStudyInPink;
-
-    private:
+class Protagonist: public Character {
+    protected:
         int hp, exp;
         const string moving_rule;
         int move_step = 0;
-        bool invincible = false;
+        bool is_invincible = false;
+        bool is_done_fighting = false;
+
+    public:
+        Protagonist(
+            int index, 
+            const Position pos, 
+            Map * map,
+            const string & name,
+            const string & moving_rule,
+            int init_hp,
+            int init_exp
+        );
+
+        virtual ~Protagonist();
+
+        int getHp() const;
+
+        int getExp() const;
+
+        void setHp(int hp);
+
+        void setExp(int exp);
+
+        bool isInvincible() const;
+
+        void toggleProtectedStatus();
+
+        bool isDoneFighting() const;
+
+        void toggleFightingStatus();
+
+        void teleport(Position new_position);
+
+        Position getNextPosition();
+
+        void move();
+};
+
+class Sherlock: public Protagonist {
+    friend class TestStudyInPink;
         
     public:
         Sherlock(
@@ -186,32 +224,10 @@ class Sherlock: public Character {
 
         virtual ~Sherlock();
 
-        Position getNextPosition();
-
-        Position getCurrentPosition() const;
-
-        void move();
-
         string str() const;
-
-        int getHp() const;
-
-        int getExp() const;
-
-        void setHp(int hp);
-
-        void setExp(int exp);
-
-        bool isInvincible() const;
-
-        void setInvincible();
-
-        void setVulnerable();
-
-        void teleport(Position new_position);
 };
 
-class Watson: public Character {
+class Watson: public Protagonist {
     friend class TestStudyInPink;
 
     private:
@@ -219,6 +235,7 @@ class Watson: public Character {
         const string moving_rule;
         int move_step = 0;
         bool invincible = false;
+        bool is_prepared_time = true;
 
     public:
         Watson(
@@ -232,29 +249,7 @@ class Watson: public Character {
 
         virtual ~Watson();
 
-        Position getNextPosition();
-
-        Position getCurrentPosition() const;
-
-        void move();
-
         string str() const;
-
-        int getHp() const;
-
-        int getExp() const;
-
-        void setHp(int hp);
-
-        void setExp(int exp);
-
-        bool isInvincible() const;
-
-        void setInvincible();
-
-        void setVulnerable();
-
-        void teleport(Position new_position);
 };
 
 class Criminal: public Character{
@@ -277,8 +272,6 @@ class Criminal: public Character{
         virtual ~Criminal();
 
         Position getNextPosition();
-
-        Position getCurrentPosition() const;
 
         void move();
 
@@ -472,8 +465,6 @@ class BaseBag {
 
         virtual BaseItem* get(ItemType itemType);
 
-        virtual BaseItem* getRestore();
-
         virtual string str() const;
 };
 
@@ -567,7 +558,7 @@ class RobotS: public Robot {
 
         int getDistance() const;
 
-        string str () const;
+        string str() const;
 };
 
 class RobotW: public Robot {
@@ -594,7 +585,7 @@ class RobotW: public Robot {
 
         int getDistance() const;
 
-        string str () const;
+        string str() const;
 };
 
 // RobotSW

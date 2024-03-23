@@ -126,7 +126,7 @@ MovingObject::MovingObject(
 
 MovingObject::~MovingObject(){}
 
-string MovingObject::getName(){
+string MovingObject::getName() const {
     return name;
 }
 
@@ -144,7 +144,7 @@ bool Map::isValid(const Position &pos , MovingObject *mv_obj) const {
         string obj_name = mv_obj->getName();
         if (obj_name == "Sherlock" || obj_name == "Criminal" || obj_name == "") return true;
         if (obj_name == "Watson"){
-            if (((Character*) mv_obj)->getExp() >= ((FakeWall*) map[r][c])->getReqExp()) return true;
+            if (((Protagonist*) mv_obj)->getExp() >= ((FakeWall*) map[r][c])->getReqExp()) return true;
             else return false;
         }
     }
@@ -168,33 +168,61 @@ Character::Character(
 
 Character::~Character(){}
 
-int Character::getHp() const {}
+Position Character::getCurrentPosition() const {
+    return pos;
+}
 
-int Character::getExp() const {}
+// Protagonist
 
-void Character::setHp(int hp){}
-
-void Character::setExp(int exp){}
-
-bool Character::isInvincible() const {return false;}
-
-void Character::setInvincible() {};
-
-void Character::setVulnerable() {};
-
-// Sherlock
-Sherlock::Sherlock(
+Protagonist::Protagonist(
     int index, 
-    const string & moving_rule, 
-    const Position & init_pos, 
-    Map * map, 
-    int init_hp, 
+    const Position pos, 
+    Map * map,
+    const string & name="",
+    const string & moving_rule,
+    int init_hp,
     int init_exp
-): Character(index, init_pos, map, "Sherlock"), hp(init_hp), exp(init_exp), moving_rule(moving_rule){}
+): Character(index, pos, map, name), moving_rule(moving_rule), hp(init_hp), exp(init_exp){}
 
-Sherlock::~Sherlock(){}
+Protagonist::~Protagonist(){}
 
-Position Sherlock::getNextPosition(){
+int Protagonist::getHp() const {
+    return hp;
+}
+
+int Protagonist::getExp() const {
+    return exp;
+}
+
+void Protagonist::setHp(int hp) {
+    this->hp = hp;
+}
+
+void Protagonist::setExp(int exp) {
+    this->exp = exp;
+}
+
+bool Protagonist::isInvincible() const {
+    return is_invincible;
+}
+
+void Protagonist::toggleProtectedStatus() {
+    is_invincible = !is_invincible;
+}
+
+bool Protagonist::isDoneFighting() const {
+    return is_done_fighting;
+}
+
+void Protagonist::toggleFightingStatus() {
+    is_done_fighting = !is_done_fighting;
+}
+
+void Protagonist::teleport(Position new_position) {
+    pos = new_position;
+}
+
+Position Protagonist::getNextPosition() {
     char direction = moving_rule[move_step];
     int r = pos.getRow();
     int c = pos.getCol();
@@ -209,50 +237,26 @@ Position Sherlock::getNextPosition(){
     else return Position::npos;
 }
 
-Position Sherlock::getCurrentPosition() const {
-    return pos;
-}
-
-void Sherlock::move(){
+void Protagonist::move(){
     Position next_position = getNextPosition();
     if (!next_position.isEqual(Position::npos)) pos = next_position;
     move_step = (move_step + 1) % moving_rule.length();
 }
 
+// Sherlock
+Sherlock::Sherlock(
+    int index,
+    const string & moving_rule,
+    const Position & init_pos,
+    Map * map,
+    int init_hp,
+    int init_exp
+): Protagonist(index, init_pos, map, "Sherlock", moving_rule, init_hp, init_exp){}
+
+Sherlock::~Sherlock(){}
+
 string Sherlock::str() const {
     return "Sherlock[index=" + to_string(index) + ";pos=" + pos.str() + ";moving_rule=" + moving_rule + "]";
-}
-
-int Sherlock::getHp() const {
-    return hp;
-}
-
-int Sherlock::getExp() const {
-    return exp;
-}
-
-void Sherlock::setHp(int hp){
-    this->hp = hp;
-}
-
-void Sherlock::setExp(int exp){
-    this->exp = exp;
-}
-
-bool Sherlock::isInvincible() const {
-    return invincible;
-}
-
-void Sherlock::setInvincible() {
-    this->invincible = true;
-}
-
-void Sherlock::setVulnerable() {
-    this->invincible = false;
-}
-
-void Sherlock::teleport(Position new_position){
-    pos = new_position;
 }
 
 // Watson
@@ -263,69 +267,12 @@ Watson::Watson(
     Map * map, 
     int init_hp, 
     int init_exp
-): Character(index, init_pos, map, "Watson"), hp(init_hp), exp(init_exp), moving_rule(moving_rule){}
+): Protagonist(index, init_pos, map, "Watson", moving_rule, init_hp, init_exp){}
 
 Watson::~Watson(){}
 
-Position Watson::getNextPosition(){
-    char direction = moving_rule[move_step];
-    int r = pos.getRow();
-    int c = pos.getCol();
-    Position next_position;
-
-    if (direction == 'L') next_position = Position(r, c - 1);
-    else if (direction == 'R') next_position = Position(r, c + 1);
-    else if (direction == 'U') next_position = Position(r - 1, c);
-    else if (direction == 'D') next_position = Position(r + 1, c);
-
-    if (map->isValid(next_position, this)) return next_position;
-    else return Position::npos;
-}
-
-Position Watson::getCurrentPosition() const {
-    return pos;
-}
-
-void Watson::move(){
-    Position next_position = getNextPosition();
-    if (!next_position.isEqual(Position::npos)) pos = next_position;
-    move_step = (move_step + 1) % moving_rule.length();
-}
-
 string Watson::str () const {
     return "Watson[index=" + to_string(index) + ";pos=" + pos.str() + ";moving_rule=" + moving_rule + "]";
-}
-
-int Watson::getHp() const {
-    return hp;
-}
-
-int Watson::getExp() const {
-    return exp;
-}
-
-void Watson::setHp(int hp){
-    this->hp = hp;
-}
-
-void Watson::setExp(int exp){
-    this->exp = exp;
-}
-
-bool Watson::isInvincible() const {
-    return invincible;
-}
-
-void Watson::setInvincible() {
-    this->invincible = true;
-}
-
-void Watson::setVulnerable() {
-    this->invincible = false;
-}
-
-void Watson::teleport(Position new_position){
-    pos = new_position;
 }
 
 // Criminal
@@ -368,10 +315,6 @@ Position Criminal::getNextPosition(){
     }
 
     return max_position;
-}
-
-Position Criminal::getCurrentPosition() const {
-    return pos;
 }
 
 void Criminal::move(){
@@ -644,7 +587,7 @@ bool ExcemptionCard::canUse(Character * obj, Robot * robot){
 }
 
 void ExcemptionCard::use(Character * obj, Robot * robot){
-    obj->setInvincible();
+    obj->toggleProtectedStatus();
 }
 
 // PassingCard
@@ -670,7 +613,7 @@ void PassingCard::use(Character * obj, Robot * robot){
     }
 
     if (challenge != "all" && challenge != robot_name) obj->setExp(clamp(obj->getExp() - 50, 0, 900));
-    obj->setInvincible();
+    obj->toggleProtectedStatus();
 }
 
 // BaseBag
@@ -740,33 +683,11 @@ BaseItem * BaseBag::get(){
     BaseItem * previous_traveler = nullptr;
 
     while (traveler){
-        if (traveler->canUse(obj, nullptr)){
-            if (traveler != first_item){
-                BaseItem * temp = traveler->getNextItemPtr();
-                previous_traveler->setNextItemPtr(first_item);
-                traveler->setNextItemPtr(first_item->getNextItemPtr());
-                first_item->setNextItemPtr(temp);
-                first_item = traveler;
-            }
-
-            first_item = first_item->getNextItemPtr();
-            traveler->setNextItemPtr(nullptr);
-            return traveler;
-        }
-
-        previous_traveler = traveler;
-        traveler = traveler->getNextItemPtr();
-    }
-
-    return nullptr;
-}
-
-BaseItem * BaseBag::getRestore(){
-    BaseItem * traveler = first_item;
-    BaseItem * previous_traveler = nullptr;
-
-    while (traveler){
-        if (traveler->canUse(obj, nullptr) && traveler->getType() != PASSING_CARD && traveler->getType() != EXCEMPTION_CARD){
+        if (
+            traveler->canUse(obj, nullptr) &&
+            (obj->isDoneFighting() && (traveler->getType() == MAGIC_BOOK || traveler->getType() == FIRST_AID || traveler->getType() == ENERGY_DRINK)) &&
+            (!obj->isDoneFighting() && (traveler->getType() == PASSING_CARD || traveler->getType() == EXCEMPTION_CARD))
+        ){
             if (traveler != first_item){
                 BaseItem * temp = traveler->getNextItemPtr();
                 previous_traveler->setNextItemPtr(first_item);
@@ -882,7 +803,7 @@ RobotS::RobotS(
     Sherlock * sherlock
 ): Robot(index, init_pos, map, S), criminal(criminal), sherlock(sherlock){}
 
-Position RobotS::getNextPosition(){
+Position RobotS::getNextPosition() {
     int r = pos.getRow();
     int c = pos.getCol();
     int min_distance = INT_MAX;
@@ -905,7 +826,7 @@ Position RobotS::getNextPosition(){
         }
     }
     
-    if (map->isValid(min_position, this)) return min_position;
+    if (map->isValid(min_position, (RobotS *) this)) return min_position;
     else return Position::npos;
 }
 
@@ -1180,16 +1101,16 @@ void StudyPinkProgram::run(bool verbose) {
                             sherlock_bag->get(EXCEMPTION_CARD);
                             if (sherlock->getHp() > 500) sherlock->teleport(criminal->getCurrentPosition());
                             else sherlock_bag->insert(current_robot->getItem());
-                            sherlock_bag->getRestore()->use(sherlock, nullptr);
+                            sherlock_bag->get()->use(sherlock, nullptr);
                         }
                         if (current_watson_position.isEqual(current_robot_position)){
                             BaseItem * passing_card = watson_bag->get(PASSING_CARD);
                             if (passing_card) passing_card->use(watson, current_robot);
                             if (watson->isInvincible()){
                                 watson->teleport(criminal->getCurrentPosition());
-                                watson->setVulnerable();
+                                watson->toggleProtectedStatus();
                             } else {
-                                watson_bag->getRestore()->use(sherlock, nullptr);
+                                watson_bag->get()->use(sherlock, nullptr);
                             }
                             watson_bag->insert(current_robot->getItem());
                         }
@@ -1199,14 +1120,14 @@ void StudyPinkProgram::run(bool verbose) {
                             if (excemption_card) excemption_card->use(sherlock, current_robot);
                             if (sherlock->getExp() > 400) sherlock_bag->insert(current_robot->getItem());
                             else if (!sherlock->isInvincible()) sherlock->setExp(dCeil(sherlock->getExp() * 0.9));
-                            if (sherlock->isInvincible()) sherlock->setVulnerable();
-                            sherlock_bag->getRestore()->use(sherlock, nullptr);
+                            if (sherlock->isInvincible()) sherlock->toggleProtectedStatus();
+                            sherlock_bag->get()->use(sherlock, nullptr);
                         }
                     } else if (current_type == W){
                         if (current_sherlock_position.isEqual(current_robot_position)){
                             sherlock_bag->get(EXCEMPTION_CARD);
                             sherlock_bag->insert(current_robot->getItem());
-                            sherlock_bag->getRestore()->use(sherlock, nullptr);
+                            sherlock_bag->get()->use(sherlock, nullptr);
                         }
                         if (current_watson_position.isEqual(current_robot_position)){
                             BaseItem * passing_card = watson_bag->get(PASSING_CARD);
@@ -1214,11 +1135,11 @@ void StudyPinkProgram::run(bool verbose) {
 
                             if (watson->isInvincible()){
                                 watson_bag->insert(current_robot->getItem());
-                                watson->setVulnerable();
+                                watson->toggleProtectedStatus();
                             } else {
                                 if (watson->getHp() > 350) watson_bag->insert(current_robot->getItem());
                                 else watson->setHp(dCeil(watson->getHp() * 0.95));
-                                watson_bag->getRestore()->use(sherlock, nullptr);
+                                watson_bag->get()->use(sherlock, nullptr);
                             }
                         }
                     } else if (current_type == SW){
@@ -1231,8 +1152,8 @@ void StudyPinkProgram::run(bool verbose) {
                                 sherlock->setExp(dCeil(sherlock->getExp() * 0.85));
                                 sherlock->setHp(dCeil(sherlock->getHp() * 0.85));
                             }
-                            if (sherlock->isInvincible()) sherlock->setVulnerable();
-                            sherlock_bag->getRestore()->use(sherlock, nullptr);
+                            if (sherlock->isInvincible()) sherlock->toggleProtectedStatus();
+                            sherlock_bag->get()->use(sherlock, nullptr);
                         }
                         if (current_watson_position.isEqual(current_robot_position)){
                             BaseItem * passing_card = sherlock_bag->get(PASSING_CARD);
@@ -1240,14 +1161,14 @@ void StudyPinkProgram::run(bool verbose) {
 
                             if (watson->isInvincible()){
                                 watson_bag->insert(current_robot->getItem());
-                                watson->setVulnerable();
+                                watson->toggleProtectedStatus();
                             } else {
                                 if (watson->getExp() > 600 && watson->getHp() > 165) watson_bag->insert(current_robot->getItem());
                                 else {
                                     watson->setExp(dCeil(watson->getExp() * 0.85));
                                     watson->setHp(dCeil(watson->getHp() * 0.85));
                                 }
-                                watson_bag->getRestore()->use(sherlock, nullptr);
+                                watson_bag->get()->use(sherlock, nullptr);
                             }
                         }
                     }
