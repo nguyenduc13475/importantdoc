@@ -160,9 +160,9 @@ class Character: public MovingObject {
 
         Position getCurrentPosition() const;
 
-        virtual int getHp() const {};
+        virtual int getHp() const {return 0;}
         
-        virtual int getExp() const {};
+        virtual int getExp() const {return 0;};
         
         virtual void setHp(int hp) {};
         
@@ -170,7 +170,7 @@ class Character: public MovingObject {
 
         virtual void toggleProtectedStatus() {};
 
-        virtual bool isDoneFighting() const {};
+        virtual bool isDoneFighting() const {return true;}
 };
 
 class Protagonist: public Character {
@@ -300,20 +300,22 @@ class ArrayMovingObject {
         string str() const;
 };
 
+int countNumOfWall(const string & position_array);
+
 Position * positionArrayAnalysis(const string & position_array, int n);
 
 class Configuration {
     friend class TestStudyInPink;
 
     private:
-        int map_num_rows, map_num_cols;
-        int max_num_moving_objects;
-        int num_walls, num_fake_walls;
+        int map_num_rows = 0, map_num_cols = 0;
+        int max_num_moving_objects = 0;
+        int num_walls = 0, num_fake_walls = 0;
         Position * arr_walls = nullptr, * arr_fake_walls = nullptr;
-        string sherlock_moving_rule, watson_moving_rule;
-        Position sherlock_init_pos, watson_init_pos, criminal_init_pos;
-        int sherlock_init_hp, sherlock_init_exp, watson_init_hp, watson_init_exp;
-        int num_steps;
+        string sherlock_moving_rule = "", watson_moving_rule = "";
+        Position sherlock_init_pos = Position(0, 0), watson_init_pos = Position(0, 0), criminal_init_pos = Position(0, 0);
+        int sherlock_init_hp = 0, sherlock_init_exp = 0, watson_init_hp = 0, watson_init_exp = 0;
+        int num_steps = 0;
 
     public:
         Configuration(const string & filepath);

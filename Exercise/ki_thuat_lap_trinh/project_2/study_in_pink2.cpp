@@ -160,6 +160,7 @@ bool Map::isValid(const Position &pos , MovingObject *mv_obj) const {
             else return false;
         }
     }
+    return true;
 }
 
 int Map::getNumRows() const {
@@ -387,6 +388,19 @@ string ArrayMovingObject::str() const {
 }
 
 // Từ chuỗi [(1,2);(3,4);(5,6)], trả về 1 Pointer đến 1 mảng trong Heap, mảng này có các phần tử là Position
+
+int countNumOfWall(const string & position_array){
+    int count = 0;
+
+    for (int i = 0; i < position_array.length(); i++) {
+        if (position_array[i] == '(') {
+            count++;
+        }
+    }
+
+    return count;
+}
+
 Position * positionArrayAnalysis(const string & position_array, int n){
     Position * position_array_ptr = new Position[n];
     int current_char_index = 1;
@@ -409,6 +423,11 @@ Configuration::Configuration(const string & filepath){
     ifstream ifs(filepath);
     string attribute;
 
+    int temp_num_walls = 0;
+    int temp_num_fake_walls = 0;
+    bool is_num_walls_defined = false;
+    bool is_num_fake_walls_defined = false;
+
     while (getline(ifs, attribute)) {
         int delimiter_position = attribute.find('=');
         string attribute_name = attribute.substr(0, delimiter_position);
@@ -417,10 +436,22 @@ Configuration::Configuration(const string & filepath){
         if (attribute_name == "MAP_NUM_ROWS") map_num_rows = stoi(attribute_value);
         else if (attribute_name == "MAP_NUM_COLS") map_num_cols = stoi(attribute_value);
         else if (attribute_name == "MAX_NUM_MOVING_OBJECTS") max_num_moving_objects = stoi(attribute_value);
-        else if (attribute_name == "NUM_WALLS") num_walls = stoi(attribute_value);
-        else if (attribute_name == "ARRAY_WALLS") arr_walls = positionArrayAnalysis(attribute_value, num_walls);
-        else if (attribute_name == "NUM_FAKE_WALLS") num_fake_walls = stoi(attribute_value);
-        else if (attribute_name == "ARRAY_FAKE_WALLS") arr_fake_walls = positionArrayAnalysis(attribute_value, num_fake_walls);
+        else if (attribute_name == "NUM_WALLS"){
+            num_walls = stoi(attribute_value);
+            is_num_walls_defined = true;
+        }
+        else if (attribute_name == "ARRAY_WALLS"){
+            temp_num_walls = countNumOfWall(attribute_value);
+            arr_walls = positionArrayAnalysis(attribute_value, temp_num_walls);
+        }
+        else if (attribute_name == "NUM_FAKE_WALLS"){
+            num_fake_walls = stoi(attribute_value);
+            is_num_fake_walls_defined = true;
+        }
+        else if (attribute_name == "ARRAY_FAKE_WALLS"){
+            temp_num_fake_walls = countNumOfWall(attribute_value);
+            arr_fake_walls = positionArrayAnalysis(attribute_value, temp_num_fake_walls);
+        }
         else if (attribute_name == "SHERLOCK_MOVING_RULE") sherlock_moving_rule = attribute_value;
         else if (attribute_name == "SHERLOCK_INIT_POS") sherlock_init_pos = Position(attribute_value);
         else if (attribute_name == "SHERLOCK_INIT_HP") sherlock_init_hp = stoi(attribute_value);
@@ -432,6 +463,9 @@ Configuration::Configuration(const string & filepath){
         else if (attribute_name == "CRIMINAL_INIT_POS") criminal_init_pos = Position(attribute_value);
         else if (attribute_name == "NUM_STEPS") num_steps = stoi(attribute_value);
     }
+
+    if (!is_num_walls_defined) num_walls = temp_num_walls;
+    if (!is_num_fake_walls_defined) num_fake_walls = temp_num_fake_walls;
 }
 
 Configuration::~Configuration(){
@@ -663,6 +697,7 @@ BaseItem * deepCopyItem(BaseItem * item){
         case EXCEMPTION_CARD: return new ExcemptionCard();
         case PASSING_CARD: return new PassingCard(((PassingCard* )item)->getChallenge());
     }
+    return nullptr;
 }
 
 // BaseBag
@@ -851,6 +886,7 @@ void RobotC::move(){
 int RobotC::getDistance(Character * character) const {
     if (character->getName() == "Sherlock") return pos - character->getCurrentPosition();
     else if (character->getName() == "Watson") return pos - character->getCurrentPosition();
+    return 0;
 }
 
 string RobotC::str() const {
