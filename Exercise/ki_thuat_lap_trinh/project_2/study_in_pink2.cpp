@@ -291,7 +291,7 @@ Criminal::Criminal(
     Map * map, 
     Sherlock * sherlock, 
     Watson * watson
-): Character(index, init_pos, map, "Criminal"), sherlock(sherlock), watson(watson){};
+): Character(index, init_pos, map, "Criminal"), sherlock(sherlock), watson(watson), previous_pos(init_pos){};
 
 Criminal::~Criminal(){}
 
@@ -326,9 +326,14 @@ Position Criminal::getNextPosition(){
     return max_position;
 }
 
+Position Criminal::getPreviousPosition(){
+    return previous_pos;
+}
+
 void Criminal::move(){
     Position next_position = getNextPosition();
     if (!next_position.isEqual(Position::npos)){
+        previous_pos = pos;
         pos = next_position;
         move_step++;
     }
@@ -876,7 +881,7 @@ RobotC::RobotC(
 RobotC::~RobotC(){}
 
 Position RobotC::getNextPosition(){
-    return criminal->getCurrentPosition();
+    return criminal->getPreviousPosition();
 }
 
 void RobotC::move(){
@@ -890,7 +895,7 @@ int RobotC::getDistance(Character * character) const {
 }
 
 string RobotC::str() const {
-    return "Robot[pos=" + pos.str() + ";type=C" + ";dist=]";
+    return "Robot[pos=" + pos.str() + ",type=C" + ";dist=]";
 }
 
 // RobotS
@@ -944,7 +949,7 @@ int RobotS::getDistance() const {
 
 string RobotS::str () const {
     int foo = getDistance();
-    return "Robot[pos=" + pos.str() + ";type=S" + ";dist=" + to_string(getDistance()) + "]";
+    return "Robot[pos=" + pos.str() + ",type=S" + ";dist=" + to_string(getDistance()) + "]";
 }
 
 // RobotW
@@ -997,7 +1002,7 @@ int RobotW::getDistance() const {
 }
 
 string RobotW::str() const {
-    return "Robot[pos=" + pos.str() + ";type=W" + ";dist=" + to_string(getDistance()) + "]";
+    return "Robot[pos=" + pos.str() + ",type=W" + ";dist=" + to_string(getDistance()) + "]";
 }
 
 // RobotSW
@@ -1053,7 +1058,7 @@ int RobotSW::getDistance() const {
 }
 
 string RobotSW::str() const {
-    return "Robot[pos=" + pos.str() + ";type=SW" + ";dist=" + to_string(getDistance()) + "]";
+    return "Robot[pos=" + pos.str() + ",type=SW" + ";dist=" + to_string(getDistance()) + "]";
 }
 
 // Program
@@ -1142,8 +1147,6 @@ void StudyPinkProgram::printVerboseStep() const {
 
 void StudyPinkProgram::run(bool verbose) {
     for (int istep = 0; istep < config->getNumSteps(); ++istep) {
-        // Lưu lại vị trí cũ tội phạm
-        Position criminal_previous_position = criminal->getCurrentPosition();
         // Move từng thằng
         for (int i = 0; i < arr_mv_objs->size(); ++i) {
             arr_mv_objs->get(i)->move();
@@ -1163,24 +1166,25 @@ void StudyPinkProgram::run(bool verbose) {
             // Tạo Robot mới
             if (criminal->getMoveStep() % 3 == 0){
                 int current_num_objects = arr_mv_objs->size();
+                Position previous_criminal_position = previous_criminal_position;
 
                 if (is_first_robot){
-                    RobotC * new_robot = new RobotC(current_num_objects, criminal_previous_position, map, criminal);
+                    RobotC * new_robot = new RobotC(current_num_objects, previous_criminal_position, map, criminal);
                     if (arr_mv_objs->add(new_robot)) is_first_robot = false;
                     else delete new_robot;
                 } else {
-                    int sherlock_distance = criminal_previous_position - sherlock->getCurrentPosition();
-                    int watson_distance = criminal_previous_position - watson->getCurrentPosition();
+                    int sherlock_distance = previous_criminal_position - sherlock->getCurrentPosition();
+                    int watson_distance = previous_criminal_position - watson->getCurrentPosition();
 
                     if (sherlock_distance < watson_distance){
-                        RobotS * new_robot = new RobotS(current_num_objects, criminal_previous_position, map, criminal, sherlock);
+                        RobotS * new_robot = new RobotS(current_num_objects, previous_criminal_position, map, criminal, sherlock);
                         if (!arr_mv_objs->add(new_robot)) delete new_robot;
                     } else if (sherlock_distance > watson_distance){
-                        RobotW * new_robot = new RobotW(current_num_objects, criminal_previous_position, map, criminal, watson);
+                        RobotW * new_robot = new RobotW(current_num_objects, previous_criminal_position, map, criminal, watson);
                         if (!arr_mv_objs->add(new_robot)) delete new_robot;
                     } else {
                         RobotSW * new_robot = new RobotSW(
-                            current_num_objects, criminal_previous_position, map, 
+                            current_num_objects, previous_criminal_position, map, 
                             criminal, sherlock, watson
                         );
                         if (!arr_mv_objs->add(new_robot)) delete new_robot;

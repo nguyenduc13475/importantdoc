@@ -254,6 +254,7 @@ class Criminal: public Character{
     friend class TestStudyInPink;
 
     private:
+        Position previous_pos;
         Sherlock * sherlock;
         Watson * watson;
 
@@ -269,6 +270,8 @@ class Criminal: public Character{
         ~Criminal();
 
         Position getNextPosition();
+
+        Position getPreviousPosition();
 
         void move();
 
