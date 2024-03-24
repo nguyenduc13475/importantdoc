@@ -28,6 +28,7 @@ class Path : public MapElement {
 
     public:
         Path();
+        ~Path();
 };
 
 class Wall : public MapElement {
@@ -35,6 +36,7 @@ class Wall : public MapElement {
 
     public:
         Wall();
+        ~Wall();
 };
 
 class FakeWall : public MapElement {
@@ -45,6 +47,7 @@ class FakeWall : public MapElement {
     
     public:
         FakeWall(int in_req_exp);
+        ~FakeWall();
 
         int getReqExp() const;
 };
@@ -59,6 +62,8 @@ class Position {
         static const Position npos;
 
         Position(int r, int c);
+
+        ~Position();
 
         Position(const string & str_pos);
 
@@ -140,6 +145,9 @@ class Map {
 class Character: public MovingObject {
     friend class TestStudyInPink;
 
+    protected:
+        int move_step = 0;
+
     public:
         Character(
             int index, 
@@ -169,7 +177,6 @@ class Protagonist: public Character {
     protected:
         int hp, exp;
         const string moving_rule;
-        int move_step = 0;
         bool is_invincible = false;
         bool is_done_fighting = false;
 
@@ -178,10 +185,10 @@ class Protagonist: public Character {
             int index, 
             const Position pos, 
             Map * map,
-            const string & name,
             const string & moving_rule,
             int init_hp,
-            int init_exp
+            int init_exp,
+            const string & name
         );
 
         virtual ~Protagonist();
@@ -202,8 +209,6 @@ class Protagonist: public Character {
 
         void toggleFightingStatus();
 
-        void teleport(Position new_position);
-
         Position getNextPosition();
 
         void move();
@@ -222,20 +227,13 @@ class Sherlock: public Protagonist {
             int init_exp
         );
 
-        virtual ~Sherlock();
+        ~Sherlock();
 
         string str() const;
 };
 
 class Watson: public Protagonist {
     friend class TestStudyInPink;
-
-    private:
-        int hp, exp;
-        const string moving_rule;
-        int move_step = 0;
-        bool invincible = false;
-        bool is_prepared_time = true;
 
     public:
         Watson(
@@ -247,7 +245,7 @@ class Watson: public Protagonist {
             int init_exp
         );
 
-        virtual ~Watson();
+        ~Watson();
 
         string str() const;
 };
@@ -258,7 +256,6 @@ class Criminal: public Character{
     private:
         Sherlock * sherlock;
         Watson * watson;
-        int move_step = 0;
 
     public:
         Criminal(
@@ -269,7 +266,7 @@ class Criminal: public Character{
             Watson * watson
         );
 
-        virtual ~Criminal();
+        ~Criminal();
 
         Position getNextPosition();
 
@@ -290,7 +287,7 @@ class ArrayMovingObject {
     public:
         ArrayMovingObject(int capacity);
 
-        virtual ~ArrayMovingObject();
+        ~ArrayMovingObject();
 
         bool isFull() const;
 
@@ -321,7 +318,7 @@ class Configuration {
     public:
         Configuration(const string & filepath);
 
-        virtual ~Configuration();
+        ~Configuration();
 
         string str() const;
 
@@ -346,6 +343,18 @@ class Configuration {
         Position getCriminalInitPos() const;
 
         int getMaxNumMovingObjects() const;
+
+        int getNumRows() const;
+
+        int getNumCols() const;
+
+        int getNumWalls() const;
+
+        Position * getArrayWalls() const;
+
+        int getNumFakeWalls() const;
+
+        Position * getArrayFakeWalls() const;
 };
 
 class Robot;
@@ -373,6 +382,8 @@ class BaseItem {
         ItemType getType() const;
 };
 
+BaseItem * deepCopyItem(BaseItem * item);
+
 int dCeil(double n);
 
 int clamp(int n, int lowerBound, int upperBound);
@@ -383,7 +394,7 @@ class MagicBook: public BaseItem {
     public:
         MagicBook();
 
-        virtual ~MagicBook();
+        ~MagicBook();
 
         bool canUse(Character * obj, Robot * robot);
 
@@ -396,7 +407,7 @@ class EnergyDrink: public BaseItem {
     public:
         EnergyDrink();
 
-        virtual ~EnergyDrink();
+        ~EnergyDrink();
 
         bool canUse(Character * obj, Robot * robot);
 
@@ -409,7 +420,7 @@ class FirstAid: public BaseItem {
     public:
         FirstAid();
 
-        virtual ~FirstAid();
+        ~FirstAid();
 
         bool canUse(Character * obj, Robot * robot);
 
@@ -422,7 +433,7 @@ class ExcemptionCard: public BaseItem {
     public:
         ExcemptionCard();
 
-        virtual ~ExcemptionCard();
+        ~ExcemptionCard();
 
         bool canUse(Character * obj, Robot * robot);
 
@@ -438,11 +449,13 @@ class PassingCard: public BaseItem {
     public:
         PassingCard(int t);
 
-        virtual ~PassingCard();
+        ~PassingCard();
 
         bool canUse(Character * obj, Robot * robot);
 
         void use(Character * obj, Robot * robot);
+
+        int getChallenge() const;
 };
 
 class BaseBag {
@@ -452,7 +465,7 @@ class BaseBag {
         Character * obj;
         int count;
         int capacity;
-        BaseItem * first_item;
+        BaseItem * first_item = nullptr;
     
     public:
         BaseBag(Character * obj);
@@ -474,7 +487,7 @@ class SherlockBag: public BaseBag {
     public:
         SherlockBag(Sherlock * sherlock);
 
-        virtual ~SherlockBag();
+        ~SherlockBag();
 };
 
 class WatsonBag: public BaseBag {
@@ -483,7 +496,7 @@ class WatsonBag: public BaseBag {
     public:
         WatsonBag(Watson * watson);
 
-        virtual ~WatsonBag();
+        ~WatsonBag();
 };
 
 class Robot: public MovingObject {
@@ -502,7 +515,11 @@ class Robot: public MovingObject {
             RobotType robot_type
         );
 
+        virtual ~Robot();
+
         virtual string str() const = 0;
+
+        Position getCurrentPosition() const;
 
         RobotType getType() const;
 
@@ -523,9 +540,9 @@ class RobotC: public Robot {
             Criminal* criminal
         );
 
-        Position getNextPosition();
+        ~RobotC();
 
-        Position getCurrentPosition() const;
+        Position getNextPosition();
 
         void move();
 
@@ -549,10 +566,10 @@ class RobotS: public Robot {
             Criminal* criminal,
             Sherlock * sherlock
         );
+        
+        ~RobotS();
 
         Position getNextPosition();
-
-        Position getCurrentPosition() const;
 
         void move();
 
@@ -577,9 +594,9 @@ class RobotW: public Robot {
             Watson * watson
         );
 
-        Position getNextPosition();
+        ~RobotW();
 
-        Position getCurrentPosition() const;
+        Position getNextPosition();
 
         void move();
 
@@ -607,9 +624,9 @@ class RobotSW: public Robot {
             Watson * watson
         );
 
-        Position getNextPosition();
+        ~RobotSW();
 
-        Position getCurrentPosition() const;
+        Position getNextPosition();
 
         void move();
 
@@ -635,15 +652,17 @@ class StudyPinkProgram {
     public:
         StudyPinkProgram(const string & config_file_path);
 
+        ~StudyPinkProgram();
+
         bool isStop() const;
 
         void printResult() const;
 
         void printStep(int si) const;
 
-        void run(bool verbose);
+        void printVerboseStep() const;
 
-        virtual ~StudyPinkProgram();
+        void run(bool verbose);
 };
 
 #endif
